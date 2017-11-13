@@ -1,11 +1,14 @@
 __author__ = 'kamil'
 import random
+from SztucznaInteligencja.Funkcje import FunkcjaLiniowa
+from SztucznaInteligencja.Perceptron import *
+from tkinter import *
 
 def generujDane(ile, funkcjaLiniowa):
     outTab=[]
     for i in range(ile):
-        x = random.randint(-50,50)
-        y = random.randint(-100,100)
+        x = random.randint(0,300)
+        y = random.randint(0,300)
         klasa = 1
         if(y < funkcjaLiniowa.get(x)):
             klasa = -1
@@ -34,3 +37,35 @@ def trening(mozg, dane):
     for d in dane:
         mozg.trenuj(toInput(d), d['klasa'])
 
+def main():
+    f = FunkcjaLiniowa(random.randint(0,10), random.randint(0,100))
+
+    dane = generujDane(5000, f)
+    mozg = Perceptron()
+    trening(mozg, dane)
+    procentBledow = sprawdzIleBledow(mozg, dane)
+
+    print("ideal\t" + str(f))
+    print("wynik\t" + str(mozg.getFunkcjaLiniowa()))
+    print("procent bledow: %f%%" % (procentBledow))
+    print("perceptron: " + str(mozg))
+    wizualizujDane(generujDane(100, f), f, mozg.getFunkcjaLiniowa())
+
+def wizualizujDane(dane, idealnaLinia, otrzymanaLinia):
+    okno = Tk()
+    pole = Canvas(okno, width=300, height=300)
+    for d in dane:
+        x=d['x']
+        y=d['y']
+        kolor = 'blue'
+        if(d['klasa'] >0):
+            kolor='red'
+        pole.create_oval(x,y, x+5, y+5, fill=kolor)
+
+    pole.create_line(0, idealnaLinia.get(0), 300, idealnaLinia.get(300), width=2, fill='yellow')
+    pole.create_line(0, otrzymanaLinia.get(0), 300, otrzymanaLinia.get(300), width=2, fill='black')
+    pole.pack()
+    okno.mainloop()
+
+if __name__ == '__main__':
+    main()
