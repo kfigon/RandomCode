@@ -2,10 +2,10 @@ __author__ = 'kamil'
 from SztucznaInteligencja.Funkcje import *
 
 class Perceptron:
-    def __init__(self, ileWejsc=2):
+    def __init__(self, ileWejsc=2, funkcjaAktywacji = Signum()):
         self.__wagi = [1]*ileWejsc
         self.__stala = 1    #bias
-        self.__funkcjaAktywacji = Signum()
+        self.__funkcjaAktywacji = funkcjaAktywacji
 
     def zgaduj(self, inputData):
         suma=self.__stala

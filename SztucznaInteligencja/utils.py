@@ -17,7 +17,7 @@ def generujDane(ile, funkcjaLiniowa):
     return outTab
 
 # tylko 2!
-def toInput(krotka):
+def toVector(krotka):
     dl = len(krotka)-1 # bo klasa na koncu
     assert dl == 2
 
@@ -27,7 +27,7 @@ def toInput(krotka):
 def sprawdzIleBledow(mozg, dane):
     ileBledow = 0
     for d in dane:
-        predykcja = mozg.zgaduj(toInput(d))
+        predykcja = mozg.zgaduj(toVector(d))
         if(predykcja != d['klasa']):
             ileBledow +=1
 
@@ -35,7 +35,7 @@ def sprawdzIleBledow(mozg, dane):
 
 def trening(mozg, dane):
     for d in dane:
-        mozg.trenuj(toInput(d), d['klasa'])
+        mozg.trenuj(toVector(d), d['klasa'])
 
 def main():
     f = FunkcjaLiniowa(random.randint(0,10), random.randint(0,100))

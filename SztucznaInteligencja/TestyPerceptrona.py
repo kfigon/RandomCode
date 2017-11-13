@@ -1,7 +1,6 @@
 __author__ = 'kamil'
 
 import unittest
-from SztucznaInteligencja.Perceptron import *
 from SztucznaInteligencja.utils import *
 
 class TestyPerceptrona(unittest.TestCase):
@@ -25,7 +24,7 @@ class TestyPerceptrona(unittest.TestCase):
         self.assertEqual(-1, self.p.zgaduj([2,-13]),4)
         self.assertEqual(1, self.p.zgaduj([84,4]),4)
 
-class TestyPrecykcji(unittest.TestCase):
+class TestyPredykcji(unittest.TestCase):
     def setUp(self):
         self.p = Perceptron(2)
 
@@ -33,7 +32,7 @@ class TestyPrecykcji(unittest.TestCase):
         dane = generujDane(5000, funkcjaLiniowa)
         trening(self.p, dane)
         procentBledow = sprawdzIleBledow(self.p, dane)
-        self.assertLess(procentBledow, 10)
+        self.assertLess(procentBledow, 15)
 
     def test_bezTreningu(self):
         dane = generujDane(1000, FunkcjaLiniowa(1,1))
@@ -55,5 +54,40 @@ class TestyPrecykcji(unittest.TestCase):
     def test_basicLinia6(self):
         self.jedziesz(FunkcjaLiniowa(0,-80))
 
+    #0,0->0
+    #0,1->0
+    #1,0->0
+    #1,1->1
+    def test_AND(self):
+        dane=[{'x':0,'y':0,'klasa':-1},
+              {'x':0,'y':1,'klasa':-1},
+              {'x':1,'y':0,'klasa':-1},
+              {'x':1,'y':1,'klasa':1}]*50
+        for d in dane:
+            self.p.trenuj(toVector(d), d['klasa'])
+
+        self.assertEquals(-1, self.p.zgaduj([0,0]))
+        self.assertEquals(-1, self.p.zgaduj([0,1]))
+        self.assertEquals(-1, self.p.zgaduj([1,0]))
+        self.assertEquals(1, self.p.zgaduj([1,1]))
+    #0,0->0
+    #0,1->1
+    #1,0->1
+    #1,1->1
+    def test_OR(self):
+        dane=[{'x':0,'y':0,'klasa':-1},
+              {'x':0,'y':1,'klasa':1},
+              {'x':1,'y':0,'klasa':1},
+              {'x':1,'y':1,'klasa':1}]*50
+        for d in dane:
+            self.p.trenuj(toVector(d), d['klasa'])
+
+        self.assertEquals(-1, self.p.zgaduj([0,0]))
+        self.assertEquals(1, self.p.zgaduj([0,1]))
+        self.assertEquals(1, self.p.zgaduj([1,0]))
+        self.assertEquals(1, self.p.zgaduj([1,1]))
+
+    #xor = !AND + OR
+        # + -> AND
 if __name__ == '__main__':
     unittest.main()
