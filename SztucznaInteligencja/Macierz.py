@@ -1,20 +1,8 @@
 __author__ = 'kamil'
 
 class Macierz:
-    def __init__(self, *matrix):
+    def __init__(self, matrix):
         self.__tab = matrix
-
-    #def __kopiuj(self, matrix):
-
-    # def __init__(self, matrix):
-    #     self.__tab = matrix
-        # wiersze = len(matrix)
-        # kolumny = len(matrix[0])
-        # self.__tab = [[]]*wiersze
-        # for w in range(wiersze):
-        #     self.__tab[w] = [0]*kolumny
-        #     for k in range(kolumny):
-        #             self.__tab[w][k]=matrix[w][k]
 
     def getIloscKolumn(self):
         return len(self.__tab[0])
@@ -86,3 +74,14 @@ class Macierz:
 
     def rozmiaryPoWymnozeniu(Aw,Ak,Bw,Bk):
         return Aw,Bk
+
+    def transponuj(self):
+        outW = self.getIloscKolumn()
+        outK = self.getIloscWierszy()
+        tab = [[0 for j in range(outK)] for i in range(outW)]
+
+        for w in range(self.getIloscWierszy()):
+            for k in range(self.getIloscKolumn()):
+                tab[k][w] = self.get(w,k)
+
+        return Macierz(tab)
