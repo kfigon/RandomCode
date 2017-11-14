@@ -11,6 +11,7 @@ class Macierz:
 
     def get(self, w, k):
         return self.__tab[w][k]
+
     def __sprawdzRozmiary(self, macierz):
         return (self.getIloscKolumn() != macierz.getIloscKolumn() or
            self.getIloscWierszy() != macierz.getIloscWierszy())
@@ -85,3 +86,14 @@ class Macierz:
                 tab[k][w] = self.get(w,k)
 
         return Macierz(tab)
+
+    def __str__(self):
+        out = ""
+        for w in range(self.getIloscWierszy()):
+            for k in range(self.getIloscKolumn()):
+                out += str(self.get(w,k))
+                if(k != self.getIloscKolumn()-1):
+                    out+=" "
+            if(w != self.getIloscWierszy() -1):
+                out+="\n"
+        return out

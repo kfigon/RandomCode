@@ -73,4 +73,3 @@ if __name__ == '__main__':
 
 
 # todo: siec, propagacja, animacja?
-# todo: macierz

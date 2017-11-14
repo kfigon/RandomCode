@@ -120,12 +120,14 @@ class TestyMacierzy(unittest.TestCase):
         self.assertEquals(24, m1.get(1,0))
         self.assertEquals(35, m1.get(1,1))
         self.assertEquals(18, m1.get(1,2))
+
     def testCzyMoznaMnozycMacierze(self):
         self.assertTrue(Macierz.czyMoznaMnozycMacierze(2,3,3,2))
         self.assertTrue(Macierz.czyMoznaMnozycMacierze(4,2,2,3))
         self.assertTrue(Macierz.czyMoznaMnozycMacierze(3,3,3,2))
 
         self.assertFalse(Macierz.czyMoznaMnozycMacierze(3,2,3,2))
+
     def testRozmiaruPoMnozeniu(self):
         self.assertEqual((2,2), Macierz.rozmiaryPoWymnozeniu(2,3,3,2))
         self.assertEqual((4,3), Macierz.rozmiaryPoWymnozeniu(4,2,2,3))
@@ -179,7 +181,6 @@ class TestyMacierzy(unittest.TestCase):
         m2 = Macierz([[3,1],
                      [2,1],
                      [1,0]])
-        # tuple issue
         m3 = m1.mnozMacierze(m2)
 
         self.assertEqual(2, m3.getIloscWierszy())
@@ -189,5 +190,12 @@ class TestyMacierzy(unittest.TestCase):
         self.assertEqual(1, m3.get(0,1))
         self.assertEqual(4, m3.get(1,0))
         self.assertEqual(2, m3.get(1,1))
+
+    def testToStr(self):
+        m = Macierz([[1,2,3],
+                     [4,5,6]])
+        expected = "1 2 3\n4 5 6"
+        self.assertEqual(expected, str(m))
+
 if __name__ == '__main__':
     unittest.main()
