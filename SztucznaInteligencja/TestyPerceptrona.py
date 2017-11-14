@@ -87,7 +87,5 @@ class TestyPredykcji(unittest.TestCase):
         self.assertEquals(1, self.p.zgaduj([1,0]))
         self.assertEquals(1, self.p.zgaduj([1,1]))
 
-    #xor = !AND + OR
-        # + -> AND
 if __name__ == '__main__':
     unittest.main()

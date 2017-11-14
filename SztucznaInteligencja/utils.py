@@ -39,7 +39,8 @@ def trening(mozg, dane):
 
 def main():
     f = FunkcjaLiniowa(random.randint(0,10), random.randint(0,100))
-
+    # todo: to nie dziala!
+    #f = FunkcjaLiniowa(0, 100)
     dane = generujDane(5000, f)
     mozg = Perceptron()
     trening(mozg, dane)
@@ -69,3 +70,7 @@ def wizualizujDane(dane, idealnaLinia, otrzymanaLinia):
 
 if __name__ == '__main__':
     main()
+
+
+# todo: siec, propagacja, animacja?
+# todo: macierz
