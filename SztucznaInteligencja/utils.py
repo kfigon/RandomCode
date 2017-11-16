@@ -72,4 +72,4 @@ if __name__ == '__main__':
     main()
 
 
-# todo: siec, propagacja, animacja?
+# todo: siec, animacja?

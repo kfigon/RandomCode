@@ -8,7 +8,7 @@ class Perceptron:
         self.__funkcjaAktywacji = funkcjaAktywacji
 
     def zgaduj(self, inputData):
-        suma=self.__stala
+        suma = self.__stala
         for i in range(len(self.__wagi)):
             suma += self.__wagi[i]*inputData[i]
 
