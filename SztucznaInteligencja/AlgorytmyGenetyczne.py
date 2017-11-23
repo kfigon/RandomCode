@@ -171,7 +171,7 @@ class Ruletka:
         return indexToReturn
 
 
-if __name__=='__main__':
+def main():
     cel = "byc albo nie byc"
     p = Populacja(500, str2Tab(cel), 5)
 
@@ -192,3 +192,6 @@ if __name__=='__main__':
 
     print("skonczylem, ile populacji: %d" % nrPopulacji)
     print("najlepszy: %s" % (str(najlepszy)))
+
+if __name__=='__main__':
+    main()
