@@ -37,23 +37,23 @@ class Okno:
         komendy = inputData.split('\n')
         if(self.__czyTrybKrokowy.get() == 0):
             for k in komendy:
-                self.__procek.parseCommand(k)
+                self.__procek.parseAndExecute(k)
         else:
             if(self.__indeksKomendyWTrybieKrokowym < len(komendy)):
-                self.__procek.parseCommand(komendy[self.__indeksKomendyWTrybieKrokowym])
+                self.__procek.parseAndExecute(komendy[self.__indeksKomendyWTrybieKrokowym])
                 self.__indeksKomendyWTrybieKrokowym += 1
 
         self.__odswiezLablke()
 
     def czysc(self):
-        self.__procek.parseCommand('MOV AL 0x0')
-        self.__procek.parseCommand('MOV AH 0x0')
-        self.__procek.parseCommand('MOV BL 0x0')
-        self.__procek.parseCommand('MOV BH 0x0')
-        self.__procek.parseCommand('MOV CL 0x0')
-        self.__procek.parseCommand('MOV CH 0x0')
-        self.__procek.parseCommand('MOV DL 0x0')
-        self.__procek.parseCommand('MOV DH 0x0')
+        self.__procek.parseAndExecute('MOV AL 0x0')
+        self.__procek.parseAndExecute('MOV AH 0x0')
+        self.__procek.parseAndExecute('MOV BL 0x0')
+        self.__procek.parseAndExecute('MOV BH 0x0')
+        self.__procek.parseAndExecute('MOV CL 0x0')
+        self.__procek.parseAndExecute('MOV CH 0x0')
+        self.__procek.parseAndExecute('MOV DL 0x0')
+        self.__procek.parseAndExecute('MOV DH 0x0')
         self.__textBox.delete('1.0', END)
         self.__indeksKomendyWTrybieKrokowym = 0
         self.__odswiezLablke()

@@ -1,6 +1,30 @@
 __author__ = 'kamil'
 from SymulatorProcesora.Rejestr import Rejestr
 
+class Komenda:
+    def __init__(self, komenda, arg1, arg2=None):
+        self.__komenda = komenda
+        self.__arg1=arg1
+        self.__arg2=arg2
+
+    def getKomenda(self):
+        return self.__komenda
+
+    def getArgs(self):
+        return self.__arg1,self.__arg2
+
+    @staticmethod
+    def parse(string):
+        string.capitalize()
+        cmd = string.split(' ')
+        if(len(cmd) <= 1 or (len(cmd) == 2 and cmd[0] != 'GET')):
+            raise Exception("niewlasciwa komenda " + string)
+
+        if(len(cmd) == 3):
+            return Komenda(cmd[0], cmd[1], cmd[2])
+        elif(len(cmd) == 2):
+            return Komenda(cmd[0], cmd[1], None)
+
 class Procesor:
     def __init__(self):
         self.__ax = Rejestr()
@@ -8,22 +32,25 @@ class Procesor:
         self.__cx = Rejestr()
         self.__dx = Rejestr()
 
-    def parseCommand(self, command):
-        command.capitalize()
-        cmd = command.split(' ')
-        if(len(cmd) <= 1 or (len(cmd) == 2 and cmd[0] != 'GET')):
-            raise Exception("niewlasciwa komenda " + command)
+    def parseAndExecute(self, command):
+        komenda = Komenda.parse(command)
+        return self.executeCommand(komenda)
 
-        if(cmd[0] == 'GET'):
-            return self.__getRegVal(cmd[1])
-        elif(cmd[0] == 'MOV'):
-            self.__mov(cmd[1], int(cmd[2], 16))
+    def executeCommand(self, komenda):
+        if(komenda.getKomenda() == 'GET'):
+            a1,a2 = komenda.getArgs()
+            return self.__getRegVal(a1)
+        elif(komenda.getKomenda() == 'MOV'):
+            a1,a2 = komenda.getArgs()
+            self.__mov(a1, int(a2, 16))
             return 0
-        elif(cmd[0] == 'ADD'):
-            self.__add(cmd[1], cmd[2])
+        elif(komenda.getKomenda() == 'ADD'):
+            a1,a2 = komenda.getArgs()
+            self.__add(a1,a2)
             return 0
-        elif(cmd[0] == 'SUB'):
-            self.__sub(cmd[1], cmd[2])
+        elif(komenda.getKomenda() == 'SUB'):
+            a1,a2 = komenda.getArgs()
+            self.__sub(a1,a2)
             return 0
         else:
             raise Exception("invalid command")

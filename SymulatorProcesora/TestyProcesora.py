@@ -1,7 +1,6 @@
 __author__ = 'kamil'
 
 import unittest
-from SymulatorProcesora.Rejestr import *
 from SymulatorProcesora.Procesor import *
 
 class TestyRejestru(unittest.TestCase):
@@ -63,38 +62,38 @@ class TestyProcesora(unittest.TestCase):
         self.p = Procesor()
 
     def testGetBasic(self):
-        self.assertEqual(0, self.p.parseCommand('GET AL'))
-        self.assertEqual(0, self.p.parseCommand('GET AH'))
+        self.assertEqual(0, self.p.parseAndExecute('GET AL'))
+        self.assertEqual(0, self.p.parseAndExecute('GET AH'))
 
-        self.assertEqual(0, self.p.parseCommand('GET BL'))
-        self.assertEqual(0, self.p.parseCommand('GET BH'))
+        self.assertEqual(0, self.p.parseAndExecute('GET BL'))
+        self.assertEqual(0, self.p.parseAndExecute('GET BH'))
 
-        self.assertEqual(0, self.p.parseCommand('GET CL'))
-        self.assertEqual(0, self.p.parseCommand('GET CH'))
+        self.assertEqual(0, self.p.parseAndExecute('GET CL'))
+        self.assertEqual(0, self.p.parseAndExecute('GET CH'))
 
-        self.assertEqual(0, self.p.parseCommand('GET DL'))
-        self.assertEqual(0, self.p.parseCommand('GET DH'))
+        self.assertEqual(0, self.p.parseAndExecute('GET DL'))
+        self.assertEqual(0, self.p.parseAndExecute('GET DH'))
 
     def testMov(self):
-        self.p.parseCommand('MOV AL 0x12')
-        self.assertEqual(0x12, self.p.parseCommand('GET AL'))
+        self.p.parseAndExecute('MOV AL 0x12')
+        self.assertEqual(0x12, self.p.parseAndExecute('GET AL'))
 
     def testAdd(self):
-        self.p.parseCommand('MOV AL 0x12')
-        self.p.parseCommand('MOV BH 0xDE')
-        self.p.parseCommand('ADD AL BH')
+        self.p.parseAndExecute('MOV AL 0x12')
+        self.p.parseAndExecute('MOV BH 0xDE')
+        self.p.parseAndExecute('ADD AL BH')
 
-        self.assertEqual(0xF0, self.p.parseCommand('GET AL'))
-        self.assertEqual(0xDE, self.p.parseCommand('GET BH'))
+        self.assertEqual(0xF0, self.p.parseAndExecute('GET AL'))
+        self.assertEqual(0xDE, self.p.parseAndExecute('GET BH'))
 
     def testSub(self):
-        self.p.parseCommand('MOV AL 0x12')
-        self.p.parseCommand('MOV BH 0xDE')
-        self.p.parseCommand('SUB BH AL')
+        self.p.parseAndExecute('MOV AL 0x12')
+        self.p.parseAndExecute('MOV BH 0xDE')
+        self.p.parseAndExecute('SUB BH AL')
 
-        self.assertEqual(0x12, self.p.parseCommand('GET AL'))
-        self.assertEqual(0xCC, self.p.parseCommand('GET BH'))
-        #overflow?
+        self.assertEqual(0x12, self.p.parseAndExecute('GET AL'))
+        self.assertEqual(0xCC, self.p.parseAndExecute('GET BH'))
+
     def testToString(self):
         expected = "AX: 0x0\n" \
                    "BX: 0x0\n" \
