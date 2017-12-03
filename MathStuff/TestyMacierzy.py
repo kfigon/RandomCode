@@ -1,7 +1,9 @@
 __author__ = 'kamil'
 
 import unittest
-from SztucznaInteligencja.Macierz import *
+
+from MathStuff.Macierz import *
+
 
 class TestyInicjalizacjiMacierzy(unittest.TestCase):
     def testInicjalizacjiMacierza(self):

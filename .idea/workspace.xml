@@ -23,15 +23,17 @@
     <favorites_list name="RandomCodes" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.496844">
       <split-first>
         <leaf>
-          <file leaf-file-name="Procesor.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/SymulatorProcesora/Procesor.py">
+          <file leaf-file-name="Vector.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/MathStuff/Vector.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.21008404" vertical-offset="540" max-vertical-offset="2460">
-                  <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-                  <folding />
+                <state vertical-scroll-proportion="2.4705882" vertical-offset="64" max-vertical-offset="1440">
+                  <caret line="62" column="29" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
+                  <folding>
+                    <element signature="e#0#21#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -40,13 +42,13 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="TestyProcesora.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/SymulatorProcesora/TestyProcesora.py">
+          <file leaf-file-name="TestyWektora.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/MathStuff/TestyWektora.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.33613446" vertical-offset="1740" max-vertical-offset="2220">
-                  <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.2857143" vertical-offset="1724" max-vertical-offset="2200">
+                  <caret line="93" column="22" selection-start-line="93" selection-start-column="22" selection-end-line="93" selection-end-column="22" />
                   <folding>
-                    <element signature="e#22#37#0" expanded="true" />
+                    <element signature="e#0#35#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -59,9 +61,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Parkometr/Parkometr.py" />
-        <option value="$PROJECT_DIR$/Parkometr/testyparkometru.py" />
-        <option value="$PROJECT_DIR$/Parkometr/ModelKonsolowy.py" />
         <option value="$PROJECT_DIR$/Parkometr/main.py" />
         <option value="$PROJECT_DIR$/BinarySearch/testFoo.py" />
         <option value="$PROJECT_DIR$/BinarySearch/foo.py" />
@@ -110,6 +109,9 @@
         <option value="$PROJECT_DIR$/_WEB_DEV_/MetodyHttp.py" />
         <option value="$PROJECT_DIR$/SymulatorProcesora/TestyProcesora.py" />
         <option value="$PROJECT_DIR$/SymulatorProcesora/Procesor.py" />
+        <option value="$PROJECT_DIR$/MathStuff/Testy.py" />
+        <option value="$PROJECT_DIR$/MathStuff/Vector.py" />
+        <option value="$PROJECT_DIR$/MathStuff/TestyWektora.py" />
       </list>
     </option>
   </component>
@@ -161,6 +163,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -189,13 +192,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SymulatorProcesora" />
+              <option name="myItemId" value="SztucznaInteligencja" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RandomCodes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RandomCodes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MathStuff" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -216,25 +232,44 @@
       <recent name="$PROJECT_DIR$/_Games" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/MathStuff" />
       <recent name="$PROJECT_DIR$/SztucznaInteligencja" />
       <recent name="$PROJECT_DIR$/SztucznaInteligencja/Testy" />
       <recent name="$PROJECT_DIR$/_SPOJ" />
       <recent name="$PROJECT_DIR$/ALGORYTMY/SORT/bubbleSort" />
-      <recent name="$PROJECT_DIR$/ALGORYTMY/SORT" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in TestyProcesora">
-    <configuration default="false" name="Unittests in foo (1)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Unittest TestyVectora.testObroc">
+    <configuration default="false" name="Vector" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/_SPOJ/Srednie/AL_14_04 - Enigma w wersji nieco mniej light" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MathStuff" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RandomCodes" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/_SPOJ/Srednie/AL_14_04 - Enigma w wersji nieco mniej light/foo.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MathStuff/Vector.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in Vector" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MathStuff" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RandomCodes" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MathStuff/Vector.py" />
       <option name="CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
@@ -248,74 +283,36 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="HelloWorld" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="TestyWektora" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/_WEB_DEV_" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MathStuff" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RandomCodes" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/_WEB_DEV_/HelloWorld.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MathStuff/TestyWektora.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Routing" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/_WEB_DEV_" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RandomCodes" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/_WEB_DEV_/Routing.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="MetodyHttp" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/_WEB_DEV_" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RandomCodes" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/_WEB_DEV_/MetodyHttp.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests in TestyProcesora" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittests in TestyWektora" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SymulatorProcesora" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MathStuff" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RandomCodes" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SymulatorProcesora/TestyProcesora.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MathStuff/TestyWektora.py" />
       <option name="CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
@@ -327,6 +324,30 @@
       <option name="USE_PARAM" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestyVectora.testObroc" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MathStuff" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RandomCodes" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MathStuff/TestyWektora.py" />
+      <option name="CLASS_NAME" value="TestyVectora" />
+      <option name="METHOD_NAME" value="testObroc" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -502,19 +523,19 @@
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest testPermutacji.testFunkcji" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TestyPamieci" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in foo (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Python.HelloWorld" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Routing" />
-      <item index="5" class="java.lang.String" itemvalue="Python.MetodyHttp" />
-      <item index="6" class="java.lang.String" itemvalue="Python tests.Unittests in TestyProcesora" />
+      <item index="2" class="java.lang.String" itemvalue="Python.Vector" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in Vector" />
+      <item index="4" class="java.lang.String" itemvalue="Python.TestyWektora" />
+      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittests in TestyWektora" />
+      <item index="6" class="java.lang.String" itemvalue="Python tests.Unittest TestyVectora.testObroc" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in TestyProcesora" />
-        <item index="1" class="java.lang.String" itemvalue="Python.MetodyHttp" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Routing" />
-        <item index="3" class="java.lang.String" itemvalue="Python.HelloWorld" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in foo (1)" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in TestyWektora" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestyVectora.testObroc" />
+        <item index="2" class="java.lang.String" itemvalue="Python.TestyWektora" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in Vector" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Vector" />
       </list>
     </recent_temporary>
   </component>
@@ -556,16 +577,15 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17973372" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37435898" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3474359" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33461538" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17973372" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36410257" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -573,6 +593,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -631,25 +652,11 @@
           <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="67" />
+      <option name="time" value="68" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_SPOJ/Latwe/1016. Predkość średnia/testFoo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26200873" vertical-offset="0" max-vertical-offset="458">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_SPOJ/Latwe/438. Liczby Pierwsze/TestyLiczbyPierwsze.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1720">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_SPOJ/Latwe/438. Liczby Pierwsze/LiczbyPierwsze.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.26200873" vertical-offset="120" max-vertical-offset="720">
@@ -846,14 +853,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SztucznaInteligencja/TestyMacierzy.py">
+    <entry file="file://$PROJECT_DIR$/MathStuff/TestyMacierzy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5955056" vertical-offset="1335" max-vertical-offset="4120">
           <caret line="81" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SztucznaInteligencja/Macierz.py">
+    <entry file="file://$PROJECT_DIR$/MathStuff/Macierz.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1617978" vertical-offset="1403" max-vertical-offset="2080">
           <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
@@ -964,7 +971,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.4130878" vertical-offset="1920" max-vertical-offset="2740">
           <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -972,7 +978,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46830267" vertical-offset="1411" max-vertical-offset="2460">
           <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -980,25 +985,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="640">
           <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SymulatorProcesora/TestyProcesora.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33613446" vertical-offset="1740" max-vertical-offset="2220">
+        <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="2220">
           <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-          <folding>
-            <element signature="e#22#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SymulatorProcesora/Procesor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.21008404" vertical-offset="540" max-vertical-offset="2460">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.5970149" vertical-offset="1700" max-vertical-offset="2460">
+          <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MathStuff/Vector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.4705882" vertical-offset="64" max-vertical-offset="1440">
+          <caret line="62" column="29" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MathStuff/TestyWektora.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2857143" vertical-offset="1724" max-vertical-offset="2200">
+          <caret line="93" column="22" selection-start-line="93" selection-start-column="22" selection-end-line="93" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
