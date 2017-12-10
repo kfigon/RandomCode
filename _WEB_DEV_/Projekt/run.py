@@ -1,6 +1,5 @@
 __author__ = 'kamil'
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, request,jsonify
 
 app = Flask(__name__)
 
@@ -33,6 +32,15 @@ def dawajPodstrone():
 def wyslijDane(napis):
     return render_template('podstrona.html',
                     dodatkowyNapis=napis)
+
+@app.route('/wyslijJsona', methods=['POST'])
+def wyslanyJson():
+    content = request.json
+    print("serwer otrzymal jsona:")
+    print(content)
+    zwrotka = {'dane':'dziekuje pan javascript'}
+    return jsonify(zwrotka)
+
 
 if __name__=='__main__':
     #app.run(debug=True)

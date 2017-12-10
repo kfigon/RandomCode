@@ -23,26 +23,60 @@
     <favorites_list name="RandomCodes" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="run.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_WEB_DEV_/Projekt/run.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.4379085" vertical-offset="421" max-vertical-offset="880">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding>
-                <element signature="e#21#44#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.41358554">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="run.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/_WEB_DEV_/Projekt/run.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.5515695" vertical-offset="574" max-vertical-offset="1040">
+                  <caret line="41" column="23" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="wyslijOdbierzJsona.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/_WEB_DEV_/Projekt/static/wyslijOdbierzJsona.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.44843048" vertical-offset="0" max-vertical-offset="446">
+                  <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/_WEB_DEV_/Projekt/templates/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-9.551724" vertical-offset="443" max-vertical-offset="860">
+                  <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="podstrona.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/_WEB_DEV_/Projekt/templates/podstrona.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-3.4482758" vertical-offset="0" max-vertical-offset="260">
+                  <caret line="5" column="80" selection-start-line="5" selection-start-column="80" selection-end-line="5" selection-end-column="80" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ALGORYTMY/SORT/testFoo.py" />
-        <option value="$PROJECT_DIR$/ALGORYTMY/SORT/bubbleSort/testFoo.py" />
         <option value="$PROJECT_DIR$/_Games/Memo/testFoo.py" />
         <option value="$PROJECT_DIR$/_Games/Memo/foo.py" />
         <option value="$PROJECT_DIR$/_Games/Krzyzowka/testFoo.py" />
@@ -88,18 +122,20 @@
         <option value="$PROJECT_DIR$/_SPOJ/ProjectEuler/EvenFibonacci.py" />
         <option value="$PROJECT_DIR$/_SPOJ/ProjectEuler/LargePrimeFactor.py" />
         <option value="$PROJECT_DIR$/_WEB_DEV_/Projekt/templates/bazaPodstrony.html" />
-        <option value="$PROJECT_DIR$/_WEB_DEV_/Projekt/templates/podstrona.html" />
-        <option value="$PROJECT_DIR$/_WEB_DEV_/Projekt/run.py" />
-        <option value="$PROJECT_DIR$/_WEB_DEV_/Projekt/templates/index.html" />
         <option value="$PROJECT_DIR$/_WEB_DEV_/HelloWorld.py" />
+        <option value="$PROJECT_DIR$/_WEB_DEV_/Projekt/templates/wyslijOdbierzJsona.js" />
+        <option value="$PROJECT_DIR$/_WEB_DEV_/Projekt/templates/index.html" />
+        <option value="$PROJECT_DIR$/_WEB_DEV_/Projekt/run.py" />
+        <option value="$PROJECT_DIR$/_WEB_DEV_/Projekt/templates/podstrona.html" />
+        <option value="$PROJECT_DIR$/_WEB_DEV_/Projekt/static/wyslijOdbierzJsona.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="-4" />
+    <option name="y" value="24" />
     <option name="width" value="1375" />
-    <option name="height" value="904" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -143,7 +179,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -218,6 +253,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -239,11 +275,11 @@
       <recent name="$PROJECT_DIR$/_Games" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/_WEB_DEV_/Projekt/static" />
       <recent name="$PROJECT_DIR$/AlgorytmyCormen" />
       <recent name="$PROJECT_DIR$/MathStuff" />
       <recent name="$PROJECT_DIR$/SztucznaInteligencja" />
       <recent name="$PROJECT_DIR$/SztucznaInteligencja/Testy" />
-      <recent name="$PROJECT_DIR$/_SPOJ" />
     </key>
   </component>
   <component name="RunManager" selected="Python.run">
@@ -528,10 +564,10 @@
       <method />
     </configuration>
     <list size="7">
-      <item index="0" class="java.lang.String" itemvalue="Python.run" />
-      <item index="1" class="java.lang.String" itemvalue="Python.HelloWorld" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest testPermutacji.testFunkcji" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestyPamieci" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest testPermutacji.testFunkcji" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TestyPamieci" />
+      <item index="2" class="java.lang.String" itemvalue="Python.run" />
+      <item index="3" class="java.lang.String" itemvalue="Python.HelloWorld" />
       <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in TestFibo" />
       <item index="5" class="java.lang.String" itemvalue="Python tests.Unittest TestPrime.test1" />
       <item index="6" class="java.lang.String" itemvalue="Python tests.Unittests in testFoo" />
@@ -580,11 +616,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1375" height="904" extended-state="6" />
+    <frame x="65" y="24" width="1375" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17973372" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1397929" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37435898" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -664,13 +700,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_SPOJ/Latwe/1102. Średnia arytmetyczna/foo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.13100436" vertical-offset="60" max-vertical-offset="640">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_SPOJ/Latwe/496. Dwie cyfry silni/TestySilnia.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="940">
@@ -991,7 +1020,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.5172415" vertical-offset="0" max-vertical-offset="360">
           <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -999,33 +1027,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34640524" vertical-offset="1" max-vertical-offset="540">
           <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_WEB_DEV_/Projekt/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.551724" vertical-offset="443" max-vertical-offset="860">
+          <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_WEB_DEV_/Projekt/templates/podstrona.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23980816" vertical-offset="0" max-vertical-offset="417">
-          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_WEB_DEV_/Projekt/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50359714" vertical-offset="310" max-vertical-offset="780">
-          <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+        <state vertical-scroll-proportion="-3.4482758" vertical-offset="0" max-vertical-offset="260">
+          <caret line="5" column="80" selection-start-line="5" selection-start-column="80" selection-end-line="5" selection-end-column="80" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_WEB_DEV_/Projekt/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.4379085" vertical-offset="421" max-vertical-offset="880">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#21#44#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.5515695" vertical-offset="574" max-vertical-offset="1040">
+          <caret line="41" column="23" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_WEB_DEV_/Projekt/static/wyslijOdbierzJsona.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44843048" vertical-offset="0" max-vertical-offset="446">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>

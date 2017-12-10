@@ -7,6 +7,8 @@
     {% else %}
     <title>Generyczny tytul strony</title>
     {% endif %}
+
+    <script src="{{url_for('static', filename='wyslijOdbierzJsona.js')}}"></script>
 </head>
 
 <body>
@@ -30,5 +32,7 @@
       Wpisz to cos!<input id="pole-tekstowe" type="text">
       <input type="submit" onclick="wyslij()" value="Wysylaj">
     </form>
+
+    <input type="submit" onclick="wyslijJsona('/wyslijJsona')" value="Wyslij jsona"/>
 </body>
 </html>
