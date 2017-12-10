@@ -1,0 +1,8 @@
+{% extends "bazaPodstrony.html" %}
+{% block content %}
+    <h1>witaj na podstronie z wygladem dziedziczonym!</h1>
+
+    {% if dodatkowyNapis %}
+        <h2>Wpisales w formatke: {{dodatkowyNapis}}</h2>
+    {% endif %}
+{% endblock %}

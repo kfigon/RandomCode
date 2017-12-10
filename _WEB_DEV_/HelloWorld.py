@@ -4,6 +4,10 @@ from flask import Flask
 # kontener
 app = Flask(__name__)
 
+# tip: ubicie procesu
+#fuser nrPortu/tcp
+#fuser 5000/tcp -k   <-- ubicie portu 5000
+
 
 # dekorator. Doda cala reszte (<html><head><body> itd)
 # / strona domowa

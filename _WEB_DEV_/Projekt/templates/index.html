@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    {% if tytulStrony %}
+    <title>{{ tytulStrony }}</title>
+    {% else %}
+    <title>Generyczny tytul strony</title>
+    {% endif %}
+</head>
+
+<body>
+    <h2>Hello, {{ user.nickname }}!</h2>
+
+    <ul>
+        {% for post in posts %}
+        <li>{{post.tytulPosta}} ->> {{post.kontent}}</li>
+        {% endfor %}
+    </ul>
+    <a href="/podstrona">Kliknij link by zobaczyc podstrone</a>
+
+    <script>
+        function wyslij() {
+            var node = document.getElementById("pole-tekstowe");
+            var napis = node.value;
+            document.getElementById('formatka-do-wysylki').action = "/wyslij/"+napis;
+        }
+    </script>
+     <form id="formatka-do-wysylki" action="" method="post">
+      Wpisz to cos!<input id="pole-tekstowe" type="text">
+      <input type="submit" onclick="wyslij()" value="Wysylaj">
+    </form>
+</body>
+</html>
