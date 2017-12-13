@@ -21,17 +21,11 @@ class QuickFind:
             if(self.__tab[i] == toChange):
                 self.__tab[i] = val
 
-    def __isNotInArray(self, arr, val):
-        for i in arr:
-            if(i==val):
-                return False
-        return True
-
     def getConnectedComponents(self):
         out = []
         uniqueVals = []
         for el in self.__tab:
-            if(self.__isNotInArray(uniqueVals, el)):
+            if(el not in uniqueVals):
                 uniqueVals.append(el)
 
         for unique in uniqueVals:
