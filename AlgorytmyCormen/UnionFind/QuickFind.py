@@ -1,37 +1,33 @@
 __author__ = 'kamil'
 
 import unittest
+from AlgorytmyCormen.UnionFind.UnionFindBase import UnionFindBase
 
-class QuickFind:
+class QuickFind(UnionFindBase):
     def __init__(self, rozmiarTablicy):
-        self.__tab = [0]*rozmiarTablicy
-        self.clear()
-
-    def clear(self):
-        for i in range(len(self.__tab)):
-            self.__tab[i]=i
+        super().__init__(rozmiarTablicy)
 
     def areConnected(self, p, q):
-        return (self.__tab[p] == self.__tab[q])
+        return (self._tab[p] == self._tab[q])
 
     def union(self,p,q):
-        toChange = self.__tab[p]
-        val = self.__tab[q]
-        for i in range(len(self.__tab)):
-            if(self.__tab[i] == toChange):
-                self.__tab[i] = val
+        toChange = self._tab[p]
+        val = self._tab[q]
+        for i in range(len(self._tab)):
+            if(self._tab[i] == toChange):
+                self._tab[i] = val
 
     def getConnectedComponents(self):
         out = []
         uniqueVals = []
-        for el in self.__tab:
+        for el in self._tab:
             if(el not in uniqueVals):
                 uniqueVals.append(el)
 
         for unique in uniqueVals:
             toAdd=[]
-            for i in range(len(self.__tab)):
-                val = self.__tab[i]
+            for i in range(len(self._tab)):
+                val = self._tab[i]
                 if(val == unique):
                     toAdd.append(i)
             out.append(tuple(toAdd))

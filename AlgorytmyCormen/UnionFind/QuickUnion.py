@@ -1,6 +1,7 @@
 __author__ = 'kamil'
 
 import unittest
+from AlgorytmyCormen.UnionFind.UnionFindBase import UnionFindBase
 
 class RootClimberBase:
     def __init__(self,tab):
@@ -32,19 +33,12 @@ class RootClimberIter(RootClimberBase):
 
         return root
 
-# moznaby podziedziczyc, ale jestem leniwy zeby to porzadkowac.
-# dochodza problemy z dziedziczeniem po testach, odpalaja sie podwojnie ;<
-class QuickUnion:
+class QuickUnion(UnionFindBase):
     def __init__(self, rozmiarTablicy):
-        self.__tab = [0]*rozmiarTablicy
-        self.clear()
-
-    def clear(self):
-        for i in range(len(self.__tab)):
-            self.__tab[i]=i
+        super().__init__(rozmiarTablicy)
 
     def __getRoot(self, x):
-        r = RootClimberIter(self.__tab)
+        r = RootClimberIter(self._tab)
         return r.getRoot(x)
 
     def areConnected(self, p, q):
@@ -53,19 +47,19 @@ class QuickUnion:
     def union(self,p,q):
         rootP = self.__getRoot(p)
         rootQ = self.__getRoot(q)
-        self.__tab[rootP] = rootQ
+        self._tab[rootP] = rootQ
 
     def getConnectedComponents(self):
         out = []
         uniqueRoots = []
-        for i in range(len(self.__tab)):
+        for i in range(len(self._tab)):
             root = self.__getRoot(i)
             if(root not in uniqueRoots):
                 uniqueRoots.append(root)
 
         for root in uniqueRoots:
             toAdd=[]
-            for i in range(len(self.__tab)):
+            for i in range(len(self._tab)):
                 elementsRoot = self.__getRoot(i)
                 if(elementsRoot == root):
                     toAdd.append(i)
@@ -115,6 +109,8 @@ class RootClimberTest(unittest.TestCase):
         self.assertEqual(8, r.getRoot(8))
         self.assertEqual(8, r.getRoot(9))
 
+# moznaby podziedziczyc testy, ale sa problemy,
+# odpalaja sie podwojnie ;<
 class QuickUnionTest1(unittest.TestCase):
     def setUp(self):
         self.qf = QuickUnion(10)

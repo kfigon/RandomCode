@@ -23,28 +23,48 @@
     <favorites_list name="RandomCodes" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="QuickUnion.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.7429194" vertical-offset="0" max-vertical-offset="2080">
-              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-              <folding>
-                <element signature="e#66#205#0" expanded="false" />
-                <element signature="e#252#428#0" expanded="false" />
-                <element signature="e#474#670#0" expanded="false" />
-                <element signature="e#1908#3216#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="QuickUnion.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="2.0762331" vertical-offset="54" max-vertical-offset="2000">
+                  <caret line="112" column="27" selection-start-line="112" selection-start-column="27" selection-end-line="112" selection-end-column="27" />
+                  <folding>
+                    <element signature="e#22#37#0" expanded="true" />
+                    <element signature="e#132#271#0" expanded="false" />
+                    <element signature="e#318#494#0" expanded="false" />
+                    <element signature="e#540#734#0" expanded="false" />
+                    <element signature="e#1735#3045#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="QuickFind.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickFind.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="1.2735426" vertical-offset="332" max-vertical-offset="1720">
+                  <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+                  <folding>
+                    <element signature="e#22#37#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/_Games/Krzyzowka/foo.py" />
         <option value="$PROJECT_DIR$/_Games/Pokemon/testfoo.py" />
         <option value="$PROJECT_DIR$/_Games/Pokemon/foo.py" />
         <option value="$PROJECT_DIR$/_Games/Tetris/testFoo.py" />
@@ -94,6 +114,7 @@
         <option value="$PROJECT_DIR$/_WEB_DEV_/Projekt/static/wyslijOdbierzJsona.js" />
         <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFInd/QuickFind.py" />
         <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickFind.py" />
+        <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/UnionFindBase.py" />
         <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py" />
       </list>
     </option>
@@ -572,7 +593,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1375" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1397929" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -581,7 +602,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3474359" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37307692" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37307692" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -651,7 +672,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py</url>
-          <line>127</line>
+          <line>123</line>
           <option name="timeStamp" value="74" />
         </line-breakpoint>
       </breakpoints>
@@ -664,19 +685,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1860">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#66#205#0" expanded="false" />
-            <element signature="e#252#428#0" expanded="false" />
-            <element signature="e#474#670#0" expanded="false" />
-            <element signature="e#1908#3216#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_SPOJ/Latwe/568. Zabawne Dodawanie Piotrusia/Dodawanie.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="460">
@@ -1015,23 +1023,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/UnionFindBase.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="440">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickFind.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.99782133" vertical-offset="362" max-vertical-offset="1800">
-          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
-          <folding />
+        <state vertical-scroll-proportion="1.2735426" vertical-offset="332" max-vertical-offset="1720">
+          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+          <folding>
+            <element signature="e#22#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7429194" vertical-offset="0" max-vertical-offset="2080">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        <state vertical-scroll-proportion="2.0762331" vertical-offset="54" max-vertical-offset="2000">
+          <caret line="112" column="27" selection-start-line="112" selection-start-column="27" selection-end-line="112" selection-end-column="27" />
           <folding>
-            <element signature="e#66#205#0" expanded="false" />
-            <element signature="e#252#428#0" expanded="false" />
-            <element signature="e#474#670#0" expanded="false" />
-            <element signature="e#1908#3216#0" expanded="false" />
+            <element signature="e#22#37#0" expanded="true" />
+            <element signature="e#132#271#0" expanded="false" />
+            <element signature="e#318#494#0" expanded="false" />
+            <element signature="e#540#734#0" expanded="false" />
+            <element signature="e#1735#3045#0" expanded="false" />
           </folding>
         </state>
       </provider>
