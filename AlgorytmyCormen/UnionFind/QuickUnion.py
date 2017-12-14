@@ -37,30 +37,30 @@ class QuickUnion(UnionFindBase):
     def __init__(self, rozmiarTablicy):
         super().__init__(rozmiarTablicy)
 
-    def __getRoot(self, x):
+    def _getRoot(self, x):
         r = RootClimberIter(self._tab)
         return r.getRoot(x)
 
     def areConnected(self, p, q):
-        return (self.__getRoot(p) == self.__getRoot(q))
+        return (self._getRoot(p) == self._getRoot(q))
 
     def union(self,p,q):
-        rootP = self.__getRoot(p)
-        rootQ = self.__getRoot(q)
+        rootP = self._getRoot(p)
+        rootQ = self._getRoot(q)
         self._tab[rootP] = rootQ
 
     def getConnectedComponents(self):
         out = []
         uniqueRoots = []
         for i in range(len(self._tab)):
-            root = self.__getRoot(i)
+            root = self._getRoot(i)
             if(root not in uniqueRoots):
                 uniqueRoots.append(root)
 
         for root in uniqueRoots:
             toAdd=[]
             for i in range(len(self._tab)):
-                elementsRoot = self.__getRoot(i)
+                elementsRoot = self._getRoot(i)
                 if(elementsRoot == root):
                     toAdd.append(i)
 

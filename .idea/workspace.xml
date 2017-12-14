@@ -23,53 +23,24 @@
     <favorites_list name="RandomCodes" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="QuickUnion.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="2.0762331" vertical-offset="54" max-vertical-offset="2000">
-                  <caret line="112" column="27" selection-start-line="112" selection-start-column="27" selection-end-line="112" selection-end-column="27" />
-                  <folding>
-                    <element signature="e#22#37#0" expanded="true" />
-                    <element signature="e#132#271#0" expanded="false" />
-                    <element signature="e#318#494#0" expanded="false" />
-                    <element signature="e#540#734#0" expanded="false" />
-                    <element signature="e#1735#3045#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="QuickFind.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickFind.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.2735426" vertical-offset="332" max-vertical-offset="1720">
-                  <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
-                  <folding>
-                    <element signature="e#22#37#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="Plansza.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/Plansza.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.8736384" vertical-offset="1360" max-vertical-offset="1820">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding>
+                <element signature="e#21#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/_Games/Pokemon/testfoo.py" />
-        <option value="$PROJECT_DIR$/_Games/Pokemon/foo.py" />
-        <option value="$PROJECT_DIR$/_Games/Tetris/testFoo.py" />
-        <option value="$PROJECT_DIR$/_Games/Tetris/testfoo.py" />
-        <option value="$PROJECT_DIR$/_Games/Tetris/foo.py" />
         <option value="$PROJECT_DIR$/_SPOJ/Latwe/1032. Podzielność/testFoo.py" />
         <option value="$PROJECT_DIR$/SztucznaInteligencja/TestyFunkcji.py" />
         <option value="$PROJECT_DIR$/SztucznaInteligencja/Testy/TestyPerceptrona.py" />
@@ -116,6 +87,11 @@
         <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickFind.py" />
         <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/UnionFindBase.py" />
         <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py" />
+        <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/WeightedQuickUnion.py" />
+        <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/KlakulatorWspolrzednych.py" />
+        <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py" />
+        <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/KalkulatorWspolrzednych.py" />
+        <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/Plansza.py" />
       </list>
     </option>
   </component>
@@ -217,6 +193,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RandomCodes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RandomCodes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AlgorytmyCormen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UnionFind" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PercolationProjekt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -248,18 +246,37 @@
       <recent name="$PROJECT_DIR$/SztucznaInteligencja/Testy" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in QuickUnion">
-    <configuration default="false" name="Unittests in QuickUnion" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.Plansza">
+    <configuration default="false" name="KalkulatorWspolrzednych" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RandomCodes" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/KalkulatorWspolrzednych.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in testy" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RandomCodes" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py" />
       <option name="CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
@@ -273,19 +290,19 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest RootClimberTest.testRecur" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest TestyKalkulatoraWpolrzednych.testMappingTo2D" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RandomCodes" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py" />
-      <option name="CLASS_NAME" value="RootClimberTest" />
-      <option name="METHOD_NAME" value="testRecur" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py" />
+      <option name="CLASS_NAME" value="TestyKalkulatoraWpolrzednych" />
+      <option name="METHOD_NAME" value="testMappingTo2D" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -293,47 +310,44 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Plansza" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RandomCodes" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/Plansza.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittests in QuickUnionTest1" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest TestyKalkulatoraWpolrzednych.testPierwszyWiersz" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RandomCodes" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py" />
-      <option name="CLASS_NAME" value="QuickUnionTest1" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_CLASS" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest QuickUnionTest1.test1" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RandomCodes" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py" />
-      <option name="CLASS_NAME" value="QuickUnionTest1" />
-      <option name="METHOD_NAME" value="test1" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py" />
+      <option name="CLASS_NAME" value="TestyKalkulatoraWpolrzednych" />
+      <option name="METHOD_NAME" value="testPierwszyWiersz" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -343,30 +357,6 @@
       <option name="USE_PARAM" value="false" />
       <RunnerSettings RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests in QuickFind" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RandomCodes" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickFind.py" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -542,19 +532,19 @@
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest testPermutacji.testFunkcji" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TestyPamieci" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in QuickUnion" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest RootClimberTest.testRecur" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in QuickUnionTest1" />
-      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittest QuickUnionTest1.test1" />
-      <item index="6" class="java.lang.String" itemvalue="Python tests.Unittests in QuickFind" />
+      <item index="2" class="java.lang.String" itemvalue="Python.KalkulatorWspolrzednych" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in testy" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestyKalkulatoraWpolrzednych.testMappingTo2D" />
+      <item index="5" class="java.lang.String" itemvalue="Python.Plansza" />
+      <item index="6" class="java.lang.String" itemvalue="Python tests.Unittest TestyKalkulatoraWpolrzednych.testPierwszyWiersz" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in QuickUnion" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in QuickFind" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest QuickUnionTest1.test1" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in QuickUnionTest1" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest RootClimberTest.testRecur" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Plansza" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in testy" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestyKalkulatoraWpolrzednych.testPierwszyWiersz" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestyKalkulatoraWpolrzednych.testMappingTo2D" />
+        <item index="4" class="java.lang.String" itemvalue="Python.KalkulatorWspolrzednych" />
       </list>
     </recent_temporary>
   </component>
@@ -675,8 +665,18 @@
           <line>123</line>
           <option name="timeStamp" value="74" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="75" />
+      <option name="time" value="77" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="tests">
@@ -685,34 +685,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_SPOJ/Latwe/568. Zabawne Dodawanie Piotrusia/Dodawanie.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="460">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_SPOJ/Latwe/499. Czy umiesz potęgować/Potegi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="458">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_SPOJ/Latwe/833. Dwumiany/testFoo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_SPOJ/Latwe/833. Dwumiany/foo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="458">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_SPOJ/Latwe/606. Tablice/TestyTabs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="458">
@@ -945,13 +917,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SztucznaInteligencja/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5466667" vertical-offset="790" max-vertical-offset="1540">
-          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_SPOJ/ProjectEuler/LargePrimeFactor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.43572986" vertical-offset="0" max-vertical-offset="540">
@@ -1023,34 +988,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickFind.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19730942" vertical-offset="692" max-vertical-offset="1720">
+          <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/UnionFindBase.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="440">
+        <state vertical-scroll-proportion="0.13071896" vertical-offset="0" max-vertical-offset="459">
           <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickFind.py">
+    <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2735426" vertical-offset="332" max-vertical-offset="1720">
-          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="161" max-vertical-offset="2000">
+          <caret line="39" column="11" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+          <folding>
+            <element signature="e#22#37#0" expanded="false" />
+            <element signature="e#132#271#0" expanded="false" />
+            <element signature="e#318#494#0" expanded="false" />
+            <element signature="e#540#734#0" expanded="false" />
+            <element signature="e#1728#3038#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm40/system/python_stubs/-1247971765/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33242875" vertical-offset="4575" max-vertical-offset="115180">
+          <caret line="241" column="4" selection-start-line="241" selection-start-column="4" selection-end-line="241" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SztucznaInteligencja/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="910" max-vertical-offset="1540">
+          <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1100">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
             <element signature="e#22#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py">
+    <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/KalkulatorWspolrzednych.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.0762331" vertical-offset="54" max-vertical-offset="2000">
-          <caret line="112" column="27" selection-start-line="112" selection-start-column="27" selection-end-line="112" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.71748877" vertical-offset="0" max-vertical-offset="640">
+          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/Plansza.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.8736384" vertical-offset="1360" max-vertical-offset="1820">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
-            <element signature="e#22#37#0" expanded="true" />
-            <element signature="e#132#271#0" expanded="false" />
-            <element signature="e#318#494#0" expanded="false" />
-            <element signature="e#540#734#0" expanded="false" />
-            <element signature="e#1735#3045#0" expanded="false" />
+            <element signature="e#21#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
