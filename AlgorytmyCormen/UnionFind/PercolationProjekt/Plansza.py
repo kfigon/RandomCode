@@ -4,6 +4,7 @@ import random
 import math
 from AlgorytmyCormen.UnionFind.PercolationProjekt.KalkulatorWspolrzednych import *
 from AlgorytmyCormen.UnionFind import QuickFind as QuickFind
+from AlgorytmyCormen.UnionFind import QuickUnion as QuickUnion
 
 class Pole:
     def __init__(self, idx, czyZamkniete):
@@ -24,6 +25,11 @@ class Plansza:
             czyZamkniete = self.__generujCzyZamkniety()
             self.__pola[i] = Pole(i, czyZamkniete)
 
+    def __generujCzyZamkniety(self):
+        wynik = random.randint(0,9)
+        progOtwartych = 4 # im wiecej, tym wiecej otwartych. Po rowno dla <0,9> -> 4
+        return (wynik>progOtwartych)
+
     # just for tests/deterministic behavior
     def wstrzyknijTablice(self, boolTab):
         self.__pola = []
@@ -32,7 +38,7 @@ class Plansza:
             self.__pola[i] = Pole(i, boolTab[i])
 
     def czyJestPrzejscie(self):
-        qf = QuickFind.QuickFind(self.getRozmiar())
+        qf = QuickFind.QuickFind(self.getRozmiar()) # QuickUnion tez dziala!
         for i in range(len(self.__pola)):
             el = self.__pola[i]
             if(el.czyZamkniete()):
@@ -74,11 +80,6 @@ class Plansza:
             out.append(dol)
         return out
 
-    def __generujCzyZamkniety(self):
-        wynik = random.randint(0,9)
-        progOtwartych = 4 # im wiecej, tym wiecej otwartych
-        return (wynik>progOtwartych)
-
     def getPole(self,idx):
         return self.__pola[idx]
 
@@ -97,14 +98,14 @@ class Plansza:
 
 class WidokPlanszy:
     def __init__(self, root):
-        self.__rozmiarPlanszy = 8
+        self.__rozmiarPlanszy = 12
         self.__plansza = Plansza(self.__rozmiarPlanszy)
 
         self.__tekstLabelki = StringVar()
         self.__odswiezLablke()
 
         self.__buton = Button(root, text = 'resetuj', command=self.__resetuj)
-        self.__plotno = Canvas(root, width = 250, height = 250)
+        self.__plotno = Canvas(root, width = 360, height = 400)
         self.__label = Label(root, textvariable = self.__tekstLabelki)
         self.__plotno.pack()
         self.__label.pack()
