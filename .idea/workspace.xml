@@ -23,20 +23,50 @@
     <favorites_list name="RandomCodes" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Plansza.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/Plansza.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.8736384" vertical-offset="1360" max-vertical-offset="1820">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding>
-                <element signature="e#21#42#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.50472915">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="Plansza.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/Plansza.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.78699553" vertical-offset="2049" max-vertical-offset="3240">
+                  <caret line="120" column="24" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
+                  <folding>
+                    <element signature="e#21#42#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="gui.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SymulatorProcesora/gui.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1420">
+                  <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="testy.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="1.1591928" vertical-offset="1203" max-vertical-offset="1940">
+                  <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="8" />
+                  <folding>
+                    <element signature="e#22#37#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -89,8 +119,8 @@
         <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickUnion.py" />
         <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/WeightedQuickUnion.py" />
         <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/KlakulatorWspolrzednych.py" />
-        <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py" />
         <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/KalkulatorWspolrzednych.py" />
+        <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py" />
         <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/Plansza.py" />
       </list>
     </option>
@@ -247,25 +277,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.Plansza">
-    <configuration default="false" name="KalkulatorWspolrzednych" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RandomCodes" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/KalkulatorWspolrzednych.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="Unittests in testy" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -290,7 +301,7 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest TestyKalkulatoraWpolrzednych.testMappingTo2D" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittests in TestyPlanszy" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -301,8 +312,32 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RandomCodes" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py" />
-      <option name="CLASS_NAME" value="TestyKalkulatoraWpolrzednych" />
-      <option name="METHOD_NAME" value="testMappingTo2D" />
+      <option name="CLASS_NAME" value="TestyPlanszy" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestyPlanszy.testSasiadujace5" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RandomCodes" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py" />
+      <option name="CLASS_NAME" value="TestyPlanszy" />
+      <option name="METHOD_NAME" value="testSasiadujace5" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -311,9 +346,31 @@
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
       <RunnerSettings RunnerId="PyDebugRunner" />
-      <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestyPlanszy.testPercolation" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RandomCodes" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py" />
+      <option name="CLASS_NAME" value="TestyPlanszy" />
+      <option name="METHOD_NAME" value="testPercolation" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <method />
     </configuration>
     <configuration default="false" name="Plansza" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -333,30 +390,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest TestyKalkulatoraWpolrzednych.testPierwszyWiersz" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RandomCodes" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py" />
-      <option name="CLASS_NAME" value="TestyKalkulatoraWpolrzednych" />
-      <option name="METHOD_NAME" value="testPierwszyWiersz" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -532,19 +565,19 @@
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest testPermutacji.testFunkcji" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TestyPamieci" />
-      <item index="2" class="java.lang.String" itemvalue="Python.KalkulatorWspolrzednych" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in testy" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestyKalkulatoraWpolrzednych.testMappingTo2D" />
-      <item index="5" class="java.lang.String" itemvalue="Python.Plansza" />
-      <item index="6" class="java.lang.String" itemvalue="Python tests.Unittest TestyKalkulatoraWpolrzednych.testPierwszyWiersz" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in testy" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestyPlanszy" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestyPlanszy.testSasiadujace5" />
+      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittest TestyPlanszy.testPercolation" />
+      <item index="6" class="java.lang.String" itemvalue="Python.Plansza" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.Plansza" />
         <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in testy" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestyKalkulatoraWpolrzednych.testPierwszyWiersz" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestyKalkulatoraWpolrzednych.testMappingTo2D" />
-        <item index="4" class="java.lang.String" itemvalue="Python.KalkulatorWspolrzednych" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestyPlanszy.testPercolation" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestyPlanszy.testSasiadujace5" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in TestyPlanszy" />
       </list>
     </recent_temporary>
   </component>
@@ -583,10 +616,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1375" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1397929" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1397929" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37435898" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -665,24 +698,10 @@
           <line>123</line>
           <option name="timeStamp" value="74" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py</url>
-          <line>30</line>
-          <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="77" />
+      <option name="time" value="82" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="tests">
-        <watch expression="self.qf" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/_SPOJ/Latwe/606. Tablice/TestyTabs.py">
@@ -724,13 +743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.65502185" vertical-offset="0" max-vertical-offset="580">
           <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SymulatorProcesora/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52401745" vertical-offset="940" max-vertical-offset="1440">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -988,13 +1000,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickFind.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19730942" vertical-offset="692" max-vertical-offset="1720">
-          <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/UnionFindBase.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13071896" vertical-offset="0" max-vertical-offset="459">
@@ -1029,32 +1034,47 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="910" max-vertical-offset="1540">
           <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/KalkulatorWspolrzednych.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="89" max-vertical-offset="640">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1100">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state vertical-scroll-proportion="1.1591928" vertical-offset="1203" max-vertical-offset="1940">
+          <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="8" />
           <folding>
             <element signature="e#22#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/KalkulatorWspolrzednych.py">
+    <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickFind.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71748877" vertical-offset="0" max-vertical-offset="640">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.17937219" vertical-offset="0" max-vertical-offset="1700">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SymulatorProcesora/gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1420">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/Plansza.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.8736384" vertical-offset="1360" max-vertical-offset="1820">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.78699553" vertical-offset="2049" max-vertical-offset="3240">
+          <caret line="120" column="24" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
           <folding>
             <element signature="e#21#42#0" expanded="true" />
           </folding>

@@ -2,6 +2,8 @@ __author__ = 'kamil'
 
 import unittest
 from AlgorytmyCormen.UnionFind.PercolationProjekt.KalkulatorWspolrzednych import *
+from AlgorytmyCormen.UnionFind.PercolationProjekt.Plansza import Plansza
+
 
 class TestyKalkulatoraWpolrzednych(unittest.TestCase):
     def setUp(self):
@@ -44,6 +46,46 @@ class TestyKalkulatoraWpolrzednych(unittest.TestCase):
 
         self.assertEqual((4,0), self.k.mapTo2D(20))
         self.assertEqual((4,4), self.k.mapTo2D(24))
+
+class TestyPlanszy(unittest.TestCase):
+    def setUp(self):
+        self.p = Plansza(0)
+        tab=[False,False,True,False,True,
+             True,False,True,False,False,
+             True,False,True,True,False,
+             False,False,False,True,True,
+             True,True,False,True,True]
+        self.p.wstrzyknijTablice(tab)
+
+    def testSasiadujace0(self):
+        self.assertEqual([1,5], self.p.getSasiadujace(0))
+
+    def testSasiadujace1(self):
+        self.assertEqual([0,2,6], self.p.getSasiadujace(1))
+
+    def testSasiadujace4(self):
+        self.assertEqual([3,9], self.p.getSasiadujace(4))
+
+    def testSasiadujace5(self):
+        self.assertEqual([0,6,10], self.p.getSasiadujace(5))
+
+    def testSasiadujace9(self):
+        self.assertEqual([4,8,14], self.p.getSasiadujace(9))
+
+    def testSasiadujace20(self):
+        self.assertEqual([15,21], self.p.getSasiadujace(20))
+
+    def testSasiadujace21(self):
+        self.assertEqual([16,20,22], self.p.getSasiadujace(21))
+
+    def testSasiadujace24(self):
+        self.assertEqual([19,23], self.p.getSasiadujace(24))
+
+    def testSasiadujace12(self):
+        self.assertEqual([7,11,13,17], self.p.getSasiadujace(12))
+
+    def testPercolation(self):
+        self.assertTrue(self.p.czyJestPrzejscie())
 
 if __name__ == '__main__':
     unittest.main()
