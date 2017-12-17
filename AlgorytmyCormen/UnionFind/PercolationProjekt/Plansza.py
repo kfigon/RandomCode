@@ -104,8 +104,12 @@ class WidokPlanszy:
         self.__tekstLabelki = StringVar()
         self.__odswiezLablke()
 
+        szerKlocka, wysKlocka = self.getWymiaryKlocka()
+        szerokoscPola = szerKlocka*self.__rozmiarPlanszy
+        wysokoscPola = wysKlocka*self.__rozmiarPlanszy + 40 # gorka na przycisk i label
+
         self.__buton = Button(root, text = 'resetuj', command=self.__resetuj)
-        self.__plotno = Canvas(root, width = 360, height = 400)
+        self.__plotno = Canvas(root, width = szerokoscPola, height = wysokoscPola)
         self.__label = Label(root, textvariable = self.__tekstLabelki)
         self.__plotno.pack()
         self.__label.pack()
@@ -127,6 +131,7 @@ class WidokPlanszy:
         return 30,30
 
     def rysujPole(self):
+        self.__plotno.delete("all")
         for i in range(self.__plansza.getRozmiar()):
             x,y,dx,dy = self.mapIdxToPosition(i)
             kolor = self.mapIdxToColor(i)
