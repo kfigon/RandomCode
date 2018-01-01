@@ -12,10 +12,13 @@ class Punkt:
     def __repr__(self):
         return str(self)
     def __str__(self):
+        if(self == None):
+            return "None"
         return "%d,%d" %(self.__x, self.__y)
 
     def __eq__(self, other):
-        return (self.getX() == other.getX() and
+        return (other != None and
+                self.getX() == other.getX() and
                 self.getY() == other.getY())
 
 class TesyPunktu(unittest.TestCase):
@@ -114,7 +117,72 @@ class TestInterpolacji(unittest.TestCase):
     def testPionowoDoDolu(self):
         exp=[Punkt(2,6),Punkt(2,5),Punkt(2,4),Punkt(2,3),Punkt(2,2),Punkt(2,1)]
         self.assertEqual(exp, interpoluj(Punkt(2,6), Punkt(2,1)))
-       
+
+
+class WalidatorPozycjiPunktu:
+    def __init__(self, ksztalt):
+        self.__k = ksztalt
+
+    def czyWewnatrz(self, punkt):
+        gora = None
+        dol = None
+        lewo = None
+        prawo = None
+
+        # maksy/min wybierac!
+        for p in self.__k:
+            if(p.getX() == punkt.getX()):
+                if(gora == None or gora.getY() <= p.getY()):
+                    gora = p
+                if(dol == None or dol.getY() >= p.getY()):
+                    dol = p
+            if(p.getY() == punkt.getY()):
+                if(lewo == None or lewo.getX() >= p.getX()):
+                    lewo = p
+                if(prawo == None or prawo.getX() <= p.getX()):
+                    prawo = p
+        
+        #print("\n%s -> %s, %s, %s, %s" % (str(punkt), str(gora), str(dol), str(lewo), str(prawo)))
+        if(gora == None or dol == None or lewo == None or prawo == None):
+            return False
+        
+        if(punkt.getY() <= gora.getY() and
+           punkt.getY() >= dol.getY() and
+           punkt.getX() >= lewo.getX() and
+           punkt.getX() <= prawo.getX()):
+            return True
+        
+        return False
+
+class TestyWnetrza(unittest.TestCase):
+    def setUp(self):
+        k = [Punkt(3,8), Punkt(4,7),Punkt(5,7),Punkt(6,6),
+                  Punkt(7,5),Punkt(7,4),Punkt(7,3),Punkt(6,3),
+                  Punkt(5,3),Punkt(4,3),Punkt(3,3),Punkt(3,4),
+                  Punkt(3,5),Punkt(3,6),Punkt(3,7),Punkt(3,8)]
+
+        self.w = WalidatorPozycjiPunktu(k)
+
+    def test44(self):
+        p = Punkt(4,4)
+        self.assertTrue(self.w.czyWewnatrz(p))
+    def test33(self):
+        p = Punkt(3,3)
+        self.assertTrue(self.w.czyWewnatrz(p))
+    def test43(self):
+        p = Punkt(4,3)
+        self.assertTrue(self.w.czyWewnatrz(p))
+    def test64(self):
+        p = Punkt(6,4)
+        self.assertTrue(self.w.czyWewnatrz(p))
+    def test47(self):
+        p = Punkt(4,7)
+        self.assertTrue(self.w.czyWewnatrz(p))
+    def test26(self):
+        p = Punkt(2,6)
+        self.assertFalse(self.w.czyWewnatrz(p))
+
+        
 if __name__=="__main__":
     unittest.main()
     
