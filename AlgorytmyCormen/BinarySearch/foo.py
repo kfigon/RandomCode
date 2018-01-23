@@ -1,20 +1,29 @@
 __author__ = 'kamil'
 
-def foo(tablica, szukanaLiczba):
-    polowa = int(len(tablica)/2)
+# rekurencyjnie
+def binSearch(tab, x):
+    return binSearchInternal(tab, x, 0, len(tab)-1)
 
-    if(szukanaLiczba <= tablica[polowa]):
-        return fooInternal(tablica, 0, polowa, szukanaLiczba)
+def binSearchInternal(tab, x, startId, stopId):
+    idSrodka = int((startId+stopId)/2)
+
+    if(idSrodka == startId):
+        return (tab[idSrodka] == x)
+
+    if(x < tab[idSrodka]):
+        return binSearchInternal(tab, x, startId, idSrodka)
     else:
-        return fooInternal(tablica, polowa+1, len(tablica)-1, szukanaLiczba)
+        return binSearchInternal(tab, x, idSrodka, stopId)
 
-def fooInternal(tablica, idxStart, idxStop, szukana):
-    polowaIdx = int((idxStart+idxStop)/2)
+# iteracyjnie
+def binSearchX(tab, x):
+    startId = 0
+    stopId = len(tab)-1
+    while(stopId - startId != 1):
+        idSrodka = int((stopId+startId)/2)
+        if(x<tab[idSrodka]):
+            stopId = idSrodka
+        else:
+            startId = idSrodka
 
-    if(idxStart == idxStop):
-        return (tablica[polowaIdx] == szukana)
-
-    if(szukana <= tablica[polowaIdx]): #idizemy w lewo
-        return fooInternal(tablica, idxStart, polowaIdx, szukana)
-    else:
-        return fooInternal(tablica, polowaIdx+1, idxStop, szukana)
+    return (tab[startId] == x)
