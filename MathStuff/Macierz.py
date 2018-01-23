@@ -12,6 +12,16 @@ class Macierz:
     def get(self, w, k):
         return self.__tab[w][k]
 
+    def __kopiujTab(self):
+        tab = self.__getEmptyTab(self.getIloscWierszy(), self.getIloscKolumn())
+        for w in range(self.getIloscWierszy()):
+            for k in range(self.getIloscKolumn()):
+                tab[w][k] = self.__tab[w][k]
+        return tab
+
+    def __getEmptyTab(self, w, k):
+        return [[0 for j in range(k)] for i in range(w)]
+
     def __sprawdzRozmiary(self, macierz):
         return (self.getIloscKolumn() != macierz.getIloscKolumn() or
            self.getIloscWierszy() != macierz.getIloscWierszy())
@@ -20,30 +30,51 @@ class Macierz:
         if(self.__sprawdzRozmiary(macierz)):
             raise Exception("invalid sizes")
 
+        tab = self.__kopiujTab()
         for w in range(self.getIloscWierszy()):
             for k in range(self.getIloscKolumn()):
-                self.__tab[w][k] += macierz.get(w,k)
+                tab[w][k] = self.get(w,k) + macierz.get(w,k)
+        return Macierz(tab)
 
     def odejmij(self, macierz):
         if(self.__sprawdzRozmiary(macierz)):
             raise Exception("invalid sizes")
 
+        tab = self.__kopiujTab()
         for w in range(self.getIloscWierszy()):
             for k in range(self.getIloscKolumn()):
-                self.__tab[w][k] -= macierz.get(w,k)
+                tab[w][k] = self.get(w,k) - macierz.get(w,k)
+        return Macierz(tab)
 
     def mnoz(self, skalar):
+        tab = self.__kopiujTab()
         for w in range(self.getIloscWierszy()):
             for k in range(self.getIloscKolumn()):
-                self.__tab[w][k] *= skalar
+                tab[w][k] *= skalar
+        return Macierz(tab)
+
+    def dodajSkalar(self, skalar):
+        tab = self.__kopiujTab()
+        for w in range(self.getIloscWierszy()):
+            for k in range(self.getIloscKolumn()):
+                tab[w][k] += skalar
+        return Macierz(tab)
+
+    def odejmijSkalar(self, skalar):
+        tab = self.__kopiujTab()
+        for w in range(self.getIloscWierszy()):
+            for k in range(self.getIloscKolumn()):
+                tab[w][k] -= skalar
+        return Macierz(tab)
 
     def mnozeMacierzeElementPoElemencie(self, macierz):
         if(self.__sprawdzRozmiary(macierz)):
             raise Exception("invalid sizes")
-
+        tab = self.__kopiujTab()
         for w in range(self.getIloscWierszy()):
             for k in range(self.getIloscKolumn()):
-                self.__tab[w][k] *= macierz.get(w,k)
+                tab[w][k] = self.get(w,k) * macierz.get(w,k)
+        return Macierz(tab)
 
     def mnozMacierze(self, macierz):
         Aw = self.getIloscWierszy()
@@ -55,7 +86,7 @@ class Macierz:
             raise Exception("invalid sizes")
 
         Cw, Ck = Macierz.rozmiaryPoWymnozeniu(Aw,Ak,Bw,Bk)
-        tab= [[0 for j in range(Ck)] for i in range(Cw)]
+        tab = self.__getEmptyTab(Ck, Cw)
 
         for w in range(Cw):
             for k in range(Ck):
@@ -64,7 +95,7 @@ class Macierz:
                 for i in range(Ak):
                     a = self.get(w,i)
                     b = macierz.get(i,k)
-                    tab[w][k] +=a*b
+                    tab[w][k] += a*b
 
         return Macierz(tab)
 
@@ -97,3 +128,6 @@ class Macierz:
             if(w != self.getIloscWierszy() -1):
                 out+="\n"
         return out
+    
+    def __repr__(self):
+        return str(self)

@@ -55,14 +55,51 @@ class TestyMacierzy(unittest.TestCase):
                     [4,5,6]])
         m2 = Macierz([[0,5,3],
                     [6,7,3]])
-        m1.dodaj(m2)
-        self.assertEquals(1, m1.get(0,0))
-        self.assertEquals(7, m1.get(0,1))
-        self.assertEquals(6, m1.get(0,2))
+        m3 = m1.dodaj(m2)
+        self.assertEquals(1, m3.get(0,0))
+        self.assertEquals(7, m3.get(0,1))
+        self.assertEquals(6, m3.get(0,2))
 
-        self.assertEquals(10, m1.get(1,0))
-        self.assertEquals(12, m1.get(1,1))
-        self.assertEquals(9, m1.get(1,2))
+        self.assertEquals(10, m3.get(1,0))
+        self.assertEquals(12, m3.get(1,1))
+        self.assertEquals(9, m3.get(1,2))
+
+    def testDodawaniaSkalarow(self):
+        m1 = Macierz([[1,2,3],
+                    [4,5,6]])
+        m2 = m1.dodajSkalar(4)
+        self.assertEquals(5, m2.get(0,0))
+        self.assertEquals(6, m2.get(0,1))
+        self.assertEquals(7, m2.get(0,2))
+
+        self.assertEquals(8, m2.get(1,0))
+        self.assertEquals(9, m2.get(1,1))
+        self.assertEquals(10, m2.get(1,2))
+
+    def testOdejmowaniaSkalarow(self):
+        m1 = Macierz([[1,2,3],
+                    [4,5,6]])
+        m2 = m1.odejmijSkalar(2)
+        self.assertEquals(-1, m2.get(0,0))
+        self.assertEquals(0, m2.get(0,1))
+        self.assertEquals(1, m2.get(0,2))
+
+        self.assertEquals(2, m2.get(1,0))
+        self.assertEquals(3, m2.get(1,1))
+        self.assertEquals(4, m2.get(1,2))
+
+    def testCzyTworzonaNowaMacierz(self):
+        m1 = Macierz([[1,2,3],
+                    [4,5,6]])
+        m2 = Macierz([[3,5,3],
+                    [6,7,3]])
+        m3 = m1.dodaj(m2)
+        self.assertEquals(4, m3.get(0,0))
+        m4 = m3.dodajSkalar(1)
+        self.assertEquals(1, m1.get(0,0))
+        self.assertEquals(3, m2.get(0,0))
+        self.assertEquals(4, m3.get(0,0))
+        self.assertEquals(5, m4.get(0,0))
 
     def testDodawaniaNiewlasciwychRozmiarow(self):
         m1 = Macierz([[1,2,3],
@@ -76,7 +113,7 @@ class TestyMacierzy(unittest.TestCase):
         self.assertEquals(2, m2.getIloscWierszy())
         self.assertEquals(4, m2.getIloscKolumn())
         try:
-            m1.dodaj(m2)
+            m3=m1.dodaj(m2)
         except Exception as e:
             pass
         else:
@@ -87,26 +124,26 @@ class TestyMacierzy(unittest.TestCase):
                     [4,5,6]])
         m2 = Macierz([[0,5,3],
                     [6,7,3]])
-        m1.odejmij(m2)
-        self.assertEquals(1, m1.get(0,0))
-        self.assertEquals(-3, m1.get(0,1))
-        self.assertEquals(0, m1.get(0,2))
+        m3=m1.odejmij(m2)
+        self.assertEquals(1, m3.get(0,0))
+        self.assertEquals(-3, m3.get(0,1))
+        self.assertEquals(0, m3.get(0,2))
 
-        self.assertEquals(-2, m1.get(1,0))
-        self.assertEquals(-2, m1.get(1,1))
-        self.assertEquals(3, m1.get(1,2))
+        self.assertEquals(-2, m3.get(1,0))
+        self.assertEquals(-2, m3.get(1,1))
+        self.assertEquals(3, m3.get(1,2))
 
     def testMnozeniaPrzezStala(self):
         m = Macierz([[1,2,3],
                     [5,4,3]])
-        m.mnoz(5)
-        self.assertEquals(5, m.get(0,0))
-        self.assertEquals(10, m.get(0,1))
-        self.assertEquals(15, m.get(0,2))
+        m2=m.mnoz(5)
+        self.assertEquals(5, m2.get(0,0))
+        self.assertEquals(10, m2.get(0,1))
+        self.assertEquals(15, m2.get(0,2))
 
-        self.assertEquals(25, m.get(1,0))
-        self.assertEquals(20, m.get(1,1))
-        self.assertEquals(15, m.get(1,2))
+        self.assertEquals(25, m2.get(1,0))
+        self.assertEquals(20, m2.get(1,1))
+        self.assertEquals(15, m2.get(1,2))
 
     def testMnozeniaPoElemencie(self):
         m1 = Macierz([[1,2,3],
@@ -114,14 +151,14 @@ class TestyMacierzy(unittest.TestCase):
         m2 = Macierz([[0,5,3],
                     [6,7,3]])
 
-        m1.mnozeMacierzeElementPoElemencie(m2)
-        self.assertEquals(0, m1.get(0,0))
-        self.assertEquals(10, m1.get(0,1))
-        self.assertEquals(9, m1.get(0,2))
+        m3 = m1.mnozeMacierzeElementPoElemencie(m2)
+        self.assertEquals(0, m3.get(0,0))
+        self.assertEquals(10, m3.get(0,1))
+        self.assertEquals(9, m3.get(0,2))
 
-        self.assertEquals(24, m1.get(1,0))
-        self.assertEquals(35, m1.get(1,1))
-        self.assertEquals(18, m1.get(1,2))
+        self.assertEquals(24, m3.get(1,0))
+        self.assertEquals(35, m3.get(1,1))
+        self.assertEquals(18, m3.get(1,2))
 
     def testCzyMoznaMnozycMacierze(self):
         self.assertTrue(Macierz.czyMoznaMnozycMacierze(2,3,3,2))
@@ -197,6 +234,13 @@ class TestyMacierzy(unittest.TestCase):
         m = Macierz([[1,2,3],
                      [4,5,6]])
         expected = "1 2 3\n4 5 6"
+        self.assertEqual(expected, str(m))
+
+    def testToStrVector(self):
+        m = Macierz([[1],
+                     [2],
+                     [3]])
+        expected = "1\n2\n3"
         self.assertEqual(expected, str(m))
 
 if __name__ == '__main__':

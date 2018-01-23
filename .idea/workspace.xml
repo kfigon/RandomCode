@@ -23,26 +23,40 @@
     <favorites_list name="RandomCodes" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Plansza.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/Plansza.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.8300653" vertical-offset="1821" max-vertical-offset="3360">
-              <caret line="156" column="15" selection-start-line="156" selection-start-column="15" selection-end-line="156" selection-end-column="15" />
-              <folding>
-                <element signature="e#21#42#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.49039266">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="Macierz.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/MathStuff/Macierz.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="4.1838565" vertical-offset="734" max-vertical-offset="2760">
+                  <caret line="130" column="4" selection-start-line="130" selection-start-column="4" selection-end-line="130" selection-end-column="4" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="TestyMacierzy.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/MathStuff/TestyMacierzy.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="3.5426009" vertical-offset="0" max-vertical-offset="5020">
+                  <caret line="81" column="29" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="29" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/_SPOJ/Latwe/1032. Podzielność/testFoo.py" />
-        <option value="$PROJECT_DIR$/SztucznaInteligencja/TestyFunkcji.py" />
         <option value="$PROJECT_DIR$/SztucznaInteligencja/Testy/TestyPerceptrona.py" />
         <option value="$PROJECT_DIR$/SztucznaInteligencja/Testy/TestyFunkcji.py" />
         <option value="$PROJECT_DIR$/SztucznaInteligencja/TestyGeneratora.py" />
@@ -92,6 +106,8 @@
         <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/KalkulatorWspolrzednych.py" />
         <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py" />
         <option value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/Plansza.py" />
+        <option value="$PROJECT_DIR$/MathStuff/TestyMacierzy.py" />
+        <option value="$PROJECT_DIR$/MathStuff/Macierz.py" />
       </list>
     </option>
   </component>
@@ -143,6 +159,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -171,53 +188,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="AlgorytmyCormen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RandomCodes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RandomCodes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AlgorytmyCormen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UnionFind" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RandomCodes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RandomCodes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AlgorytmyCormen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UnionFind" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PercolationProjekt" />
+              <option name="myItemId" value="MathStuff" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -246,7 +222,7 @@
       <recent name="$PROJECT_DIR$/SztucznaInteligencja/Testy" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Plansza">
+  <component name="RunManager" selected="Python tests.Unittests in TestyMacierzy">
     <configuration default="false" name="Unittests in testy" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -269,30 +245,6 @@
       <option name="USE_PARAM" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest TestyPlanszy.testSasiadujace5" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RandomCodes" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/testy.py" />
-      <option name="CLASS_NAME" value="TestyPlanszy" />
-      <option name="METHOD_NAME" value="testSasiadujace5" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <method />
     </configuration>
     <configuration default="false" name="Unittest TestyPlanszy.testPercolation" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -349,6 +301,30 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RandomCodes" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AlgorytmyCormen/UnionFind/QuickFind.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in TestyMacierzy" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MathStuff" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RandomCodes" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MathStuff/TestyMacierzy.py" />
       <option name="CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
@@ -536,18 +512,18 @@
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest testPermutacji.testFunkcji" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TestyPamieci" />
       <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in testy" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestyPlanszy.testSasiadujace5" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestyPlanszy.testPercolation" />
-      <item index="5" class="java.lang.String" itemvalue="Python.Plansza" />
-      <item index="6" class="java.lang.String" itemvalue="Python tests.Unittests in QuickFind" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestyPlanszy.testPercolation" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Plansza" />
+      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittests in QuickFind" />
+      <item index="6" class="java.lang.String" itemvalue="Python tests.Unittests in TestyMacierzy" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Plansza" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in testy" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in QuickFind" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestyPlanszy.testPercolation" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestyPlanszy.testSasiadujace5" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in TestyMacierzy" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Plansza" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in testy" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in QuickFind" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestyPlanszy.testPercolation" />
       </list>
     </recent_temporary>
   </component>
@@ -589,13 +565,13 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1397929" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11464497" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37435898" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3474359" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37307692" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37307692" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -748,20 +724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.53333336" vertical-offset="0" max-vertical-offset="750">
           <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MathStuff/TestyMacierzy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5955056" vertical-offset="1335" max-vertical-offset="4120">
-          <caret line="81" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MathStuff/Macierz.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1617978" vertical-offset="1403" max-vertical-offset="2080">
-          <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -1035,11 +997,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AlgorytmyCormen/UnionFind/PercolationProjekt/Plansza.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.8300653" vertical-offset="1821" max-vertical-offset="3360">
-          <caret line="156" column="15" selection-start-line="156" selection-start-column="15" selection-end-line="156" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.7186667" vertical-offset="1821" max-vertical-offset="3360">
+          <caret line="118" column="34" selection-start-line="118" selection-start-column="34" selection-end-line="118" selection-end-column="34" />
           <folding>
             <element signature="e#21#42#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MathStuff/TestyMacierzy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.5426009" vertical-offset="0" max-vertical-offset="5020">
+          <caret line="81" column="29" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MathStuff/Macierz.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.1838565" vertical-offset="734" max-vertical-offset="2760">
+          <caret line="130" column="4" selection-start-line="130" selection-start-column="4" selection-end-line="130" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
