@@ -21,34 +21,6 @@ class GeneratorLogiki:
             out[i] = self.__getBools(liczba)
         return out
 
-class TestyPermutacji(unittest.TestCase):
-    def testLogic1(self):
-        g = GeneratorLogiki()
-        expected=[[False],[True]]
-        self.assertEqual(expected, g.generuj(1))
-
-    def testLogic2(self):
-        g = GeneratorLogiki()
-        expected=[[False,False],
-                  [False,True],
-                  [True,False],
-                  [True, True]]
-        self.assertEqual(expected, g.generuj(2))
-
-    def testLogic3(self):
-        g = GeneratorLogiki()
-        expected=[[False,False,False], [False, False,True],
-                  [False, True,False], [False, True, True],
-                  [True,False,False], [True,False,True],
-                  [True,True,False], [True,True, True]]
-        self.assertEqual(expected, g.generuj(3))
-
-    def testIlosciLogiki(self):
-        g= GeneratorLogiki()
-        self.assertEqual(16, len(g.generuj(4)))
-        self.assertEqual(32, len(g.generuj(5)))
-        self.assertEqual(64, len(g.generuj(6)))
-
 class EwaluatorWyrazen:
     def foo(self,wyrazenie, ileZmiennych):
         g = GeneratorLogiki()
@@ -68,7 +40,7 @@ class EwaluatorWyrazen:
                 return False
         return True
     def piszArgumentyIWyniki(self, args, wynikA, wynikB):
-        print("%r != %r dla:" %(wynikA, wynikB))
+        print("%r != %r dla:" % (wynikA, wynikB))
         print(args)
         print()
         
@@ -91,45 +63,10 @@ class EwaluatorWyrazen:
                 arg = mozliwosciLogiczne[i]
                 if(wA != wB):
                     self.piszArgumentyIWyniki(arg, wA, wB)
-            
-           
-class TestEwaluatora(unittest.TestCase):
-    def testPorownania(self):
-        ew = EwaluatorWyrazen()
-        self.assertTrue(ew.porownajWyniki([False,False],[False,False]))
-        self.assertTrue(ew.porownajWyniki([False,True],[False,True]))
 
-        self.assertFalse(ew.porownajWyniki([False,True, False],[False,True]))
-        self.assertFalse(ew.porownajWyniki([True,True],[False,True]))
-        
-    def test1(self):
-        def f(a,b):
-            return a==False and b == True
-        wyrazenie = f
-        ew = EwaluatorWyrazen()
-        #true tylko dla 01, reszta false
-        expected=[False, True, False, False]
-        self.assertEqual(expected, ew.foo(wyrazenie, 2))
-
-# todo: move functions to Wyrazenie object (inheritance)
-class Wyrazenie:
-    def getFun(self):
-        pass
-    def __repr__(self):
-        pass
-    def __str__(self):
-        pass
 
 if __name__ == '__main__':
     ew = EwaluatorWyrazen()
-    def foo(a,b):
-        return a==False and b==True
-    def bar(a,b):
-        return not(a != False or b != True)
-    def barzz(a,b):
-        return a==True and b==False
-    
-    ew.sprawdzWyrazenia(foo, bar, 2)
-    ew.sprawdzWyrazenia(barzz, bar, 2)
-
-    unittest.main()
+    ew.sprawdzWyrazenia(lambda w,x,y,z: not(x or y or w or z),
+                        lambda w,x,y,z: not x and not y and not z and not w,
+                        4)
