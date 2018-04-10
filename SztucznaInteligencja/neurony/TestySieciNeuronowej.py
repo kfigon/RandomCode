@@ -1,7 +1,7 @@
 __author__ = 'kamil'
 
 import unittest
-from SztucznaInteligencja.SiecNeuronowa import *
+from SiecNeuronowa import *
 
 class TestySieciNeuronowej(unittest.TestCase):
     def testBasic(self):
@@ -17,9 +17,6 @@ class TestySieciNeuronowej(unittest.TestCase):
     def test_XOR(self):
         self.assertTrue(False)
 
-    def liczenie(self):
-        # 3,3,3
-        # wchodzi liczba binarna, wychodzi kolejna
-        pass
+
 if __name__ == '__main__':
     unittest.main()

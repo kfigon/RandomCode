@@ -1,5 +1,5 @@
 __author__ = 'kamil'
-from SztucznaInteligencja.Funkcje import *
+from Funkcje import *
 
 class Perceptron:
     def __init__(self, ileWejsc=2, funkcjaAktywacji = Signum()):

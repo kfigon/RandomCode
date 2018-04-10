@@ -1,5 +1,5 @@
 __author__ = 'kamil'
-from SztucznaInteligencja.Perceptron import *
+from Perceptron import *
 
 class SiecNeuronowa:
     def __init__(self, iloscWejsc, iloscNeuronowWarstwyUkrytej, iloscWyjsc):

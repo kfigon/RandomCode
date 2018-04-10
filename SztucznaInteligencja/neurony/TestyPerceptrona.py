@@ -1,7 +1,7 @@
 __author__ = 'kamil'
 
 import unittest
-from SztucznaInteligencja.utils import *
+from main import *
 
 class TestyPerceptrona(unittest.TestCase):
     def setUp(self):

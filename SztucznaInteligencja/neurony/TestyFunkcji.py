@@ -1,7 +1,7 @@
 __author__ = 'kamil'
 
 import unittest
-from SztucznaInteligencja.Funkcje import *
+from Funkcje import *
 
 class TestyFunkcji(unittest.TestCase):
     def test_Generyczna(self):

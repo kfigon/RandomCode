@@ -1,7 +1,7 @@
 __author__ = 'kamil'
 import random
-from SztucznaInteligencja.Funkcje import FunkcjaLiniowa
-from SztucznaInteligencja.Perceptron import *
+from Funkcje import FunkcjaLiniowa
+from Perceptron import *
 from tkinter import *
 
 def generujDane(ile, funkcjaLiniowa):
