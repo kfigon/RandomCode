@@ -1,0 +1,11 @@
+{% extends 'baza.html' %}
+
+{% block body %}
+
+    {% if post %}
+        <h1>{{post.tytul}}</h1>
+        <p>{{post.tresc}}</p>
+    {% else %}
+        <h1>Nie znalazlem takiego posta!</h1>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'baza.html' %}
+
+{% block body %}
+  <h1>Lista postow</h1>
+  
+    <ul>
+        {% for post in posty %}
+            <li>
+                <a href='/post/{{post.id}}'>{{post.tytul}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
