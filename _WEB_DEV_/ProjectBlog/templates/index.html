@@ -13,9 +13,16 @@
         <p class='tekscik'>bblablabla bblablabla bblablablabblablabla</p>
 
         <hr>
+        {% for post in posty %}
+            <h2>{{ post.tytul }}</h2>
+            <p>{{ post.tresc }}</p>
+            <br><br>
+        {% endfor %}
 
-        <h2>nagloweczek</h2>
-        <p>bla bla bla</p>
+        <form>
+            <p>Wpisz tutaj co chcesz!</p><input type="text" id="daneUsera"/>
+            <button onclick="klik()">WYslij!</button>
+        </form>
     </div>
 </body>
 </html>
