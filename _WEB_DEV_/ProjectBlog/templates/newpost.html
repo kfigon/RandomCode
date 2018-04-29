@@ -1,0 +1,22 @@
+{% extends 'baza.html' %}
+
+{% block body %}
+
+    <form class="add-article">
+        <h2>Tytul:</h2>
+        <br>
+        <input id="tytul-arta" type="text"/>
+    </form>
+    
+    <form class="add-article">
+        <h2>Tresc:</h2>
+        <br>
+        <textarea id="tresc-arta" rows="4" cols="50"></textarea>
+    </form>
+
+    <button class="btn" onclick="dodajArt()">Dodaj</button>
+
+    <div id="wynik-dodania-arta"></div>
+
+
+{% endblock %}
