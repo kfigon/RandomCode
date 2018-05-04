@@ -3,12 +3,14 @@ import numpy as np
 import scipy.fftpack
 
 f = 1
-t = np.arange(0,10,0.1)
+
+step = 0.1 # sampling step
+t = np.arange(0,30,step)
 y = np.cos(2*3.1415*f *t)
 
 
 plt.subplot(4,1,1)
-plt.title('Sygnal <0;10) krok 0.1')
+plt.title('Sygnal <0;30) krok 0.1')
 plt.xlabel('time')
 plt.ylabel('cos(2pi*n)')
 plt.plot(t,y)
@@ -31,9 +33,16 @@ plt.stem(t, np.abs(yt))
 
 plt.show()
 
-'''
-pik cosinusa na probce '1', czyli 10 (indeks od 0, krok 0.1)
-dlugosc sygnalu to 100. czestotliwosc to 1. jakas faza sie pojawila, bo imag niezerowy
+Fs = 1/step
+resolution = Fs/(300) # Fs/N, N dlugosc sygnalu
+numerProbkiZPikiem = 30
+czestotliwoscSygnalu = numerProbkiZPikiem * resolution
+print('czestotliwosc: ' + str(czestotliwoscSygnalu))
 
+'''
+pik cosinusa na probce '3', czyli 30 (indeks od 0, krok 0.1)
+dlugosc sygnalu to 300. czestotliwosc to 1. jakas faza sie pojawila, bo imag niezerowy (nie powinno tutaj byc nic?)
+
+w = numerProbkiZPikiem * 2pi/dlugoscSygnalu
 label - skoro max cz. to Fs/2 i wychodzi w polowie fouriera (N/2), mozna wyskalowac wykres
 '''
