@@ -24,17 +24,17 @@ def robPlik(nazwaPliku, nazwaTestu, napis):
 
 
 
-data = '''lucky_sum(1, 2, 3) → 6	None	X	
-lucky_sum(1, 2, 13) → 3	None	X	
-lucky_sum(1, 13, 3) → 1	None	X	
-lucky_sum(1, 13, 13) → 1	None	X	
-lucky_sum(6, 5, 2) → 13	None	X	
-lucky_sum(13, 2, 3) → 0	None	X	
-lucky_sum(13, 2, 13) → 0	None	X	
-lucky_sum(13, 13, 2) → 0	None	X	
-lucky_sum(9, 4, 13) → 13	None	X	
-lucky_sum(8, 13, 2) → 8	None	X	
-lucky_sum(7, 2, 1) → 10	None	X	
-lucky_sum(3, 3, 13) → 6	None	X'''
+data = '''close_far(1, 2, 10) → True	None	X	
+close_far(1, 2, 3) → False	None	X	
+close_far(4, 1, 3) → True	None	X	
+close_far(4, 5, 3) → False	None	X	
+close_far(4, 3, 5) → False	None	X	
+close_far(-1, 10, 0) → True	None	X	
+close_far(0, -1, 10) → True	None	X	
+close_far(10, 10, 8) → True	None	X	
+close_far(10, 8, 9) → False	None	X	
+close_far(8, 9, 10) → False	None	X	
+close_far(8, 9, 7) → False	None	X	
+close_far(8, 6, 9) → True	None	X'''
 
-robPlik(r'C:\Users\Kamil\Desktop\skrypty\RandomCode\_SPOJ\codingBlocks\test.py', 'TestLuckySum', data)
+robPlik(r'test.py', 'TestCloseFar', data)
