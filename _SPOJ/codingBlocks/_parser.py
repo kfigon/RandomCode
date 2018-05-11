@@ -24,18 +24,19 @@ def robPlik(nazwaPliku, nazwaTestu, napis):
 
 
 
-data = '''cat_dog('catdog') → True	None	X	
-cat_dog('catcat') → False	None	X	
-cat_dog('1cat1cadodog') → True	None	X	
-cat_dog('catxxdogxxxdog') → False	None	X	
-cat_dog('catxdogxdogxcat') → True	None	X	
-cat_dog('catxdogxdogxca') → False	None	X	
-cat_dog('dogdogcat') → False	None	X	
-cat_dog('dogogcat') → True	None	X	
-cat_dog('dog') → False	None	X	
-cat_dog('cat') → False	None	X	
-cat_dog('ca') → True	None	X	
-cat_dog('c') → True	None	X	
-cat_dog('') → True	None	X	'''
+data = '''end_other('Hiabc', 'abc') → True	None	X	
+end_other('AbC', 'HiaBc') → True	None	X	
+end_other('abc', 'abXabc') → True	None	X	
+end_other('Hiabc', 'abcd') → False	None	X	
+end_other('Hiabc', 'bc') → True	None	X	
+end_other('Hiabcx', 'bc') → False	None	X	
+end_other('abc', 'abc') → True	None	X	
+end_other('xyz', '12xyz') → True	None	X	
+end_other('yz', '12xz') → False	None	X	
+end_other('Z', '12xz') → True	None	X	
+end_other('12', '12') → True	None	X	
+end_other('abcXYZ', 'abcDEF') → False	None	X	
+end_other('ab', 'ab12') → False	None	X	
+end_other('ab', '12ab') → True	None	X	'''
 
-robPlik(r'countCatDog.py', 'TestCatDog', data)
+robPlik(r'endOther.py', 'EndOther', data)
