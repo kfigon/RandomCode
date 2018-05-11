@@ -24,17 +24,18 @@ def robPlik(nazwaPliku, nazwaTestu, napis):
 
 
 
-data = '''close_far(1, 2, 10) → True	None	X	
-close_far(1, 2, 3) → False	None	X	
-close_far(4, 1, 3) → True	None	X	
-close_far(4, 5, 3) → False	None	X	
-close_far(4, 3, 5) → False	None	X	
-close_far(-1, 10, 0) → True	None	X	
-close_far(0, -1, 10) → True	None	X	
-close_far(10, 10, 8) → True	None	X	
-close_far(10, 8, 9) → False	None	X	
-close_far(8, 9, 10) → False	None	X	
-close_far(8, 9, 7) → False	None	X	
-close_far(8, 6, 9) → True	None	X'''
+data = '''cat_dog('catdog') → True	None	X	
+cat_dog('catcat') → False	None	X	
+cat_dog('1cat1cadodog') → True	None	X	
+cat_dog('catxxdogxxxdog') → False	None	X	
+cat_dog('catxdogxdogxcat') → True	None	X	
+cat_dog('catxdogxdogxca') → False	None	X	
+cat_dog('dogdogcat') → False	None	X	
+cat_dog('dogogcat') → True	None	X	
+cat_dog('dog') → False	None	X	
+cat_dog('cat') → False	None	X	
+cat_dog('ca') → True	None	X	
+cat_dog('c') → True	None	X	
+cat_dog('') → True	None	X	'''
 
-robPlik(r'test.py', 'TestCloseFar', data)
+robPlik(r'countCatDog.py', 'TestCatDog', data)
