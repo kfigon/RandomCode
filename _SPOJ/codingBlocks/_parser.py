@@ -24,19 +24,21 @@ def robPlik(nazwaPliku, nazwaTestu, napis):
 
 
 
-data = '''xyz_there('abcxyz') → True	None	X	
-xyz_there('abc.xyz') → False	None	X	
-xyz_there('xyz.abc') → True	None	X	
-xyz_there('abcxy') → False	None	X	
-xyz_there('xyz') → True	None	X	
-xyz_there('xy') → False	None	X	
-xyz_there('x') → False	None	X	
-xyz_there('') → False	None	X	
-xyz_there('abc.xyzxyz') → True	None	X	
-xyz_there('abc.xxyz') → True	None	X	
-xyz_there('.xyz') → False	None	X	
-xyz_there('12.xyz') → False	None	X	
-xyz_there('12xyz') → True	None	X	
-xyz_there('1.xyz.xyz2.xyz') → False	None	X'''
+data = '''centered_average([1, 2, 3, 4, 100]) → 3	None	X	
+centered_average([1, 1, 5, 5, 10, 8, 7]) → 5	None	X	
+centered_average([-10, -4, -2, -4, -2, 0]) → -3	None	X	
+centered_average([5, 3, 4, 6, 2]) → 4	None	X	
+centered_average([5, 3, 4, 0, 100]) → 4	None	X	
+centered_average([100, 0, 5, 3, 4]) → 4	None	X	
+centered_average([4, 0, 100]) → 4	None	X	
+centered_average([0, 2, 3, 4, 100]) → 3	None	X	
+centered_average([1, 1, 100]) → 1	None	X	
+centered_average([7, 7, 7]) → 7	None	X	
+centered_average([1, 7, 8]) → 7	None	X	
+centered_average([1, 1, 99, 99]) → 50	None	X	
+centered_average([1000, 0, 1, 99]) → 50	None	X	
+centered_average([4, 4, 4, 4, 5]) → 4	None	X	
+centered_average([4, 4, 4, 1, 5]) → 4	None	X	
+centered_average([6, 4, 8, 12, 3]) → 6	None	X	'''
 
-robPlik(r'xyzThere.py', 'XyzThere', data)
+robPlik(r'centeredAverage.py', 'CenteredAverage', data)
