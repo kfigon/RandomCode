@@ -24,19 +24,19 @@ def robPlik(nazwaPliku, nazwaTestu, napis):
 
 
 
-data = '''end_other('Hiabc', 'abc') → True	None	X	
-end_other('AbC', 'HiaBc') → True	None	X	
-end_other('abc', 'abXabc') → True	None	X	
-end_other('Hiabc', 'abcd') → False	None	X	
-end_other('Hiabc', 'bc') → True	None	X	
-end_other('Hiabcx', 'bc') → False	None	X	
-end_other('abc', 'abc') → True	None	X	
-end_other('xyz', '12xyz') → True	None	X	
-end_other('yz', '12xz') → False	None	X	
-end_other('Z', '12xz') → True	None	X	
-end_other('12', '12') → True	None	X	
-end_other('abcXYZ', 'abcDEF') → False	None	X	
-end_other('ab', 'ab12') → False	None	X	
-end_other('ab', '12ab') → True	None	X	'''
+data = '''xyz_there('abcxyz') → True	None	X	
+xyz_there('abc.xyz') → False	None	X	
+xyz_there('xyz.abc') → True	None	X	
+xyz_there('abcxy') → False	None	X	
+xyz_there('xyz') → True	None	X	
+xyz_there('xy') → False	None	X	
+xyz_there('x') → False	None	X	
+xyz_there('') → False	None	X	
+xyz_there('abc.xyzxyz') → True	None	X	
+xyz_there('abc.xxyz') → True	None	X	
+xyz_there('.xyz') → False	None	X	
+xyz_there('12.xyz') → False	None	X	
+xyz_there('12xyz') → True	None	X	
+xyz_there('1.xyz.xyz2.xyz') → False	None	X'''
 
-robPlik(r'endOther.py', 'EndOther', data)
+robPlik(r'xyzThere.py', 'XyzThere', data)
