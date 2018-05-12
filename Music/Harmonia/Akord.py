@@ -1,4 +1,4 @@
-from Music.Nuta import *
+from Music.Harmonia.Nuta import *
 
 class TrybAkordu:
     Dur=0

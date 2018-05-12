@@ -1,8 +1,7 @@
 __author__ = 'kamil'
 
 import unittest
-from Music.Nuta import *
-from Music.Akord import *
+from Music.Harmonia.Akord import *
 
 class TestyNut(unittest.TestCase):
     def __internalTest(self, testName, noteVal, noteStr):
