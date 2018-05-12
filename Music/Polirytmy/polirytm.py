@@ -32,5 +32,5 @@ if __name__ == '__main__':
     a = int(input('podaj rytm1: '))
     b = int(input('podaj rytm2: '))
     g = GeneratorPolirytmow(a,b)
-    print("Jedna reka stuka na 1 kazdego wiersza, druga na X")
+    print("Jedna reka stuka na 1 kazdego wiersza, druga na X\n")
     print(g)
