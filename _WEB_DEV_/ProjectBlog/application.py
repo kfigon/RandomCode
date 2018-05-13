@@ -8,7 +8,7 @@ dane = [
         {'id': 3, 'tytul': 'taki sobie wpis', 'tresc': 'ale bez tresci...'}
     ]
 
-def dodajPost(tresc, tytul):
+def dodajPost(tytul, tresc):
     dane.append({
         'id': len(dane)+1,
         'tytul': tytul,
