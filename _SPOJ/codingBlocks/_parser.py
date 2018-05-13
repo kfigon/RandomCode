@@ -24,21 +24,19 @@ def robPlik(nazwaPliku, nazwaTestu, napis):
 
 
 
-data = '''centered_average([1, 2, 3, 4, 100]) → 3	None	X	
-centered_average([1, 1, 5, 5, 10, 8, 7]) → 5	None	X	
-centered_average([-10, -4, -2, -4, -2, 0]) → -3	None	X	
-centered_average([5, 3, 4, 6, 2]) → 4	None	X	
-centered_average([5, 3, 4, 0, 100]) → 4	None	X	
-centered_average([100, 0, 5, 3, 4]) → 4	None	X	
-centered_average([4, 0, 100]) → 4	None	X	
-centered_average([0, 2, 3, 4, 100]) → 3	None	X	
-centered_average([1, 1, 100]) → 1	None	X	
-centered_average([7, 7, 7]) → 7	None	X	
-centered_average([1, 7, 8]) → 7	None	X	
-centered_average([1, 1, 99, 99]) → 50	None	X	
-centered_average([1000, 0, 1, 99]) → 50	None	X	
-centered_average([4, 4, 4, 4, 5]) → 4	None	X	
-centered_average([4, 4, 4, 1, 5]) → 4	None	X	
-centered_average([6, 4, 8, 12, 3]) → 6	None	X	'''
+data = '''has22([1, 2, 2]) → True	None	X	
+has22([1, 2, 1, 2]) → False	None	X	
+has22([2, 1, 2]) → False	None	X	
+has22([2, 2, 1, 2]) → True	None	X	
+has22([1, 3, 2]) → False	None	X	
+has22([1, 3, 2, 2]) → True	None	X	
+has22([2, 3, 2, 2]) → True	None	X	
+has22([4, 2, 4, 2, 2, 5]) → True	None	X	
+has22([1, 2]) → False	None	X	
+has22([2, 2]) → True	None	X	
+has22([2]) → False	None	X	
+has22([]) → False	None	X	
+has22([3, 3, 2, 2]) → True	None	X	
+has22([5, 2, 5, 2]) → False	None	X'''
 
-robPlik(r'centeredAverage.py', 'CenteredAverage', data)
+robPlik(r'asdads.py', 'Has22', data)
