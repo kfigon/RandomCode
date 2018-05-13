@@ -13,6 +13,8 @@ function dodajArt() {
         if(status === 200) {
             wynik.className = "wynik-dodania-arta-ok";
             wynik.innerText = "Udalo sie!";
+            document.getElementById('tytul-arta').disabled = true;
+            document.getElementById('tresc-arta').disabled = true;
         } else {
             wynik.className = "wynik-dodania-arta-fail";
             wynik.innerText = "Fail!";
