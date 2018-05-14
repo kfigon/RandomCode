@@ -1,22 +1,39 @@
 __author__ = 'kamil'
-from flask import Flask, render_template, request,json
+from flask import Flask, render_template, request,json,g
+import sqlite3
 
+DATABASE = 'baza.db'
 app = Flask(__name__)
-dane = [
-        {'id': 1, 'tytul': 'Bylem wczoraj tutaj', 'tresc': 'bylo awesome!'},
-        {'id': 2, 'tytul': 'Nowi avengersi', 'tresc': 'nie podobaja mi sie'},
-        {'id': 3, 'tytul': 'taki sobie wpis', 'tresc': 'ale bez tresci...'}
-    ]
+
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect(DATABASE)
+        db.row_factory = sqlite3.Row
+    return db
+
+@app.teardown_appcontext
+def close_connection(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
 
 def dodajPost(tytul, tresc):
-    dane.append({
-        'id': len(dane)+1,
-        'tytul': tytul,
-        'tresc': tresc
-    })
+    with app.app_context():
+        db= get_db()
+        c =db.cursor()
+        c.execute('INSERT INTO post(tytul, tresc) VALUES(?,?)', (tytul,tresc))
+        db.commit()
 
 def czytajPosty():
-    return dane
+    with app.app_context():
+        return get_db().cursor().execute('SELECT * FROM post').fetchall()
+
+def czytajPost(id):
+    with app.app_context():
+        cur = get_db().cursor()
+        cur.execute('SELECT tytul,tresc FROM post where id=?', str(id))
+        return cur.fetchone()
 
 @app.route('/')
 @app.route('/index')
@@ -33,13 +50,7 @@ def posty():
 
 @app.route('/post/<int:id>')
 def post(id):
-    posty = czytajPosty()
-    post = None
-    for p in posty:
-        if(p['id'] == id):
-            post = p
-            break
-
+    post = czytajPost(id)
     return render_template('post.html', post = post)
 
 @app.route('/newpost', methods=['GET', 'POST'])
