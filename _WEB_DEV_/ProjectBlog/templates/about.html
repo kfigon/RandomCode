@@ -10,4 +10,39 @@
      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
       occaecat cupidatat non proident, sunt in culpa qui officia 
       deserunt mollit anim id est laborum.</p>
+
+<hr>
+<h1>Podaj nam swoja opinie o nas</h1>
+<form action="/asd" method="post">
+  <div>
+    <label for="imie">Jak masz na imie?</label>
+    <input name="imie" id="imie">
+  </div>
+  <div>
+    <label for="nazwisko">Naziwsko:</label>
+    <input name="nazwisko" id="nazwisko">
+  </div>
+
+    <label>Jak oceniasz strone?</label>
+    <div>
+        <input type="radio" name="ocena" id="ocena1" value="BardzoDobrze">
+            <label for="ocena1">Swietnie!</label>
+        </input>
+        <br>
+
+        <input type="radio" name="ocena" id="ocena2" value="srednio">
+            <label for="ocena2">Srednio!</label>
+        </input>
+        <br>
+
+        <input type="radio" name="ocena" id="ocena3" value="zle">
+            <label for="ocena3">Slabo!</label>
+        </input>
+        <br>
+  </div>
+    <div>
+    <button>Wyslij ocene!</button>
+  </div>
+</form>
+
 {% endblock %}
