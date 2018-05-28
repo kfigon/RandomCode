@@ -65,11 +65,16 @@ def nowy():
         dodajPost(r['tytul'], r['tresc'])
         return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
 
-@app.route('/asd', methods=['POST'])
-def asd():
+@app.route('/ocenNas', methods=['POST'])
+def ocenNas():
     r = request.form
     print(r)
-    return render_template("fak.html", kuku="Dzieki za wypelnienie ankiety!")
+
+    print(request.form['imie'])
+    print(request.form['nazwisko'])
+    print(request.form['ocena'])
+    
+    return render_template("podziekowanieZaOcene.html", wiadomosc="Dzieki za wypelnienie ankiety!")
 
 
 if __name__=='__main__':
