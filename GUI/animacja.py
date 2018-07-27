@@ -29,4 +29,9 @@ class Ball:
 
 ball = Ball()
 ball.move()
+
+# sztuczka z lokalizacja, moze sie przyda w przyszlosci
+tk.bind('<Motion>',lambda event: print("{}, {}".format(event.x, event.y)))
+
 tk.mainloop()
+

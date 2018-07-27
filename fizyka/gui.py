@@ -28,9 +28,6 @@ if __name__ == "__main__":
 
     
     o = Okno()
-    # sztuczka z lokalizacja, moze sie przyda w przyszlosci
-    o.tk.bind('<Motion>',lambda event: print("{}, {}".format(event.x, event.y)))
-
     class ruch(Movehandler):
         def do(self):
             print('hi')
