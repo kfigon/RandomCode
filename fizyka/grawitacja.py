@@ -12,8 +12,9 @@ class Pilka:
         if(loc.y >= h):
             loc.y=0
             self.velocity = Wektor(0,0)
-            # F = m*a
             return        
+            # F = m*a
+            # sila (wektor) zmienia szybkosc, szybkosc zmienia polozenie
         self.velocity.dodajWektor(self.acceleration)
         self.location.dodajWektor(self.velocity)
 
