@@ -1,10 +1,12 @@
 from wektor import Wektor
 from gui import Okno
+import random
 
 class Pilka:
     def __init__(self):
         self.__location = Wektor(10,10)
-        self.__velocity = Wektor(5,5)
+        self.__velocity = Wektor(random.randint(-10,10), 
+        random.randint(-10,10))
     
     def update(self, w, h):
         loc = self.__location
@@ -33,10 +35,11 @@ class update:
 
         self.canvas.delete('all')        
         self.canvas.create_oval(loc.x, loc.y, 
-        loc.x+5, 
-        loc.y+5, fill='black')
+        loc.x+10, 
+        loc.y+10, fill='black')
 
-o = Okno()
+
+o = Okno(50)
 c = o.canvas
 pilka = Pilka()
 o.start(update(c, pilka, o.WIDTH, o.HEIGHT))

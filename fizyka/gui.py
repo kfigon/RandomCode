@@ -7,7 +7,7 @@ class Okno:
     WIDTH = 300
     HEIGHT = 250
     
-    def __init__(self, timeTick=50):
+    def __init__(self, timeTick=200):
         self.tk = Tk()
         self.canvas = Canvas(self.tk, width=self.WIDTH, height=self.HEIGHT, bg="white")
         self.canvas.pack()
@@ -26,7 +26,11 @@ class Okno:
 
 if __name__ == "__main__":
 
+    
     o = Okno()
+    # sztuczka z lokalizacja, moze sie przyda w przyszlosci
+    o.tk.bind('<Motion>',lambda event: print("{}, {}".format(event.x, event.y)))
+
     class ruch(Movehandler):
         def do(self):
             print('hi')
