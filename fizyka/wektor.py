@@ -9,3 +9,9 @@ class Wektor:
     def dodajWektor(self, v):
         self.x += v.x
         self.y += v.y
+
+    def odbijWPionie(self):
+        self.x *= -1
+
+    def odbijWPoziomie(self):
+        self.y *= -1
