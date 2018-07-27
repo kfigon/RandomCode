@@ -1,25 +1,34 @@
 from tkinter import *
-
+class Movehandler:
+    def do(self):
+        pass
+        
 class Okno:
     WIDTH = 300
     HEIGHT = 250
     
-    def __init__(self, akcjaRuchowa):
+    def __init__(self, timeTick=50):
         self.tk = Tk()
         self.canvas = Canvas(self.tk, width=self.WIDTH, height=self.HEIGHT, bg="white")
         self.canvas.pack()
-        self.__akcjaRuchowa = akcjaRuchowa
+        self.timeTick = timeTick # milisekundy
 
-    def start(self):
+    # move handler - obiekt z metoda 'do()' 
+    def start(self, moveHandler):
+        self.__akcjaRuchowa = moveHandler
         self.__update()
         self.tk.mainloop()
         
     def __update(self):
-        self.__akcjaRuchowa()
-        self.tk.after(50, self.__update) # 50ms
+        self.__akcjaRuchowa.do()
+        self.tk.after(self.timeTick, self.__update)
 
 
 if __name__ == "__main__":
 
-    o = Okno(lambda: print("hi"))
-    o.start()
+    o = Okno()
+    class ruch(Movehandler):
+        def do(self):
+            print('hi')
+
+    o.start(ruch())
