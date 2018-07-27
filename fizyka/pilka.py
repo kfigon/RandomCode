@@ -39,7 +39,7 @@ class update:
         loc.y+10, fill='black')
 
 
-o = Okno(50)
+o = Okno(30)
 c = o.canvas
 pilka = Pilka()
 o.start(update(c, pilka, o.WIDTH, o.HEIGHT))

@@ -5,7 +5,7 @@ class Movehandler:
         
 class Okno:
     WIDTH = 300
-    HEIGHT = 250
+    HEIGHT = 400
     
     def __init__(self, timeTick=200):
         self.tk = Tk()
