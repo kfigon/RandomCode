@@ -2,7 +2,7 @@ __author__ = 'kamil'
 
 import unittest
 
-from MathStuff.Macierz import *
+from Macierz import *
 
 
 class TestyInicjalizacjiMacierzy(unittest.TestCase):

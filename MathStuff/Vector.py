@@ -4,6 +4,7 @@ from math import sin
 from math import cos
 
 # immutable!
+# kat w radianach
 class Vector:
     def __init__(self,x,y):
         self.__x=x
@@ -11,6 +12,7 @@ class Vector:
 
     @staticmethod
     def stworzZModuluIKata(modul, kat):
+        '''kat w radianach'''
         x = modul*cos(kat)
         y=modul*sin(kat)
         return Vector(x,y)
@@ -42,17 +44,17 @@ class Vector:
     def odejmijSkalar(self, val):
         return Vector(self.__x-val, self.__y-val)
 
-    def mnoz(self,skalar):
+    def mnozSkalar(self,skalar):
         return Vector(self.__x*skalar, self.__y*skalar)
 
-    def dziel(self,skalar):
+    def dzielSkalar(self,skalar):
         return Vector(self.__x/skalar, self.__y/skalar)
 
     def getDlugosc(self):
         return sqrt(self.__x**2 + self.__y**2)
 
-    # w radianach
     def getKat(self):
+        '''w radianach'''
         return atan2(self.__y,self.__x)
 
     def obroc(self, katRadiany):

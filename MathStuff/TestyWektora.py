@@ -1,10 +1,10 @@
-from MathStuff.Vector import Vector
+from Vector import Vector
 import unittest
 from math import sqrt
 from math import pi
 
 class TestyVectora(unittest.TestCase):
-    def test1(self):
+    def testGetAndToStr(self):
         v = Vector(1,2)
         self.assertEqual(1, v.getX())
         self.assertEqual(2, v.getY())
@@ -52,12 +52,12 @@ class TestyVectora(unittest.TestCase):
 
     def testMnozPrzezSkalar(self):
         v=Vector(1,2)
-        self.assertEqual(Vector(2,4), v.mnoz(2))
-        self.assertEqual(Vector(4,8), v.mnoz(4))
+        self.assertEqual(Vector(2,4), v.mnozSkalar(2))
+        self.assertEqual(Vector(4,8), v.mnozSkalar(4))
 
     def testDzielPrzezSkalar(self):
         v=Vector(4,6)
-        self.assertEqual(Vector(2,3), v.dziel(2))
+        self.assertEqual(Vector(2,3), v.dzielSkalar(2))
 
     def testGetKat1(self):
         self.assertEqual(0, Vector(1,0).getKat())
@@ -80,11 +80,13 @@ class TestyVectora(unittest.TestCase):
 
     def testStworzZModuluIKata1(self):
         v = Vector.stworzZModuluIKata(1,0)
-        self.assertEqual(Vector(1,0), v)
+        self.assertAlmostEqual(1, v.getX())
+        self.assertAlmostEqual(0, v.getY())
 
-    def testStworzZModuluIKata1(self):
-        v = Vector.stworzZModuluIKata(1,0)
-        self.assertEqual(Vector(1,0), v)
+    def testStworzZModuluIKata2(self):
+        v = Vector.stworzZModuluIKata(4*sqrt(2), 3.14159/4)
+        self.assertAlmostEqual(4, v.getX(), 4)
+        self.assertAlmostEqual(4, v.getY(), 4)
 
     def testObroc(self):
         v = Vector(1,0)
