@@ -28,6 +28,8 @@ class Test(unittest.TestCase):
     def testSkip(self):
         self.assertTrue(False)
 
+    def testRegex(self):
+        self.assertRegex('some random text', 'same')
 
 if __name__ == '__main__':
     unittest.main()
