@@ -1,24 +1,16 @@
 import unittest
 
 class GeneratorLogiki:    
-    def __getBools(self,binary):
-        out=[False]*len(binary)
-        i = 0
+    def __parseCharToBool(self,binary):
         for b in binary:
-            if(b=='1'):
-                out[i]=True
-            else:
-                out[i]=False
-            i+=1
-        return out
+            yield True if b=='1' else False
 
     def generuj(self, ileZmiennych):
         out=[None]*(2**ileZmiennych)
         szablon = '0%db' % ileZmiennych
-        
         for i in range(len(out)):
             liczba = format(i, szablon)
-            out[i] = self.__getBools(liczba)
+            out[i] = list(self.__parseCharToBool(liczba))
         return out
 
 class EwaluatorWyrazen:
@@ -39,6 +31,7 @@ class EwaluatorWyrazen:
             if(przed[i] != po[i]):
                 return False
         return True
+
     def piszArgumentyIWyniki(self, args, wynikA, wynikB):
         print("%r != %r dla:" % (wynikA, wynikB))
         print(args)
