@@ -14,8 +14,6 @@ class GameResult(Enum):
     TIE = 3
 
 class TicTacToe:
-
-    
     def __init__(self):
         self.gameArea :List[Field] = [Field.EMPTY for _ in range(9)]
         self.currentPlayer: Field = Field.X
@@ -56,7 +54,6 @@ class TicTacToe:
     def move(self, position: int) -> None:
         if position < 0 or position >= len(self.gameArea):
             raise ValueError(f'Invalid move to {position}')
-
         elif self.gameArea[position] != Field.EMPTY:
             raise ValueError(f'Invalid move to {position}, field is taken by {self.gameArea[position]}')
 
