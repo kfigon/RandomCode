@@ -1,4 +1,5 @@
 *.pyc
+*/.mypy_cache
 /.idea/.name
 /.idea/RandomCodes.iml
 /.idea/encodings.xml
