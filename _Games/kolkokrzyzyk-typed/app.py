@@ -69,3 +69,21 @@ class TicTacToe:
             self.currentPlayer = Field.O
         else:
             self.currentPlayer = Field.X
+
+    def __str__(self) -> str:
+        out = ''
+        
+        for idx, field in enumerate(self.gameArea):
+            if idx != 0 and idx % 3 == 0:
+                out += '\n'
+
+            if field == Field.X:
+                out += 'X'
+            elif field == Field.O:
+                out += 'O'
+            else:
+                out += str(idx)
+
+        return out
+
+        

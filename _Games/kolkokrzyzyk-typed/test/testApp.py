@@ -4,7 +4,7 @@ from app import TicTacToe, Field, GameResult
 
 class TestFoo(unittest.TestCase):
     def setUp(self):
-        logging.basicConfig(level=logging.INFO)
+        #logging.basicConfig(level=logging.INFO)
         self.g = TicTacToe()
 
     def testStart(self):
@@ -49,6 +49,13 @@ class TestFoo(unittest.TestCase):
                     self.g.move(s)
                 self.assertEqual(x['result'], self.g.getStatus())
 
+    def testToString(self):
+        self.assertEqual('012\n345\n678', str(self.g))
+
+        self.g.move(1)
+        self.g.move(2)
+        self.g.move(5)
+        self.assertEqual('0XO\n34X\n678', str(self.g))
 
 if __name__=='__main__':
     unittest.main()
