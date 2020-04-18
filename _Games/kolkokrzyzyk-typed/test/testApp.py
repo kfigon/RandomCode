@@ -1,6 +1,7 @@
 import unittest
 import logging
 from app import TicTacToe, Field, GameResult
+from gui import isInside
 
 class TestFoo(unittest.TestCase):
     def setUp(self):
@@ -56,6 +57,33 @@ class TestFoo(unittest.TestCase):
         self.g.move(2)
         self.g.move(5)
         self.assertEqual('0XO\n34X\n678', str(self.g))
+
+class TestIsInside(unittest.TestCase):
+    def testInside(self):
+        case = [
+            { 'point': (10,10), 'element':(10,10), 'len':5 },
+            { 'point': (10,20), 'element':(10,20), 'len':5 },
+            { 'point': (11,13), 'element':(10,10), 'len':5 },
+            { 'point': (11,13), 'element':(10,10), 'len':5 },
+            { 'point': (11,13), 'element':(10,10), 'len':7 },
+        ]
+        for x in case:
+            with self.subTest():
+                self.assertTrue(isInside(x['element'], x['point'],x['len']))
+
+    def testNotInside(self):
+        case = [
+            { 'point': (10,15), 'element':(10,10), 'len':5 },
+            { 'point': (15,10), 'element':(10,10), 'len':5 },
+            { 'point': (16,10), 'element':(10,10), 'len':5 },
+            { 'point': (9,17), 'element':(10,20), 'len':5 },
+            { 'point': (11,19), 'element':(10,20), 'len':5 },
+            { 'point': (11,26), 'element':(10,20), 'len':5 },
+            { 'point': (11,25), 'element':(10,20), 'len':5 }
+        ]
+        for x in case:
+            with self.subTest():
+                self.assertFalse(isInside(x['element'], x['point'],x['len']))
 
 if __name__=='__main__':
     unittest.main()
