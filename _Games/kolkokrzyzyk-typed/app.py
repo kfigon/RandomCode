@@ -66,6 +66,13 @@ class TicTacToe:
             self.currentPlayer = Field.O
         else:
             self.currentPlayer = Field.X
+    
+    def getFreeFieldsIdxs(self) -> List[int]:
+        emptyFieldIdxs : List[int]= []
+        for idx, f in enumerate(self.gameArea):
+            if f == Field.EMPTY:
+                emptyFieldIdxs.append(idx)
+        return emptyFieldIdxs
 
     def __str__(self) -> str:
         out = ''

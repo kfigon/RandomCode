@@ -2,6 +2,7 @@ import tkinter as tk
 from typing import List, Tuple, Callable, Dict, Optional
 import logging
 from app import TicTacToe, GameResult, Field
+from ai import RandomOpponentStrategy
 
 def isInside(start: Tuple[int,int], point :Tuple[int,int], size: int) -> bool:
     x,y=point
@@ -37,7 +38,8 @@ class Gui:
             8: (self.__lineCoordinates['V2'][0], self.__lineCoordinates['H2'][1]),
         }
         self.game :TicTacToe = TicTacToe()
-    
+        self.opponentStrategy = RandomOpponentStrategy()
+
     def start(self) -> None:
         self.root.mainloop()
 
@@ -100,16 +102,30 @@ class Gui:
         p = (event.x, event.y)
         logging.debug(f'clicked at {p}')
         idx : Optional[int] = self.mapPointToIdx(p)
-        if idx is not None:
-            logging.info(f'clicked {idx}')
-            try:
-                self.game.move(idx)
-            except Exception:
-                logging.info('invalid move!')
-                return
+        if idx is None:
+            return
+        logging.info(f'clicked {idx}')
 
+        try:
+            self.playerMove(idx)
+            self.refreshBoard()
+        except Exception:
+            logging.info('invalid move!')
+            return
+        
+        self.opponentMove()
         self.refreshBoard()
         logging.info(f'round result: {self.game.getStatus()}')
+    
+    def playerMove(self, idx: int) -> None:
+        if self.game.getStatus() == GameResult.PENDING:
+            self.game.move(idx)
+
+    def opponentMove(self) -> None:
+        if self.opponentStrategy != None and self.game.getStatus() == GameResult.PENDING:
+            opponentMove: int = self.opponentStrategy.doAction(self.game)
+            self.game.move(opponentMove)
+
     
 if __name__=='__main__':
     logging.basicConfig(level=logging.INFO)
