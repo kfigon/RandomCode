@@ -1,7 +1,7 @@
 import tkinter as tk
 from typing import List, Tuple, Callable, Dict, Optional
 import logging
-
+from app import TicTacToe, GameResult, Field
 
 def isInside(start: Tuple[int,int], point :Tuple[int,int], size: int) -> bool:
     x,y=point
@@ -14,9 +14,7 @@ class Gui:
         self.plotno = tk.Canvas(self.root, width=300, height=300)
         self.plotno.bind('<Button-1>', self.click)
         
-        tk.Button(self.root, text='czysc', command=self.czysc).pack()
-        tk.Button(self.root, text='rysuj', command=self.draw).pack()
-        tk.Button(self.root, text='zamknij', command=self.end).pack()
+        tk.Button(self.root, text='Reset', command=self.reset).pack()
         self.plotno.pack()
         
         self.__fieldLen = 50
@@ -37,15 +35,19 @@ class Gui:
             6: (self.__lineCoordinates['H2'][0], self.__lineCoordinates['H2'][1]),
             7: (self.__lineCoordinates['V1'][0], self.__lineCoordinates['H2'][1]),
             8: (self.__lineCoordinates['V2'][0], self.__lineCoordinates['H2'][1]),
+        }
+        self.game :TicTacToe = TicTacToe()
 
-        }        
-
+    def reset(self):
+        self.game = TicTacToe()
+        self.czysc()
+        self.draw()
 
     def czysc(self):
         self.plotno.delete('all')
 
     def draw(self) -> None:
-        lineLength = self.__fieldLen*3
+        lineLength: int = self.__fieldLen*3
         horizontal : Callable[[Tuple[int, int]], Tuple[Tuple[int, int], Tuple[int, int]]] = lambda p: (p, (p[0]+lineLength, p[1])) 
         vertical : Callable[[Tuple[int, int]], Tuple[Tuple[int, int], Tuple[int, int]]] = lambda p: (p, (p[0], p[1]+lineLength)) 
 
@@ -61,6 +63,17 @@ class Gui:
             x2,y2 = line[1]
             self.plotno.create_line(x1,y1, x2, y2, width=2, fill='black')
 
+    def drawCircle(self, idx: int):
+        startX, startY = self.__fieldCoordinates[idx]
+        self.plotno.create_oval(startX, startY, startX+self.__fieldLen-5, startY+self.__fieldLen-5, width=2, outline='blue')
+
+    def drawCross(self, idx: int):
+        startX, startY = self.__fieldCoordinates[idx]
+        startX +=2
+        startY += 2
+        self.plotno.create_line(startX, startY, startX+self.__fieldLen-5, startY+self.__fieldLen-5, width=2, fill='red')
+        self.plotno.create_line(startX+self.__fieldLen-5, startY, startX, startY+self.__fieldLen-5, width=2, fill='red')
+
 
     def start(self) -> None:
         self.root.mainloop()
@@ -73,15 +86,31 @@ class Gui:
         return None
 
     def click(self, event) -> None:
+
+        if self.game.getStatus() != GameResult.PENDING:
+            logging.info("it's over, go away")
+            return
+
         p = (event.x, event.y)
         logging.debug(f'clicked at {p}')
-        idx = self.mapPointToIdx(p)
+        idx : Optional[int] = self.mapPointToIdx(p)
         if idx is not None:
             logging.info(f'mapped to {idx}')
+            try:
+                self.game.move(idx)
+            except Exception:
+                logging.info('invalid move!')
+                return
 
-            
-    def end(self) -> None:
-        self.root.destroy()
+        self.czysc()
+        self.draw()
+        for i,f in enumerate(self.game.gameArea):
+            if f == Field.O:
+                self.drawCircle(i)
+            elif f == Field.X:
+                self.drawCross(i)
+
+        logging.info(f'round result: {self.game.getStatus()}')
 
 if __name__=='__main__':
     logging.basicConfig(level=logging.DEBUG)
