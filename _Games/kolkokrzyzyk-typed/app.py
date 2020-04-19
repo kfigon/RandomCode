@@ -13,6 +13,28 @@ class GameResult(Enum):
     O_WIN = 2
     TIE = 3
 
+class StateEntry:
+    def __init__(self, gameArea: List[Field], currentPlayer: Field, gameResult: GameResult):
+        self.gameArea :List[Field]= gameArea.copy()
+        self.currentPlayer: Field = currentPlayer
+        self.gameResult: GameResult = gameResult
+
+    def __str__(self) -> str:
+        return toString(self.gameArea)
+
+class StateLog:
+    def __init__(self):
+        self.data : List[StateEntry]= []
+    def add(self, state: StateEntry):
+        self.data.append(state)
+    def reset(self) -> None:
+        self.data = []
+    def __str__(self) -> str:
+        out = '\n'
+        for entry in self.data:
+            out += 'player: {}, state: {}, fields: \n{}\n\n'.format(entry.currentPlayer, entry.gameResult, toString(entry.gameArea))
+        return out
+
 class TicTacToe:
     def __init__(self):
         self.gameArea :List[Field] = [Field.EMPTY for _ in range(9)]
@@ -29,6 +51,9 @@ class TicTacToe:
         elif self.__anyEmptyPlace():
             return GameResult.PENDING
         return GameResult.TIE
+
+    def createStateEntry(self) -> StateEntry:
+        return StateEntry(self.gameArea, self.currentPlayer, self.getStatus())
 
     def __anyEmptyPlace(self) -> bool:
         for f in self.gameArea:
@@ -75,19 +100,20 @@ class TicTacToe:
         return emptyFieldIdxs
 
     def __str__(self) -> str:
-        out = ''
-        
-        for idx, field in enumerate(self.gameArea):
-            if idx != 0 and idx % 3 == 0:
-                out += '\n'
+        return toString(self.gameArea)
 
-            if field == Field.X:
-                out += 'X'
-            elif field == Field.O:
-                out += 'O'
-            else:
-                out += str(idx)
+def toString(gameArea: List[Field]) -> str:
+    out = ''
+    
+    for idx, field in enumerate(gameArea):
+        if idx != 0 and idx % 3 == 0:
+            out += '\n'
 
-        return out
+        if field == Field.X:
+            out += 'X'
+        elif field == Field.O:
+            out += 'O'
+        else:
+            out += str(idx)
 
-        
+    return out

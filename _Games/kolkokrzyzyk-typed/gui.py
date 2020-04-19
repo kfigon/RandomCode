@@ -1,7 +1,7 @@
 import tkinter as tk
 from typing import List, Tuple, Callable, Dict, Optional
 import logging
-from app import TicTacToe, GameResult, Field
+from app import TicTacToe, GameResult, Field, StateEntry, StateLog
 from ai import RandomOpponentStrategy
 
 def isInside(start: Tuple[int,int], point :Tuple[int,int], size: int) -> bool:
@@ -16,7 +16,10 @@ class Gui:
         self.plotno.bind('<Button-1>', self.click)
         
         tk.Button(self.root, text='Reset', command=self.resetGame).pack()
-        self.plotno.pack()
+        self.labelText = tk.StringVar()
+        tk.Label(self.root, textvariable=self.labelText).pack()
+
+        self.plotno.pack()   
         
         self.__fieldLen = 50
         self.__lineCoordinates :Dict[str,Tuple[int,int]]= {
@@ -39,12 +42,17 @@ class Gui:
         }
         self.game :TicTacToe = TicTacToe()
         self.opponentStrategy = RandomOpponentStrategy()
+        self.stateLog = StateLog()
+
+    def setLabel(self):
+        self.labelText.set(self.game.getStatus())
 
     def start(self) -> None:
         self.root.mainloop()
 
     def resetGame(self):
         self.game = TicTacToe()
+        self.stateLog.reset()
         self.refreshBoard()
 
     def clearAll(self):
@@ -79,6 +87,7 @@ class Gui:
         self.plotno.create_line(startX+self.__fieldLen-5, startY, startX, startY+self.__fieldLen-5, width=2, fill='red')
 
     def refreshBoard(self):
+        self.setLabel()
         self.clearAll()
         self.drawGameField()
         for i,f in enumerate(self.game.gameArea):
@@ -97,6 +106,7 @@ class Gui:
     def click(self, event) -> None:
         if self.game.getStatus() != GameResult.PENDING:
             logging.info("it's over, go away")
+            logging.info(self.stateLog)
             return
 
         p = (event.x, event.y)
@@ -120,13 +130,16 @@ class Gui:
     def playerMove(self, idx: int) -> None:
         if self.game.getStatus() == GameResult.PENDING:
             self.game.move(idx)
+            self.stateLog.add(self.game.createStateEntry())
+
 
     def opponentMove(self) -> None:
         if self.opponentStrategy != None and self.game.getStatus() == GameResult.PENDING:
             opponentMove: int = self.opponentStrategy.doAction(self.game)
             self.game.move(opponentMove)
+            self.stateLog.add(self.game.createStateEntry())
 
-    
+
 if __name__=='__main__':
     logging.basicConfig(level=logging.INFO)
     g=Gui()
