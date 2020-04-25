@@ -10,16 +10,13 @@ def isPrime(x: int) -> bool:
     sito[0] = False
     sito[1] = False
     
-    smallest = 2
     boundary: float = math.sqrt(x)
     
-    while smallest <= boundary:
-        for i in range(smallest, len(sito), smallest):
+    for j in range(int(boundary)+1):
+        if sito[j] == False:
+            continue
+        for i in range(j, len(sito), j):
             sito[i] = False
-        for i in range(len(sito)):
-            if sito[i] == True:
-                smallest = i
-                break
 
     return sito[x]
 
