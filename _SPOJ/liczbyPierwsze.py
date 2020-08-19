@@ -1,48 +1,37 @@
-from typing import List, Callable
+import unittest
+from typing import List
 import math
 
-# https://pl.wikipedia.org/wiki/Sito_Eratostenesa
-# https://pl.spoj.com/problems/latwe/
-def isPrimeEratostenes(x: int) -> bool:
+def isPrime(x: int) -> bool:
     if x < 2:
-        raise Exception(f'invalid num {x}')
-    if x == 2:
-        return True
+        raise Exception(f'invalid number {x}')
 
-    sito :List[bool] = [False for i in range(x+1)]
-    boundary = int(math.sqrt(x))
-
-    for i in range()
-
+    sito : List[bool] = [True for _ in range(x+1)]
+    sito[0] = False
+    sito[1] = False
+    
+    boundary: float = math.sqrt(x)
+    
+    for j in range(int(boundary)+1):
+        if sito[j] == False:
+            continue
+        for i in range(j, len(sito), j):
+            sito[i] = False
 
     return sito[x]
 
-def isPrimeNaive(x :int) -> bool:
-    if x < 2:
-        raise Exception(f'invalid num {x}')
-    
-    for i in range(2,x):
-        if x % i == 0:
-            return False
+class TestFoo(unittest.TestCase):
+    def testPrime(self):
+        case = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+        for c in case:
+            with self.subTest(name=str(c)):
+                self.assertTrue(isPrime(c))
 
-    return True
+    def testNotPrime(self):
+        case = [4,6,8,9,10,12,14,15,16,18,20,21,22,24,25,26,27,28,30,32,33,34,35,36,38,39,40]
+        for c in case:
+            with self.subTest(name=str(c)):
+                self.assertFalse(isPrime(c))
 
-pierwsze :List[int] = [2, 3, 5, 7, 11, 13, 
-17, 19, 23, 29, 31, 37, 
-41, 43, 47, 53, 59, 61, 67, 
-71, 73, 79, 83, 89, 97]
-
-niePierwsze :List[int] = [4,6, 8,9,10,12,
-14,15,16,18,20,21,22,24,25,26,27,28,30]
-
-def doTests(foo: Callable[[int],bool]):
-    for i in pierwsze:
-        assert foo(i) == True, f'{i} should be prime'
-
-    for i in niePierwsze:
-        assert foo(i) == False, f'{i} should NOT be prime'
-
-    print("done!")
-
-doTests(isPrimeNaive)
-doTests(isPrimeEratostenes)
+if __name__ == "__main__":
+    unittest.main()
