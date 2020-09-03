@@ -4,7 +4,13 @@ class QuickFind:
     def __init__(self, rozmiar: int):
         self.tab : List[int] = [i for i in range(rozmiar)]
 
+    def validate(self, p, q):
+        length = len(self.tab)
+        assert p < length and q < length, f"invalid idx, {p}, {q}, len: {length}"
+
+
     def connected(self, p, q) -> bool:
+        self.validate(p,q)
         return self.tab[p] == self.tab[q]
 
     def union(self, p,q):

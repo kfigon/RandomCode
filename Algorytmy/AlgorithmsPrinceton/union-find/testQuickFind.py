@@ -75,6 +75,15 @@ class Tests(unittest.TestCase):
         uf.union(6,1)
         self.assertTrue(uf.connected(6,1))
         self.assertTrue(uf.connected(1,6))
-        
+    
+    def testVal(self):
+        uf = QuickFind(5)
+        self.assertRaises(AssertionError, uf.connected, 5,1)
+        self.assertRaises(AssertionError, uf.connected, 1,5)
+        self.assertRaises(AssertionError, uf.connected, 20,10)
+
+        # not raises
+        uf.connected(4,4)
+
 if __name__ == "__main__":
     unittest.main()
