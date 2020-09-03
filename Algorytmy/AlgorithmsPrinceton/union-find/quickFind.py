@@ -7,6 +7,7 @@ class QuickFind:
     def validate(self, p, q):
         length = len(self.tab)
         assert p < length and q < length, f"invalid idx, {p}, {q}, len: {length}"
+        assert p >= 0 and q >=0, f"invalid idx, {p}, {q}, need to be >=0"
 
 
     def connected(self, p, q) -> bool:
