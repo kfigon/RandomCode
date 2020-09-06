@@ -1,6 +1,7 @@
 import unittest
+import random
 from typing import List
-from binarySearch import BinarySearch
+from binarySearch import BinarySearch, Przedzial
 import logging
 
 class TestFoo(unittest.TestCase):
@@ -10,31 +11,53 @@ class TestFoo(unittest.TestCase):
     def getOddArray(self) -> List[int]:
         return [0,1,2,3,4,5,6, 8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 
-    def testPresent(self):
-        bs = BinarySearch(self.getEvenArray())
-        self.assertEqual(9, bs.binarySearch(10))
-        self.assertEqual(21, bs.binarySearch(22))
-        self.assertEqual(0, bs.binarySearch(0))
-        self.assertEqual(23, bs.binarySearch(24))
+    def testEvenPresent(self):
+        kejsy = [
+            (9,10),
+            (21,22),
+            (0,0),
+            (23,24)
+        ]
+        bs: BinarySearch = BinarySearch(self.getEvenArray())
+        for k in kejsy:
+            with self.subTest(k):
+                self.assertEqual(k[0], bs.binarySearch(k[1]))        
 
-    def testNotPresent(self):
-        bs = BinarySearch(self.getEvenArray())
-        self.assertEqual(-1, bs.binarySearch(-20))
-        self.assertEqual(-1, bs.binarySearch(7))
-        self.assertEqual(-1, bs.binarySearch(25))
+    def testEvenNotPresent(self):
+        kejsy = [-20, 7, 25]
+        bs: BinarySearch = BinarySearch(self.getEvenArray())
+        for k in kejsy:
+            with self.subTest(k):
+                self.assertEqual(-1, bs.binarySearch(k))
         
-    def testPresent2(self):
-        bs = BinarySearch(self.getOddArray())
-        self.assertEqual(9, bs.binarySearch(10))
-        self.assertEqual(21, bs.binarySearch(22))
-        self.assertEqual(0, bs.binarySearch(0))
+    def testOddPresent(self):
+        kejsy = [
+            (9,10),
+            (21,22),
+            (0,0)
+        ]
+        bs: BinarySearch = BinarySearch(self.getOddArray())
+        for k in kejsy:
+            with self.subTest(k):
+                self.assertEqual(k[0], bs.binarySearch(k[1]))  
 
-    def testNotPresent2(self):
-        bs = BinarySearch(self.getOddArray())
-        self.assertEqual(-1, bs.binarySearch(-20))
-        self.assertEqual(-1, bs.binarySearch(7))
-        self.assertEqual(-1, bs.binarySearch(24))
+    def testOddNotPresent(self):
+        kejsy = [-20, 7, 24]
+        bs: BinarySearch = BinarySearch(self.getOddArray())
+        for k in kejsy:
+            with self.subTest(k):
+                self.assertEqual(-1, bs.binarySearch(k))  
+
+class TestyPrzedzialu(unittest.TestCase):
+    def testMiddle(self):
+        self.assertEqual(2, Przedzial(0, 5).getMiddleIdx())
+        self.assertEqual(3, Przedzial(0, 6).getMiddleIdx())
+        self.assertEqual(5, Przedzial(5, 6).getMiddleIdx())
+        self.assertEqual(5, Przedzial(5, 6).getMiddleIdx())
+        self.assertEqual(5, Przedzial(5, 5).getMiddleIdx())
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.WARNING)
+    # logging.basicConfig(level=logging.WARNING)
+    logging.basicConfig(level=logging.INFO)
+
     unittest.main()
