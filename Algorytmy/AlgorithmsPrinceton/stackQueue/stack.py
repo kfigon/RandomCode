@@ -13,7 +13,8 @@ class Stack:
         self.top = new
 
     def pop(self):
-        assert self.top is not None
+        if self.top is None:
+            return
         newTop = self.top.next
         toReturn = self.top
         self.top = newTop

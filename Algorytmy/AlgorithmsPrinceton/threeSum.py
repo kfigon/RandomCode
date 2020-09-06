@@ -26,12 +26,13 @@ class SortingSolution(ThreeSumBase):
         tab.sort()
         bs = BinarySearch(tab)
         for i in range(len(tab)):
-            for j in range(i, len(tab)):
+            for j in range(len(tab)):
                 if i == j:
                     continue
 
                 toSearch: int = -(tab[i]+tab[j])
                 idx = bs.binarySearch(toSearch)
+                # might double output
                 if idx != -1 and idx != i and idx != j:
                     out.append([tab[i], tab[j], tab[idx]])
         return out
@@ -49,7 +50,7 @@ class Test(unittest.TestCase):
         self.doTest(SortingSolution())
 
 if __name__ == "__main__":
-    # unittest.main()
+    unittest.main()
 
     def measure(algo: ThreeSumBase, tab: List[int]):
         start = datetime.now()
@@ -59,7 +60,7 @@ if __name__ == "__main__":
         print(f'{type(algo).__name__} -> took: {duration}')
         print(f'result size: {len(res)}')
 
-    inputTableSize = 1000
+    inputTableSize = 100
     r = Random()
     tab: List[int] = [r.randint(-20, 20) for _ in range(inputTableSize)]
 
