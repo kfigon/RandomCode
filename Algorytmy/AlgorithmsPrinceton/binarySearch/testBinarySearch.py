@@ -2,7 +2,6 @@ import unittest
 import random
 from typing import List
 from binarySearch import BinarySearch, Przedzial
-import logging
 
 class TestFoo(unittest.TestCase):
     def getEvenArray(self) -> List[int]:
@@ -41,6 +40,12 @@ class TestFoo(unittest.TestCase):
             with self.subTest(k):
                 self.assertEqual(k[0], bs.binarySearch(k[1]))  
 
+    def testFailingCase(self):
+        ar = [30,-40,-20,-10,40,0,10,5]
+        ar.sort()
+        bs: BinarySearch = BinarySearch(ar)
+        self.assertEqual(-1, bs.binarySearch(20))
+
     def testOddNotPresent(self):
         kejsy = [-20, 7, 24]
         bs: BinarySearch = BinarySearch(self.getOddArray())
@@ -68,7 +73,4 @@ class TestyPrzedzialu(unittest.TestCase):
         self.assertEqual(5, Przedzial(5, 5).getMiddleIdx())
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.WARNING)
-    # logging.basicConfig(level=logging.INFO)
-
     unittest.main()

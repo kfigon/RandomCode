@@ -1,17 +1,15 @@
 from typing import List
-import logging
 
 class Przedzial:
     def __init__(self, lower: int, upper: int):
-        assert lower <= upper, f'invalid values: low: {lower}, up: {upper}'
         self.lower = lower
         self.upper = upper
     
     def getMiddleIdx(self) -> int:
-        return (self.lower+self.upper)//2
+        return self.lower + (self.upper - self.lower)//2
 
-    def isSingle(self) -> bool:
-        return self.lower == self.upper
+    def isValid(self) -> bool:
+        return self.lower <= self.upper
 
     def getRightRange(self):
         return Przedzial(self.getMiddleIdx()+1, self.upper)
@@ -33,23 +31,16 @@ class BinarySearch:
         if val < self.tab[0] or val > self.tab[len(self.tab)-1]:
             return -1
             
-        logging.info(f'starting to find {val}')
-        przedzial = Przedzial(0, len(self.tab))
-        while (True):
+        przedzial = Przedzial(0, len(self.tab)-1)
+        while (przedzial.isValid()):
             middleIdx = przedzial.getMiddleIdx()
             middleVal = self.tab[middleIdx]
+
             if middleVal == val:
-                logging.info(f'found! {middleIdx}')
                 return middleIdx
-
-            if przedzial.isSingle():
-                return -1
-
             if val < middleVal:
                 przedzial = przedzial.getLeftRange()
-                logging.info(f'go left, new range: <{przedzial}> middle:{middleVal}, val: {val}')
-            else:
+            elif val > middleVal:
                 przedzial = przedzial.getRightRange()
-                logging.info(f'go right, new range: <{przedzial}> middle:{middleVal}, val: {val}')
 
-        raise Exception("something went wrong") 
+        return -1
