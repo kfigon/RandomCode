@@ -22,6 +22,7 @@ class SelectionSort(BaseSort):
 
 class InsertionSort(BaseSort):
     def sort(self, tab: List[int]) -> List[int]:
+        # liniowo gdy juz posortowana!
         for i in range(len(tab)):
             j = i
             prev = j-1
