@@ -31,13 +31,10 @@ class InsertionSort(BaseSort):
                 j -= 1
                 prev-=1
 
-            # for j in range(i, 0, -1):
-                # prev = j-1
-                # if tab[j] < tab[prev]:
-                    # tab[j], tab[prev] = tab[prev], tab[j]
-                # else:
-                    # break
+        return tab
 
+class ShellSort(BaseSort):
+    def sort(self, tab: List[int]) -> List[int]:
         return tab
 
 class SortTest(unittest.TestCase):
@@ -60,6 +57,8 @@ class SortTest(unittest.TestCase):
     def testInsertionSort(self):
         self.doSort(InsertionSort())
 
+    def testShellSort(self):
+        self.doSort(ShellSort())
 
 if __name__ == "__main__":
     unittest.main()
