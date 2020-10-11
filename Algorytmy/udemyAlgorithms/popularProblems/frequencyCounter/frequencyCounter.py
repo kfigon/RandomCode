@@ -1,5 +1,7 @@
 from typing import List, Dict
 
+# gdy szukamy zaleznosci liczbowej w 2 zbiorach danych
+
 # return true if every value in the array has it's corresponding value
 # squared in the second array
 # frequency of values must be the same
