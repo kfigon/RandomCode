@@ -7,6 +7,7 @@ def getRandom(length: int) -> str:
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(length))
 
+# O(n)
 def countCharsSimple(input: str) -> Dict[str, int]:
     out : Dict[str, int] = {}
     for i in input:
@@ -14,6 +15,7 @@ def countCharsSimple(input: str) -> Dict[str, int]:
     return out
 
 # not so pro - sorting introduces more time
+# O(n logn) ?
 def countCharsPro(input: str) -> Dict[str, int]:
     sort : List[str] = sorted(input)
     out : Dict[str, int] = {}

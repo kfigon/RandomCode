@@ -7,13 +7,15 @@ from typing import List, Dict
 def howMany(val: int, b: List[int]) -> int:
     return len(list(filter(lambda x: x == val, b)))
 
+# O(n^3)
 def sameBrute(a: List[int], b: List[int]) -> bool:
     for i in range(len(a)):
         if howMany(a[i], a) != howMany(a[i]**2, b):
             return False
     return True
 
-# troche lepsze - mniej petli
+# lepsze - mniej petli
+# O(n^2)
 def sameBrute2(a: List[int], b: List[int]) -> bool:
     for i in range(len(a)):
         if (a[i]**2) not in b:
@@ -28,6 +30,7 @@ def countFreq(a: List[int]) -> Dict[int, int]:
     return out
 
 # 2 petle sa lepsze niz nested!
+# O(3n) -> O(n)
 def same(a: List[int], b: List[int]) -> bool:
     if len(a) != len(b):
         return False
@@ -49,7 +52,6 @@ def same(a: List[int], b: List[int]) -> bool:
 assert howMany(1, [1,2,3]) == 1
 assert howMany(2, [1,2,3]) == 1
 assert howMany(1, [1,2,1]) == 2
-
 
 assert sameBrute([1,2,3], [4,1,9]) == True
 assert sameBrute([1,2,3], [1,9]) == False
