@@ -12,16 +12,17 @@ def countFreq(a: str) -> Dict[str, int]:
         out[i] = 1 if i not in out else out[i] + 1
     return out
 
-# O(3n) -> O(n)
+# O(2n) -> O(n)
 def isAnagram(a: str, b: str) -> bool:
     if len(a) != len(b):
         return False
 
     freqA = countFreq(a)
-    freqB = countFreq(b)
-    for key in freqA:
-        if key not in freqB or freqA[key] != freqB[key]:
+    for i in b:
+        if i not in freqA or freqA[i] < 1:
             return False
+        else:
+            freqA[i] -= 1
     return True
 
 
