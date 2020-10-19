@@ -54,15 +54,14 @@ assert not someRecursive([4,6,8], lambda x: x > 10)
 def isArray(x: Any) -> bool:
     return isinstance(x, List)
 
-# accept arrays of arrays and return on array flattened 
 def flatten(tab: List[Any]) -> List[int]:
     out: List[int] = []
-    def flattenHelper(innerTab: List[Any]) -> List[Any]:
-        pass 
-    
-    flattenHelper(tab)
-    print(out)
-    return out
+    if len(tab) == 0:
+        return []
+
+    if isArray(tab[0]):
+        return out + flatten(tab[0]) + flatten(tab[1:])
+    return out + [tab[0]] + flatten(tab[1:])
 
 assert flatten([]) == []
 assert flatten([1]) == [1]
