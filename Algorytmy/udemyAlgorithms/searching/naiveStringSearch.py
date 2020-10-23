@@ -1,7 +1,7 @@
 # looking for substring
 # count number of times smaller string appears in longer string
 
-# O(n^2)
+# O(n*m)
 def stringSearch(longer: str, substring: str) -> int:
     count = 0
     for i in range(len(longer)):
