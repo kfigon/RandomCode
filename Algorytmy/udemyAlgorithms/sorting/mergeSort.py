@@ -8,23 +8,24 @@ def merge(a: List[int], b: List[int]) -> List[int]:
     out: List[int] = []
     aIdx = 0
     bIdx = 0
-    while aIdx < len(a) or bIdx < len(b):
-        if aIdx >= len(a):
-            out += b[bIdx:]
-            bIdx = len(b)
-        elif bIdx >= len(b):
-            out += a[aIdx:]
-            aIdx = len(a)
-        elif a[aIdx] < b[bIdx]:
+    while aIdx < len(a) and bIdx < len(b):
+        if a[aIdx] < b[bIdx]:
             out.append(a[aIdx])
             aIdx += 1
         else:
             out.append(b[bIdx])
             bIdx += 1
+    
+    if aIdx < len(a):
+        out += a[aIdx:]
+    if bIdx < len(b):
+        out += b[bIdx:]
+
     return out
 
 # O(logn)
 # overall algorithm - O(nlogn)
+# splitow tutaj jest /2 /2 /2 /2 , wiec mamy logarytm
 def mergeSort(tab: List[int]) -> List[int]:
     if len(tab) <= 1:
         return tab
