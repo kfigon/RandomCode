@@ -106,5 +106,70 @@ class Test(unittest.TestCase):
         self.assertIsNone(s.tail.next)
         self.assertIsNone(s.head.next.next)
 
+    def testUnshiftEmpty(self):
+        s = SingleLinkedList[int]()
+        s.unshift(3)
+        self.assertEqual(s.length, 1)
+        self.assertEqual(s.head.val, 3)
+        self.assertEqual(s.tail.val, 3)
+        self.assertIsNone(s.tail.next)
+
+    def testUnshiftSingle(self):
+        s = SingleLinkedList[int]()
+        s.push(3)
+        s.push(5)
+        s.unshift(1)
+        self.assertEqual(s.length, 3)
+        self.assertEqual(s.head.val, 1)
+        self.assertEqual(s.head.next.val, 3)
+        self.assertEqual(s.head.next.next.val, 5)
+        
+        self.assertIsNone(s.head.next.next.next)
+        self.assertEqual(s.tail.val, 5)
+        self.assertIsNone(s.tail.next)
+
+    def testUnshift(self):
+        s = SingleLinkedList[int]()
+        s.push(5)
+        s.unshift(3)
+        self.assertEqual(s.length, 2)
+        self.assertEqual(s.head.val, 3)
+        self.assertEqual(s.head.next.val, 5)
+        self.assertEqual(s.tail.val, 5)
+        self.assertIsNone(s.tail.next)
+
+    def testGetEmpty(self):
+        s = SingleLinkedList[int]()
+        self.assertIsNone(s.get(0))
+        self.assertIsNone(s.get(1))
+        self.assertIsNone(s.get(2))
+
+    def testGet(self):
+        s = SingleLinkedList[int]()
+        s.push(1)
+        s.push(2)
+        self.assertEqual(s.get(0), 1)
+        self.assertEqual(s.get(1), 2)
+        self.assertEqual(s.get(2), None)
+        self.assertEqual(s.get(3), None)
+        self.assertEqual(s.get(-1), None)
+
+    def testSetEmpty(self):
+        s = SingleLinkedList[int]()
+        self.assertRaises(Exception, s.set, 0,123)
+        self.assertRaises(Exception, s.set, 1,123)
+        self.assertRaises(Exception, s.set, 2,123)
+        self.assertRaises(Exception, s.set, -1,123)
+
+    def testSet(self):
+        s = SingleLinkedList[int]()
+        s.push(1)
+        s.push(2)
+
+        s.set(0, 123)
+        self.assertEqual(s.get(0),123)
+        self.assertRaises(Exception, s.set, 2,423)
+        self.assertRaises(Exception, s.set, -1,123)
+
 if __name__ == "__main__":
     unittest.main()

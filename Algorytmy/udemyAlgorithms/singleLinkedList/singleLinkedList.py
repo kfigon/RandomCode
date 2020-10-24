@@ -59,3 +59,37 @@ class SingleLinkedList(Generic[T]):
         
         self.length -= 1
         return v
+
+    def unshift(self, val: T):
+        if self.head is None:
+            self.push(val)
+        else:
+            self.length+=1
+            newHead = Node[T](val)
+            newHead.next = self.head
+            self.head = newHead
+    
+    def get(self, idx: int) -> Optional[T]:
+        if idx < 0 or idx >= self.length:
+            return None
+        ptr = self.head
+        i = 0
+        while ptr:
+            if i == idx:
+                return ptr.val
+            ptr = ptr.next
+            i +=1
+        return None
+
+    def set(self, idx: int, val: T):
+        if idx < 0 or idx >= self.length:
+            raise Exception(f'Not valid idx {idx}, len: {self.length}')
+    
+        ptr = self.head
+        i = 0
+        while ptr:
+            if i == idx:
+                ptr.val = val
+                return
+            ptr = ptr.next
+            i +=1
