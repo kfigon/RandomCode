@@ -18,13 +18,20 @@ def moveLesserToLeft(tab: List[int]) -> Tuple[List[int], int]:
 # presort by moving lesser than pivot to left, greater to right
 # then pivot is in the right place
 # repeat on new left and right subarray
-# merge. 1 element arrays are sorted
-# overall algorithm - O(nlogn)
+# 1 element arrays are sorted
+
+# there are consequences which pivot point to choose 
+
+# this can be optimized by using indexes instead of array slice
+# overall algorithm - O(nlogn) 
+# worst (already sorted and pivot is minimum or maximum) - O(n^2)
+# pivot can be middle or even random
 def quickSort(tab: List[int]) -> List[int]:
     if len(tab) <= 1:
         return tab
     _,pivotIdx = moveLesserToLeft(tab)
     left = tab[:pivotIdx]
+    # right = tab[pivotIdx+1:] if (pivotIdx+1) < len(tab) else [] 
     right = tab[pivotIdx+1:]
     return quickSort(left) + [tab[pivotIdx]] + quickSort(right)
 
@@ -42,5 +49,6 @@ assert quickSort([2, 5, 7, -1, 6, -1, 7, -1]) == [-1,-1,-1,2,5,6,7,7]
 assert quickSort([8, 10, 7, 3, 2, 7, -4, 6, 4]) == [-4,2,3,4,6,7,7,8,10]
 assert quickSort([9, 7, 9, 0, -3, 8, -3, 10, 9, -2]) == [-3,-3,-2,0,7,8,9,9,9,10]
 assert quickSort([i for i in range(30,-1,-1)]) == [i for i in range(31)]
-# assert quickSort([i for i in range(100000,-1,-1)]) == [i for i in range(100001)]
+# stack overflow - need to switch to indexes instead of using arary slices
+# assert quickSort([i for i in range(10000,-1,-1)]) == [i for i in range(10001)]
 print('quicksort ok')
