@@ -47,3 +47,15 @@ class SingleLinkedList(Generic[T]):
         
         self.length -= 1
         return v
+    
+    def shift(self) -> Optional[T]:
+        if self.head is None:
+            return None
+        
+        v = self.head.val
+        self.head = self.head.next
+        if self.head is None:
+            self.tail = None
+        
+        self.length -= 1
+        return v
