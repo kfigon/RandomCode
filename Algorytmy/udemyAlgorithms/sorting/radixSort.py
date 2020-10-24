@@ -49,8 +49,7 @@ def radixSort(tab: List[int]) -> List[int]:
 
         out.clear()
         for b in buckets:
-            for i in b.nums:
-                out.append(i)
+            out += b.nums
 
     return out    
 
