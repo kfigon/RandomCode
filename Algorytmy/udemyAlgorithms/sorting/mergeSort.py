@@ -57,5 +57,5 @@ assert mergeSort([2, 5, 7, -1, 6, -1, 7, -1]) == [-1,-1,-1,2,5,6,7,7]
 assert mergeSort([8, 10, 7, 3, 2, 7, -4, 6, 4]) == [-4,2,3,4,6,7,7,8,10]
 assert mergeSort([9, 7, 9, 0, -3, 8, -3, 10, 9, -2]) == [-3,-3,-2,0,7,8,9,9,9,10]
 assert mergeSort([i for i in range(30,-1,-1)]) == [i for i in range(31)]
-assert mergeSort([i for i in range(100000,-1,-1)]) == [i for i in range(100001)]
+assert mergeSort([i for i in range(1000000,-1,-1)]) == [i for i in range(1000001)]
 print('merge ok')
