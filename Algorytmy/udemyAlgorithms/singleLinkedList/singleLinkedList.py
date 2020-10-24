@@ -33,15 +33,17 @@ class SingleLinkedList(Generic[T]):
             self.tail = None
             return v
 
-        newLast: Node = self.head
-        while newLast.next != self.tail and newLast.next is not None:
-            newLast = newLast.next
+        newTail= self.head
+        last = self.head
+        while last.next:
+            newTail = last
+            last = last.next
+
+        assert last        
+        v = last.val
         
-        assert self.tail # mypy
-        v = self.tail.val
-        
-        newLast.next = None
-        self.tail = newLast
+        newTail.next = None
+        self.tail = newTail
         
         self.length -= 1
         return v
