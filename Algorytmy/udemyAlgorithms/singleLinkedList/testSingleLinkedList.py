@@ -283,5 +283,72 @@ class Test(unittest.TestCase):
         self.assertEqual(s.tail.val, 3)
         self.assertIsNone(s.tail.next)
 
+    def testReverseEmpty(self):
+        s = SingleLinkedList[int]()
+        s.reverse()
+        self.assertEqual(s.length, 0)
+        self.assertIsNone(s.head)
+        self.assertIsNone(s.tail)
+
+    def testReverseSingle(self):
+        s = SingleLinkedList[int]()
+        s.push(1)
+        s.reverse()
+
+        self.assertEqual(s.length, 1)
+        self.assertEqual(s.head.val, 1)
+        self.assertEqual(s.tail.val, 1)
+        self.assertIsNone(s.tail.next)
+        self.assertIsNone(s.head.next)
+
+    def testReverse2(self):
+        s = SingleLinkedList[int]()
+        s.push(1)
+        s.push(2)
+        s.reverse()
+
+        self.assertEqual(s.length, 2)
+        self.assertEqual(s.head.val, 2)
+        self.assertEqual(s.head.next.val, 1)
+
+        self.assertEqual(s.tail.val, 1)
+        
+        self.assertIsNone(s.head.next.next)
+        self.assertIsNone(s.tail.next)
+
+    def testReverse3(self):
+        s = SingleLinkedList[int]()
+        s.push(1)
+        s.push(2)
+        s.push(3)
+        s.reverse()
+
+        self.assertEqual(s.length, 3)
+        self.assertEqual(s.head.val, 3)
+        self.assertEqual(s.head.next.val, 2)
+        self.assertEqual(s.head.next.next.val, 1)
+        self.assertEqual(s.tail.val, 1)
+        
+        self.assertIsNone(s.head.next.next.next)
+        self.assertIsNone(s.tail.next)
+
+    def testReverse4(self):
+        s = SingleLinkedList[int]()
+        s.push(1)
+        s.push(2)
+        s.push(3)
+        s.push(4)
+        s.reverse()
+
+        self.assertEqual(s.length, 4)
+        self.assertEqual(s.head.val, 4)
+        self.assertEqual(s.head.next.val, 3)
+        self.assertEqual(s.head.next.next.val, 2)
+        self.assertEqual(s.head.next.next.next.val, 1)
+        self.assertEqual(s.tail.val, 1)
+        
+        self.assertIsNone(s.head.next.next.next.next)
+        self.assertIsNone(s.tail.next)
+
 if __name__ == "__main__":
     unittest.main()

@@ -5,6 +5,8 @@ class Node(Generic[T]):
     def __init__(self, val: T):
         self.val = val
         self.next: Optional[Node[T]] = None
+    def __repr__(self) -> str:
+        return f'v: {self.val}'
 
 class SingleLinkedList(Generic[T]):
     def __init__(self):
@@ -142,3 +144,27 @@ class SingleLinkedList(Generic[T]):
         self.length -= 1
         toRemove = previousElement.next
         previousElement.next = toRemove.next
+
+    def reverse(self):
+        if not self.head:
+            return
+        elif self.length == 1:
+            self.head,self.tail = self.tail, self.head
+            return
+        
+        nextElement = self.head.next 
+        postNextElement = self.head.next.next
+        
+        self.tail = self.head
+        self.tail.next = None
+        rebuildedPtr = self.tail
+
+        while postNextElement:
+            nextElement.next = rebuildedPtr
+            rebuildedPtr = nextElement
+            nextElement = postNextElement
+            postNextElement = postNextElement.next
+        
+        nextElement.next = rebuildedPtr
+        self.head = nextElement
+        
