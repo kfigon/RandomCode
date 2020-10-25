@@ -350,5 +350,20 @@ class Test(unittest.TestCase):
         self.assertIsNone(s.head.next.next.next.next)
         self.assertIsNone(s.tail.next)
 
+    def testReverse4_get(self):
+        s = SingleLinkedList[int]()
+        s.push(1)
+        s.push(2)
+        s.push(3)
+        s.push(4)
+        s.reverse()
+
+        self.assertEqual(s.length, 4)
+        self.assertEqual(s.get(0), 4)
+        self.assertEqual(s.get(1), 3)
+        self.assertEqual(s.get(2), 2)
+        self.assertEqual(s.get(3), 1)
+        self.assertIsNone(s.get(4))
+
 if __name__ == "__main__":
     unittest.main()
