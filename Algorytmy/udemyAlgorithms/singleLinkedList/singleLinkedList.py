@@ -107,15 +107,14 @@ class SingleLinkedList(Generic[T]):
 
         assert self.head
         previousElement = self.head
-        nextElement = self.head.next
         i = 0
         while i < idx-1:
             assert previousElement.next
             previousElement = previousElement.next
-            nextElement = previousElement.next
             i += 1
 
         self.length +=1
+        nextElement = previousElement.next
         newNode = Node[T](val)
         newNode.next = nextElement
         previousElement.next = newNode
@@ -133,15 +132,13 @@ class SingleLinkedList(Generic[T]):
 
         assert self.head
         previousElement = self.head
-        toRemove = self.head.next
         i = 0
         while i < idx-1:
             assert previousElement.next
             previousElement = previousElement.next
-            toRemove = previousElement.next
             i += 1
 
-        assert toRemove
+        assert previousElement.next
         self.length -= 1
+        toRemove = previousElement.next
         previousElement.next = toRemove.next
-        toRemove = None
