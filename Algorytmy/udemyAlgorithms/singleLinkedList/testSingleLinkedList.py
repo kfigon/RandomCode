@@ -232,6 +232,56 @@ class Test(unittest.TestCase):
         self.assertEqual(s.head.next.next.next.val, 123)
         self.assertEqual(s.tail.val, 123)
 
+    def testRemoveEmpty(self):
+        s = SingleLinkedList[int]()
+        self.assertRaises(Exception, s.remove, -1)
+        self.assertRaises(Exception, s.remove, 0)
+        self.assertRaises(Exception, s.remove, 1)
+
+    def testRemoveSingle(self):
+        s = SingleLinkedList[int]() 
+        s.push(1)
+
+        s.remove(0)
+
+        self.assertEqual(s.length, 0)
+        self.assertIsNone(s.head)
+        self.assertIsNone(s.tail)
+
+    def testRemoveFirst(self):
+        s = SingleLinkedList[int]() 
+        s.push(1)
+        s.push(2)
+
+        s.remove(0)
+        self.assertEqual(s.length, 1)
+        self.assertEqual(s.head.val, 2)
+        self.assertEqual(s.tail.val, 2)
+        self.assertIsNone(s.head.next)
+
+    def testRemoveLast(self):
+        s = SingleLinkedList[int]() 
+        s.push(1)
+        s.push(2)
+
+        s.remove(1)
+        self.assertEqual(s.length, 1)
+        self.assertEqual(s.head.val, 1)
+        self.assertEqual(s.tail.val, 1)
+        self.assertIsNone(s.head.next)
+
+    def testRemoveMiddle(self):
+        s = SingleLinkedList[int]() 
+        s.push(1)
+        s.push(2)
+        s.push(3)
+
+        s.remove(1)
+        self.assertEqual(s.length, 2)
+        self.assertEqual(s.head.val, 1)
+        self.assertEqual(s.head.next.val, 3)
+        self.assertEqual(s.tail.val, 3)
+        self.assertIsNone(s.tail.next)
 
 if __name__ == "__main__":
     unittest.main()

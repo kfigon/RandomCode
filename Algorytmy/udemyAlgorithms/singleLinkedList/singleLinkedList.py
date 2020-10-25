@@ -105,10 +105,12 @@ class SingleLinkedList(Generic[T]):
             self.push(val)
             return
 
+        assert self.head
         previousElement = self.head
         nextElement = self.head.next
         i = 0
         while i < idx-1:
+            assert previousElement.next
             previousElement = previousElement.next
             nextElement = previousElement.next
             i += 1
@@ -117,3 +119,29 @@ class SingleLinkedList(Generic[T]):
         newNode = Node[T](val)
         newNode.next = nextElement
         previousElement.next = newNode
+
+    def remove(self, idx: int):
+        if idx < 0 or idx >= self.length:
+            raise Exception(f'Invalid idx {idx}, len {self.length}')
+            
+        if idx == 0:
+            self.shift()
+            return 
+        elif idx == self.length-1:
+            self.pop()
+            return 
+
+        assert self.head
+        previousElement = self.head
+        toRemove = self.head.next
+        i = 0
+        while i < idx-1:
+            assert previousElement.next
+            previousElement = previousElement.next
+            toRemove = previousElement.next
+            i += 1
+
+        assert toRemove
+        self.length -= 1
+        previousElement.next = toRemove.next
+        toRemove = None
