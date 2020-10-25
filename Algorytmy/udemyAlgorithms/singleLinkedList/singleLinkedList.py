@@ -81,7 +81,7 @@ class SingleLinkedList(Generic[T]):
             i +=1
         return None
 
-    def set(self, idx: int, val: T):
+    def setV(self, idx: int, val: T):
         if idx < 0 or idx >= self.length:
             raise Exception(f'Not valid idx {idx}, len: {self.length}')
     
@@ -93,3 +93,27 @@ class SingleLinkedList(Generic[T]):
                 return
             ptr = ptr.next
             i +=1
+
+    def insert(self, idx: int, val: T):
+        if (idx < 0 or idx > self.length) and (self.length != 0 or idx !=0) :
+            raise Exception(f'invalid insert idx: {idx}, len: {self.length}')
+        
+        if idx == 0:
+            self.unshift(val)
+            return
+        elif idx == self.length:
+            self.push(val)
+            return
+
+        previousElement = self.head
+        nextElement = self.head.next
+        i = 0
+        while i < idx-1:
+            previousElement = previousElement.next
+            nextElement = previousElement.next
+            i += 1
+
+        self.length +=1
+        newNode = Node[T](val)
+        newNode.next = nextElement
+        previousElement.next = newNode

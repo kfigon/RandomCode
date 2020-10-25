@@ -156,20 +156,82 @@ class Test(unittest.TestCase):
 
     def testSetEmpty(self):
         s = SingleLinkedList[int]()
-        self.assertRaises(Exception, s.set, 0,123)
-        self.assertRaises(Exception, s.set, 1,123)
-        self.assertRaises(Exception, s.set, 2,123)
-        self.assertRaises(Exception, s.set, -1,123)
+        self.assertRaises(Exception, s.setV, 0,123)
+        self.assertRaises(Exception, s.setV, 1,123)
+        self.assertRaises(Exception, s.setV, 2,123)
+        self.assertRaises(Exception, s.setV, -1,123)
 
     def testSet(self):
         s = SingleLinkedList[int]()
         s.push(1)
         s.push(2)
 
-        s.set(0, 123)
+        s.setV(0, 123)
         self.assertEqual(s.get(0),123)
-        self.assertRaises(Exception, s.set, 2,423)
-        self.assertRaises(Exception, s.set, -1,123)
+        self.assertRaises(Exception, s.setV, 2,423)
+        self.assertRaises(Exception, s.setV, -1,123)
+
+    def testInsertEmpty(self):
+        s = SingleLinkedList[int]()
+        self.assertRaises(Exception, s.insert, -1,123)
+        self.assertRaises(Exception, s.insert, 1,123)
+        
+        s.insert(0, 123)
+        self.assertEqual(s.head.val, 123)
+        self.assertIsNone(s.head.next)
+        self.assertEqual(s.tail.val, 123)
+        self.assertEqual(s.length, 1)
+
+    def testInsertSingle_addAtEnd(self):
+        s = SingleLinkedList[int]()
+        s.push(1)
+
+        s.insert(1, 123)
+        self.assertEqual(s.head.val, 1)
+        self.assertEqual(s.head.next.val, 123)
+        self.assertEqual(s.tail.val, 123)
+        self.assertEqual(s.length, 2)
+
+    def testInsertSingle_addBeginning(self):
+        s = SingleLinkedList[int]()
+        s.push(1)
+
+        s.insert(0, 123)
+        self.assertEqual(s.head.val, 123)
+        self.assertEqual(s.head.next.val, 1)
+        self.assertEqual(s.tail.val, 1)
+        self.assertEqual(s.length, 2)
+
+    def testInsertMiddle(self):
+        s = SingleLinkedList[int]()
+        s.push(1)
+        s.push(2)
+        s.push(3)
+
+        s.insert(1, 123)
+
+        self.assertEqual(s.length, 4)
+        self.assertEqual(s.head.val, 1)
+        self.assertEqual(s.head.next.val, 123)
+        self.assertEqual(s.head.next.next.val, 2)
+        self.assertEqual(s.head.next.next.next.val, 3)
+        self.assertEqual(s.tail.val, 3)
+
+    def testInsert_End(self):
+        s = SingleLinkedList[int]()
+        s.push(1)
+        s.push(2)
+        s.push(3)
+
+        s.insert(3, 123)
+
+        self.assertEqual(s.length, 4)
+        self.assertEqual(s.head.val, 1)
+        self.assertEqual(s.head.next.val, 2)
+        self.assertEqual(s.head.next.next.val, 3)
+        self.assertEqual(s.head.next.next.next.val, 123)
+        self.assertEqual(s.tail.val, 123)
+
 
 if __name__ == "__main__":
     unittest.main()
