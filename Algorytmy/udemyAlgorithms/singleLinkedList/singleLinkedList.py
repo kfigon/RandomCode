@@ -95,7 +95,7 @@ class SingleLinkedList(Generic[T]):
             i +=1
 
     def insert(self, idx: int, val: T):
-        if (idx < 0 or idx > self.length) and (self.length != 0 or idx !=0) :
+        if (idx < 0 or idx > self.length):
             raise Exception(f'invalid insert idx: {idx}, len: {self.length}')
         
         if idx == 0:
