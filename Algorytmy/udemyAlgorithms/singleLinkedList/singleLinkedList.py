@@ -145,26 +145,22 @@ class SingleLinkedList(Generic[T]):
         toRemove = previousElement.next
         previousElement.next = toRemove.next
 
+# go one by one, keep track of next element
+# and build from tail to head
     def reverse(self):
         if not self.head:
             return
-        elif self.length == 1:
-            self.head,self.tail = self.tail, self.head
-            return
-        
-        nextElement = self.head.next 
-        postNextElement = self.head.next.next
-        
-        self.tail = self.head
-        self.tail.next = None
-        rebuildedPtr = self.tail
 
-        while postNextElement:
-            nextElement.next = rebuildedPtr
-            rebuildedPtr = nextElement
-            nextElement = postNextElement
-            postNextElement = postNextElement.next
-        
-        nextElement.next = rebuildedPtr
-        self.head = nextElement
-        
+        node = self.head
+        self.head = self.tail
+        self.tail = node
+
+        nextNode = None
+        prevNode = None
+
+        while node:
+            nextNode = node.next
+            node.next = prevNode
+            prevNode = node
+            node = nextNode
+
