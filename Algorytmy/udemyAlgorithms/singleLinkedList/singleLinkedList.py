@@ -8,6 +8,12 @@ class Node(Generic[T]):
     def __repr__(self) -> str:
         return f'v: {self.val}'
 
+# complexity:
+# push - O(1)
+# pop - O(1)
+# search/access O(n)
+# remove - O(1) or O(n)
+
 class SingleLinkedList(Generic[T]):
     def __init__(self):
         self.head: Optional[Node[T]] = None
