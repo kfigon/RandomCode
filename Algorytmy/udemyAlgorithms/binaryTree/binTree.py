@@ -33,22 +33,26 @@ class BinarySearchTree:
                     return
     
     def insertRec(self, v:int):
-        newNode = Node(v)
-        def go(ptr: Node) -> Node:
+        
+        def create(ptr: Node):
+            newNode = Node(v)
             if newNode.val > ptr.val:
-                return go(ptr.right) if ptr.right else ptr
+                ptr.right = newNode
             else:
-                return go(ptr.left) if ptr.left else ptr
+                ptr.left = newNode
+            return ptr
 
-        if not self.root:
-            self.root = newNode
-            return
-                    
-        ptr = go(self.root)
-        if newNode.val > ptr.val:
-            ptr.right = newNode
-        else:
-            ptr.left = newNode
+        def go(ptr: Optional[Node]) -> Node:
+            if not ptr:
+                self.root = Node(v)
+                return self.root
+            
+            if v > ptr.val:
+                return go(ptr.right) if ptr.right else create(ptr)
+            else:
+                return go(ptr.left) if ptr.left else create(ptr)
+
+        go(self.root)
 
     def find(self) -> Optional[int]:
         pass
