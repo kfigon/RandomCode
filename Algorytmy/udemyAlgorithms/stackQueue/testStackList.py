@@ -15,10 +15,19 @@ class TestStack(unittest.TestCase):
         self.stack.push(2)
         self.stack.push(3)
 
+        self.assertEqual(self.stack.top.val, 3)
+        self.assertEqual(self.stack.top.prev.val, 2)
+        self.assertEqual(self.stack.top.prev.prev.val, 1)
+        self.assertIsNone(self.stack.top.prev.prev.prev)
+
         self.assertEqual(self.stack.length, 3)
         self.assertFalse(self.stack.isEmpty())
         self.assertEqual(self.stack.pop(), 3)
         self.assertEqual(self.stack.length, 2)
+
+        self.assertEqual(self.stack.top.val, 2)
+        self.assertEqual(self.stack.top.prev.val, 1)
+        
 
         self.assertEqual(self.stack.pop(), 2)
         self.assertEqual(self.stack.length, 1)
@@ -49,6 +58,6 @@ class TestStack(unittest.TestCase):
         self.assertIsNone(self.stack.pop())
         self.assertEqual(self.stack.length, 0)
         self.assertTrue(self.stack.isEmpty())
-        
+
 if __name__ == "__main__":
     unittest.main()
