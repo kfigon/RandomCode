@@ -6,6 +6,7 @@ class Node:
         self.left: Optional[Node] = None
         self.right: Optional[Node] = None
 
+# one step extra when node size doubles
 # insert - O(logn)
 # find - O(logn)
 class BinarySearchTree:
