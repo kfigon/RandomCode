@@ -64,14 +64,9 @@ class BinarySearchTree:
         while ptr:
             if v == ptr.val:
                 return True
-
             elif v < ptr.val:
-                if not ptr.left:
-                    return False
                 ptr = ptr.left
             else:
-                if not ptr.right:
-                    return False
                 ptr = ptr.right
         
         return False
