@@ -4,8 +4,11 @@ from binTree import BinarySearchTree
 class TestBst(unittest.TestCase):
     def setUp(self):
         self.bst = BinarySearchTree()
+        
     def testEmpty(self):
         self.assertIsNone(self.bst.root)
+        self.assertFalse(self.bst.find(10))
+        self.assertFalse(self.bst.findRec(10))
 
     def testInsert(self):
         self.bst.insert(10)

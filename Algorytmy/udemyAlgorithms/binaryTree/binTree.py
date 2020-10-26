@@ -73,9 +73,11 @@ class BinarySearchTree:
                 if not ptr.right:
                     return False
                 ptr = ptr.right
+        
+        return False
 
     def findRec(self, v: int) -> bool:
-        def go(ptr: Node) -> Optional[Node]:
+        def go(ptr: Optional[Node]) -> Optional[Node]:
             if not ptr:
                 return None
             if v == ptr.val:
