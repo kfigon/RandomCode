@@ -4,7 +4,7 @@ from binTree import BinarySearchTree
 class TestBst(unittest.TestCase):
     def setUp(self):
         self.bst = BinarySearchTree()
-        
+
     def testEmpty(self):
         self.assertIsNone(self.bst.root)
         self.assertFalse(self.bst.find(10))
@@ -127,6 +127,30 @@ class TestBst(unittest.TestCase):
         self.assertFalse(self.bst.findRec(14))
         self.assertFalse(self.bst.findRec(1))
         self.assertFalse(self.bst.findRec(2))
+        self.assertFalse(self.bst.findRec(-3))
+
+    def testFind2(self):
+        for i in range(10):
+            self.bst.insert(i)
+
+        for i in range(10):
+            self.assertTrue(self.bst.find(i))
+        
+        self.assertFalse(self.bst.find(10))
+        self.assertFalse(self.bst.find(11))
+        self.assertFalse(self.bst.find(12))
+        self.assertFalse(self.bst.find(-3))
+
+    def testFindRec2(self):
+        for i in range(10):
+            self.bst.insert(i)
+
+        for i in range(10):
+            self.assertTrue(self.bst.findRec(i))
+        
+        self.assertFalse(self.bst.findRec(10))
+        self.assertFalse(self.bst.findRec(11))
+        self.assertFalse(self.bst.findRec(12))
         self.assertFalse(self.bst.findRec(-3))
 
 if __name__ == "__main__":
