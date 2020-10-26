@@ -19,3 +19,7 @@
 * AI (min max alg, decision trees)
 * file system
 * ...
+
+## Przeszukiwanie
+* ``Breadth-first search` - przeszukujemy poziomo, potem schodzimy nizej. Najpierw rodzenstwo, potem do dzieci
+* `depth-first search` - najpierw wglab, potem poziomo

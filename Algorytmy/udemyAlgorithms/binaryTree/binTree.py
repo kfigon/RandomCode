@@ -85,5 +85,13 @@ class BinarySearchTree:
 
         return go(self.root) is not None
 
-    def traverse(self) -> List[int]:
-        pass
+    def traverseBfs(self) -> List[int]:
+        out: List[int] = []
+
+        ptr: Node = self.root
+        # while ptr:
+        #     out.append(ptr.val)
+        #     if ptr
+
+        return out
+

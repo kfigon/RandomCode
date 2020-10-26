@@ -153,5 +153,16 @@ class TestBst(unittest.TestCase):
         self.assertFalse(self.bst.findRec(12))
         self.assertFalse(self.bst.findRec(-3))
 
+    def testTraverseBfs(self):
+        self.bst.insert(10)
+        self.bst.insert(6)
+        self.bst.insert(15)
+        self.bst.insert(3)
+        self.bst.insert(8)
+        self.bst.insert(20)
+        self.bst.insert(13)
+
+        self.assertEqual(self.bst.traverseBfs(), [10, 6 , 15, 3, 8, 20])
+
 if __name__ == "__main__":
     unittest.main()
