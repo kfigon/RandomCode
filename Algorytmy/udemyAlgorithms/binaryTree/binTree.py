@@ -58,8 +58,33 @@ class BinarySearchTree:
 
         go(self.root)
 
-    def find(self) -> Optional[int]:
-        pass
+    def find(self, v: int) -> bool:
+        ptr: Optional[Node] = self.root
+
+        while ptr:
+            if v == ptr.val:
+                return True
+
+            elif v < ptr.val:
+                if not ptr.left:
+                    return False
+                ptr = ptr.left
+            else:
+                if not ptr.right:
+                    return False
+                ptr = ptr.right
+
+    def findRec(self, v: int) -> bool:
+        def go(ptr: Node) -> Optional[Node]:
+            if not ptr:
+                return None
+            if v == ptr.val:
+                return ptr
+            elif v < ptr.val:
+                return go(ptr.left)
+            return go(ptr.right)
+
+        return go(self.root) is not None
 
     def traverse(self) -> List[int]:
         pass
