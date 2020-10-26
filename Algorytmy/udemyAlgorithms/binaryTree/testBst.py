@@ -39,6 +39,11 @@ class TestBst(unittest.TestCase):
         
         self.assertIsNone(self.bst.root.right.left.left)
         self.assertIsNone(self.bst.root.right.left.left)
+    def testInsertDuplicate(self):
+        self.bst.insert(10)
+        self.bst.insert(6)
+        self.bst.insert(15)
+        self.assertRaises(Exception, self.bst.insert, 6)
 
     def testInsertRec(self):
         self.bst.insertRec(10)
@@ -71,6 +76,12 @@ class TestBst(unittest.TestCase):
         
         self.assertIsNone(self.bst.root.right.left.left)
         self.assertIsNone(self.bst.root.right.left.left)
+
+    def testInsertRecDuplicate(self):
+        self.bst.insertRec(10)
+        self.bst.insertRec(6)
+        self.bst.insertRec(15)
+        self.assertRaises(Exception, self.bst.insertRec, 6)
 
 
 if __name__ == "__main__":

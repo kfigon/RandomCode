@@ -25,15 +25,17 @@ class BinarySearchTree:
                 else:
                     ptr.right = newNode
                     return
-            else:
+            elif v < ptr.val:
                 if ptr.left:
                     ptr = ptr.left
                 else:
                     ptr.left = newNode
                     return
+            else:
+                raise Exception(f'Duplicated value {v}')
     
     def insertRec(self, v:int):
-        
+
         def create(ptr: Node):
             newNode = Node(v)
             if newNode.val > ptr.val:
@@ -49,8 +51,10 @@ class BinarySearchTree:
             
             if v > ptr.val:
                 return go(ptr.right) if ptr.right else create(ptr)
-            else:
+            elif v < ptr.val:
                 return go(ptr.left) if ptr.left else create(ptr)
+            else:
+                raise Exception(f'Duplicated value {v}')
 
         go(self.root)
 
