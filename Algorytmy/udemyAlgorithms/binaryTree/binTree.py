@@ -6,7 +6,8 @@ class Node:
         self.left: Optional[Node] = None
         self.right: Optional[Node] = None
 
-
+# insert - O(logn)
+# find - O(logn)
 class BinarySearchTree:
     def __init__(self):
         self.root: Optional[Node] = None
