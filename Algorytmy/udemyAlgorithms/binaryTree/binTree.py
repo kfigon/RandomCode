@@ -88,10 +88,51 @@ class BinarySearchTree:
     def traverseBfs(self) -> List[int]:
         out: List[int] = []
 
-        ptr: Node = self.root
-        # while ptr:
-        #     out.append(ptr.val)
-        #     if ptr
+        queue = Queue()
+        if self.root:
+            queue.enque(self.root)
+    
+        while not queue.empty():
+            ptr = queue.dequeue()
+            if ptr:
+                out.append(ptr.val)
+
+                if ptr.left:
+                    queue.enque(ptr.left)
+                if ptr.right:
+                    queue.enque(ptr.right)
 
         return out
 
+    # to jest pre order - post order trzeba out.append przeniesc na koniec
+    # in order - append w srodku
+    def traverseDfsRec(self) -> List[int]:
+        out: List[int] = []
+
+        def trav(ptr: Optional[Node]):
+            if not ptr:
+                return
+            
+            out.append(ptr.val) # preorder
+            trav(ptr.left)
+            # out.append(ptr.val) # in order
+            trav(ptr.right)
+            # out.append(ptr.val) # postorder
+
+        trav(self.root)
+        return out
+
+class Queue:
+    def __init__(self):
+        self.q: List[Node] = []
+    
+    def enque(self, v: Node):
+        self.q.insert(0, v)
+    
+    def dequeue(self) -> Optional[Node]:
+        if len(self.q) == 0:
+            return None
+        return self.q.pop()
+    
+    def empty(self) -> bool:
+        return len(self.q) == 0

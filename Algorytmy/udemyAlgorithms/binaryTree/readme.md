@@ -23,3 +23,11 @@
 ## Przeszukiwanie
 * ``Breadth-first search` - przeszukujemy poziomo, potem schodzimy nizej. Najpierw rodzenstwo, potem do dzieci
 * `depth-first search` - najpierw wglab, potem poziomo
+    * preorder - najpierw wartosc odwiedzanego, potem w lewo, potem w prawo. Potem wyzej
+    * post order
+    * in order
+
+Ktore lepsze? It depends
+* BFS - dla niskich drzew, kolejka wprowadza space complexity. DFS lepsze
+* dfs preorder - mozna odtworzyc drzewo dokladnie tak samo jak bylo
+* in order - kolejnosc

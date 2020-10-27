@@ -9,6 +9,8 @@ class TestBst(unittest.TestCase):
         self.assertIsNone(self.bst.root)
         self.assertFalse(self.bst.find(10))
         self.assertFalse(self.bst.findRec(10))
+        self.assertEqual(self.bst.traverseBfs(), [])
+        self.assertEqual(self.bst.traverseDfsRec(), [])
 
     def testInsert(self):
         self.bst.insert(10)
@@ -160,9 +162,18 @@ class TestBst(unittest.TestCase):
         self.bst.insert(3)
         self.bst.insert(8)
         self.bst.insert(20)
-        self.bst.insert(13)
 
         self.assertEqual(self.bst.traverseBfs(), [10, 6 , 15, 3, 8, 20])
 
+    def testTraverseDfsRec(self):
+        self.bst.insert(10)
+        self.bst.insert(6)
+        self.bst.insert(15)
+        self.bst.insert(3)
+        self.bst.insert(8)
+        self.bst.insert(20)
+
+        self.assertEqual(self.bst.traverseDfsRec(), [10, 6 , 3,8, 15, 20])
+        
 if __name__ == "__main__":
     unittest.main()
