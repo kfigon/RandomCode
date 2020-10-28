@@ -12,13 +12,47 @@ class Node:
         self.val = val
         self.left: Optional[Node] = None
         self.right: Optional[Node] = None
+        self.parent: Optional[Node] = None
 
 class BinaryHeap:
     def __init__(self):
         self.root: Optional[Node] = None
 
     def insert(self, v: int):
-        pass
+        newNode = Node(v)
+        if not self.root:
+            self.root = newNode
+            return
+        
+        ptr = self.root
+        while ptr:
+            assert ptr.val != v
+
+            if v < ptr.val:
+                if ptr.left:
+                    ptr = ptr.left
+                else:
+                    ptr.left = newNode
+                    newNode.parent=ptr
+                    break
+            else:
+                if ptr.right:
+                    ptr = ptr.right
+                else:
+                    ptr.right = newNode
+                    newNode.parent = ptr
+                    break
+        
+        # bubble up:
+        ptr = newNode
+        parent = newNode.parent
+        while parent and parent.val < v:
+            print(f'bubbling {ptr.val} and parent: {parent.val}')
+            ptr.val,parent.val = parent.val,ptr.val
+            ptr = ptr.parent
+            parent = ptr.parent
+
+
 
     def find(self, v: int) -> bool:
         ptr: Optional[Node] = self.root
@@ -57,9 +91,27 @@ class BinaryHeapArray:
         return adjust(left), adjust(right)
 
     def getParent(self, idx: int) -> Optional[int]:
-        assert idx < len(self.tab) and idx >= 0, f'invalid idx: {idx}, len: {len(self.tab)}'
+        if idx < 0 or idx >= len(self.tab):
+            return None
 
         parentIdx = (idx-1)//2
         if parentIdx >= 0 and parentIdx < len(self.tab):
             return parentIdx
         return None
+    
+    # add to the end and bubble up
+    def insert(self, v: int):
+        newValueIdx = len(self.tab)
+        self.tab.append(v)
+
+        parentIdx = self.getParent(newValueIdx)
+        while (parentIdx is not None) and (v > self.tab[parentIdx]):
+            self.tab[newValueIdx],self.tab[parentIdx] = self.tab[parentIdx], self.tab[newValueIdx]
+            newValueIdx = parentIdx
+            parentIdx = self.getParent(newValueIdx)
+
+    def find(self, v: int) -> bool:
+        for i in self.tab:
+            if i == v:
+                return True
+        return False
