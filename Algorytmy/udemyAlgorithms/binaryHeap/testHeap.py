@@ -21,6 +21,14 @@ class TestHeap(unittest.TestCase):
         self.assertEqual(b.tab, [41,39,40,18,27,12,33])
         self.assertFalse(b.find(55))
 
+    def testExtract(self):
+        b = BinaryHeapArray()
+        b.tab = [41,39,33,18,27,12]
+        
+        self.assertEqual(b.extractMax(), 41)
+        self.assertEqual(b.tab, [39,27,33,18,12])
+    
+
     def testHeap1(self):
         b= BinaryHeap()
         b.insert(100)

@@ -51,6 +51,9 @@ class BinaryHeap:
             ptr = parent
             parent = parent.parent
 
+    def extractMax(self) -> Optional[int]:
+        pass
+
     def find(self, v: int) -> bool:
         ptr: Optional[Node] = self.root
 
@@ -112,3 +115,32 @@ class BinaryHeapArray:
             if i == v:
                 return True
         return False
+
+    # wyjac root, wsadzic tam ostatni element i 
+    # kopcowac - wrzucic na dol, dobra wartosc wypaczkuje
+    def extractMax(self) -> Optional[int]:
+        if len(self.tab) == 0:
+            return None
+        
+        top = self.tab[0]
+        self.tab = [self.tab[-1]] + self.tab[1:-1]
+        
+        newIdx = 0
+        # kopcujemy
+        while True:
+            left,right = self.getChild(newIdx)
+            maxIdx = None
+            if not left and right:
+                maxIdx =  right
+            elif not right and left:
+                maxIdx = left
+            elif not right and not left:
+                break
+            else:
+                maxIdx = left if self.tab[left] > self.tab[right] else right
+
+            if self.tab[maxIdx] > self.tab[newIdx]:
+                self.tab[maxIdx], self.tab[newIdx] = self.tab[newIdx], self.tab[maxIdx]
+                newIdx = maxIdx
+
+        return top
