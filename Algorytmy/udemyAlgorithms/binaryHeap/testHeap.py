@@ -42,7 +42,7 @@ class TestHeap(unittest.TestCase):
         self.assertEqual(b.root.left.right.parent.val, 75)
 
     def testHeap2(self):
-        b= BinaryHeap()
+        b: BinaryHeap = BinaryHeap()
         b.insert(100)
         b.insert(50)
         b.insert(75)
@@ -65,13 +65,13 @@ class TestHeap(unittest.TestCase):
 
 
         self.assertIsNone(b.root.parent)
-        self.assertEqual(b.root.right.parent.value, 120)
-        self.assertEqual(b.root.left.parent.value, 120)
+        self.assertEqual(b.root.right.parent.val, 120)
+        self.assertEqual(b.root.left.parent.val, 120)
         
-        self.assertEqual(b.root.left.left.parent.value, 75)
-        self.assertEqual(b.root.left.right.parent.value, 75)
+        self.assertEqual(b.root.left.left.parent.val, 75)
+        self.assertEqual(b.root.left.right.parent.val, 75)
         
-        self.assertEqual(b.root.left.left.left.parent.value, 30)
+        self.assertEqual(b.root.left.left.right.parent.val, 30)
 
 
         self.assertIsNone(b.root.right.left)

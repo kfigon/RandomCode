@@ -47,12 +47,9 @@ class BinaryHeap:
         ptr = newNode
         parent = newNode.parent
         while parent and parent.val < v:
-            print(f'bubbling {ptr.val} and parent: {parent.val}')
             ptr.val,parent.val = parent.val,ptr.val
-            ptr = ptr.parent
-            parent = ptr.parent
-
-
+            ptr = parent
+            parent = parent.parent
 
     def find(self, v: int) -> bool:
         ptr: Optional[Node] = self.root
