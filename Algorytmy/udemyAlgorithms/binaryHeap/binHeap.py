@@ -63,5 +63,3 @@ class BinaryHeapArray:
         if parentIdx >= 0 and parentIdx < len(self.tab):
             return parentIdx
         return None
-
-    
