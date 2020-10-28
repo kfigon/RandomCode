@@ -129,16 +129,16 @@ class BinaryHeapArray:
         # kopcujemy
         while True:
             left,right = self.getChild(newIdx)
-            if not right and not left:
-                break
-            
-            maxIdx = None
-            if not left and right:
-                maxIdx =  right
-            elif not right and left:
+            maxIdx = -1
+
+            if left is None and right is not None:
+                maxIdx = right
+            elif right is None and left is not None:
                 maxIdx = left
-            else:
+            elif right is not None and left is not None:
                 maxIdx = left if self.tab[left] > self.tab[right] else right
+            else:
+                break
 
             if self.tab[maxIdx] > self.tab[newIdx]:
                 self.tab[maxIdx], self.tab[newIdx] = self.tab[newIdx], self.tab[maxIdx]
