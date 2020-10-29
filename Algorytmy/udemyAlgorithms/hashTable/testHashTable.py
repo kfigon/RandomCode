@@ -32,7 +32,14 @@ class TestHashTable(unittest.TestCase):
         self.assertEqual(h.tab[2][2][0], 'orange')
         self.assertEqual(h.tab[2][2][1], 'sad')
 
+    def testKeysValues(self):
+        h = HashTable()
+        h.put('pink' ,'123')
+        h.put('blue' ,'asd')
+        h.put('orange' ,'123')
 
+        self.assertEqual(h.keys(), ['blue','orange','pink'])
+        self.assertEqual(h.values(), ['asd','123'])
 
 class TestHashFun(unittest.TestCase):
     def test1(self):

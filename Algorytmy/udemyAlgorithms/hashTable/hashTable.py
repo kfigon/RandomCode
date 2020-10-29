@@ -35,6 +35,20 @@ class HashTable:
                 return i[1]
         raise Exception(f'Key error - {key} does not exist')
 
+    def keys(self) -> List[str]:
+        out: List[str] = []
+        for el in self.tab:
+            for i in el:
+                out.append(i[0])
+        return out
+    
+    def values(self) -> List[str]:
+        out: List[str] = []
+        for el in self.tab:
+            for i in el:
+                if i[1] not in out:
+                    out.append(i[1])
+        return out
 
 # hash can't be worked backwards
 # hashes can repeat, there can be collisions
