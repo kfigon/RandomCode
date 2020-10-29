@@ -98,5 +98,15 @@ class TestHeap(unittest.TestCase):
         self.assertIsNone(b.root.left.right.left)
         self.assertIsNone(b.root.left.right.right)
 
+    def testHeapMinimumNode(self):
+        b: BinaryHeap = BinaryHeap()
+        b.insert(100)
+        b.insert(50)
+        b.insert(75)
+        b.insert(10)
+        b.insert(120)
+        b.insert(30)
+        self.assertEqual(b.findMinimumNode().val, 10)
+
 if __name__ == "__main__":
     unittest.main()

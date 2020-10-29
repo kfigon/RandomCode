@@ -52,7 +52,22 @@ class BinaryHeap:
             parent = parent.parent
 
     def extractMax(self) -> Optional[int]:
+        if not self.root:
+            return None
+
+        minimum = self.findMinimumNode()
         pass
+
+    def findMinimumNode(self) -> Optional[Node]:
+        if not self.root:
+            return None
+        minV = self.root.val
+        minNode = self.root
+        while True:
+            return False
+
+
+        return minNode
 
     def find(self, v: int) -> bool:
         ptr: Optional[Node] = self.root
