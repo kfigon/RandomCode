@@ -188,7 +188,9 @@ class BinaryHeapArray:
     def extractMax(self) -> Optional[int]:
         if len(self.tab) == 0:
             return None
-        
+        elif len(self.tab) == 1:
+            return self.tab.pop()
+			
         top = self.tab[0]
         self.tab = [self.tab[-1]] + self.tab[1:-1]
         
