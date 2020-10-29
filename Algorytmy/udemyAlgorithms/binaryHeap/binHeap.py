@@ -14,6 +14,7 @@ class Node:
         self.right: Optional[Node] = None
         self.parent: Optional[Node] = None
 
+# insert/remove - O(logn)
 class BinaryHeap:
     def __init__(self):
         self.root: Optional[Node] = None
