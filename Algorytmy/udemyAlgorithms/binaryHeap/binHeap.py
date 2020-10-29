@@ -89,7 +89,6 @@ class BinaryHeap:
             if maxNode.val > minimum.val:
                 minimum.val, maxNode.val = maxNode.val, minimum.val
                 minimum = maxNode
-                maxNode.parent = minimum.parent
             else:
                 break
 
