@@ -6,6 +6,12 @@ from typing import Optional, List, Tuple
 # - elements are not ordered
 # - turbo fast for find/remove/add - very commonly used
 
+# average case:
+# insert, delete, access O(1)
+# depends how good is your hash
+
+# worst - O(n) - then it's a list
+
 # inside regular array, but we change string to number and store
 # change string to number - hash
 # map 'pink' -> 0
