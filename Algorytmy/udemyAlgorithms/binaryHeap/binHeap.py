@@ -55,16 +55,68 @@ class BinaryHeap:
         if not self.root:
             return None
 
+        
+        toRet = self.root.val
         minimum = self.findMinimumNode()
-        pass
+        assert minimum
+        assert minimum.parent
+
+        self.root.val = minimum.val
+        if minimum.parent.left and minimum.parent.left.val == minimum.val:
+            minimum.parent.left = None
+        elif minimum.parent.right and minimum.parent.right.val == minimum.val:
+            minimum.parent.right = None
+        minimum.parent = None
+
+        minimum = self.root
+        while minimum:
+            maxNode = None
+            left = minimum.left
+            right = minimum.right
+            if not right and not left:
+                break
+            elif not right and left:
+                maxNode = left
+            elif not left and right:
+                maxNode = right
+            else:
+                assert right
+                assert left
+                maxNode = left if left.val > right.val else right
+            
+            assert maxNode
+
+            if maxNode.val > minimum.val:
+                minimum.val, maxNode.val = maxNode.val, minimum.val
+                minimum = maxNode
+                maxNode.parent = minimum.parent
+            else:
+                break
+
+
+        return toRet
 
     def findMinimumNode(self) -> Optional[Node]:
         if not self.root:
             return None
+
         minV = self.root.val
         minNode = self.root
-        while True:
-            return False
+
+        while minNode:
+            left = minNode.left
+            right = minNode.right
+            
+            if not left and not right:
+                break
+
+            if left and left.val < minV:
+                minV = left.val
+                minNode = left
+
+            if right and right.val < minV:
+                minV = right.val
+                minNode = right
 
 
         return minNode

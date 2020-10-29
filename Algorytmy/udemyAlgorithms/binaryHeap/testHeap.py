@@ -108,5 +108,29 @@ class TestHeap(unittest.TestCase):
         b.insert(30)
         self.assertEqual(b.findMinimumNode().val, 10)
 
+    def testHeapExtractMax(self):
+        b: BinaryHeap = BinaryHeap()
+        b.insert(100)
+        b.insert(50)
+        b.insert(75)
+        b.insert(10)
+        b.insert(120)
+        b.insert(30)
+        self.assertEqual(b.extractMax(), 120)
+
+        self.assertIsNone(b.root.parent)
+        self.assertEqual(b.root.val, 100)
+
+        self.assertEqual(b.root.right.val, 10)
+        self.assertEqual(b.root.left.val, 75)
+
+        self.assertEqual(b.root.left.left.val, 30)
+        self.assertEqual(b.root.left.right.val, 50)
+
+        self.assertEqual(b.root.left.parent.val, 100)
+        self.assertEqual(b.root.left.left.parent.val, 75)
+        self.assertEqual(b.root.left.right.parent.val, 75)
+
+
 if __name__ == "__main__":
     unittest.main()
