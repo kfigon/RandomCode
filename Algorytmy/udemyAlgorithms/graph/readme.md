@@ -47,7 +47,7 @@ macierz true/false polaczen.
 | query          |  O(V+E)    |    O(1)    |
 | storage        |  O(V+E)    |    O(V^2)  |
 
-## lista - raczej czesciej uzywane, dane zazwyczan sa sparse:
+## lista - raczej czesciej uzywane, dane zazwyczaj sa sparse:
 * `+` zajmuje mniej miejsca dla rzadkich grafow
 * `+` szybsza iteracja po polaczeniach
 * `-` wolne do szukania konkretnego polaczenia (trzeba przejsc po subliscie)
