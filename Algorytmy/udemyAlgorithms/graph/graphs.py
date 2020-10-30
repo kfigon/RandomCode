@@ -42,9 +42,9 @@ class Graph:
 
     def removeNode(self, nodeA: str):
         self._validateSingle(nodeA)
+        while len(self.data[nodeA]) > 0:
+            i = self.data[nodeA].pop()
+            self.data[i].remove(nodeA)
+            
         del self.data[nodeA]
-        
-        for k in self.data.keys():
-            if nodeA in self.data[k]:
-                self.data[k].remove(nodeA)
                 

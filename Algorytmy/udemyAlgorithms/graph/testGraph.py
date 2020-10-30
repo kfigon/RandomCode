@@ -46,7 +46,7 @@ class Test(unittest.TestCase):
         g.addNode('Tokyo')
         g.addNode('New York')
         g.addNode('Warsaw')
-        
+
         g.connect('Tokyo', 'New York')
         g.connect('Warsaw', 'New York')
         g.connect('Warsaw', 'Tokyo')
@@ -58,6 +58,10 @@ class Test(unittest.TestCase):
         self.assertRaises(Exception, g.areConnected, ('New York', 'Warsaw'))
 
         self.assertTrue(g.areConnected('Warsaw', 'Tokyo'))
+        
+        self.assertFalse('New York' in g.data)
+        for k in g.data.keys():
+            self.assertFalse('New York' in g.data[k], f'New York present in {k} -> {g.data[k]}')
 
 if __name__ == "__main__":
     unittest.main()
