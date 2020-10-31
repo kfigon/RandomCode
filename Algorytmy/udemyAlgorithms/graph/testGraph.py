@@ -63,5 +63,33 @@ class Test(unittest.TestCase):
         for k in g.data.keys():
             self.assertFalse('New York' in g.data[k], f'New York present in {k} -> {g.data[k]}')
 
+class TestTraversal(unittest.TestCase):
+    def setUp(self):
+        self.g = Graph()
+        #     A
+        #   /    \
+        # B        C
+        # |         |
+        # D  -----  E
+        #   \     /
+        #      F           
+
+        nodes = ['A', 'B','C','D','E','F']
+        connections=[
+            ('A','B'), ('A','C'),
+            ('B','D'),
+            ('C','E'), 
+            ('D','E'),
+            ('D','F'),
+            ('E','F')]
+        for n in nodes:
+            self.g.addNode(n)
+        for c in connections:
+            self.g.connect(c[0], c[1])
+
+    def testDfs(self):
+        expectedNodes = ['A','B','D','E','C','F']
+        self.assertEqual(self.g.dfs('A'), expectedNodes)
+
 if __name__ == "__main__":
     unittest.main()

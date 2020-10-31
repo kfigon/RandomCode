@@ -56,3 +56,22 @@ macierz true/false polaczen.
 * `-` duzo miejsca dla rzadkich grafow
 * `-` wolno iterujemy po polaczeniach (iterowanie przy braku polaczen)
 * `+` szybki lookup konkretnego polaczenia (2 indeksy)
+
+# Traversal
+Visiting/updating/checking every node/searching nearest neighbours, finding paths.
+
+Usage
+* networking
+* web crawler
+* find closest match/recommendation
+* shortest path
+    * GPS
+    * maze
+    * AI - shortest path to win the game (min max in tictactoe)
+
+
+There's no root -we need to specify start node.
+
+Like trees (because trees are more special case of graph), we got 2 algorithms:
+* `BFS ` - `breath first search` - expore neighbours first, then deep down
+* `DFS` - `depth first search` - explore as far as possible down one branch before backtracking. Children before siblings

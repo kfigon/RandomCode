@@ -33,7 +33,7 @@ class Graph:
     
     def _validateSingle(self, nodeA: str):
         if self.data[nodeA] is None:
-            raise Exception(f'invalid nodes {nodeA}')
+            raise Exception(f'invalid node {nodeA}')
 
     def removeConnection(self, nodeA:str, nodeB:str):
         self._validate(nodeA, nodeB)
@@ -47,4 +47,33 @@ class Graph:
             self.data[i].remove(nodeA)
             
         del self.data[nodeA]
+
+    def dfs(self, startNode: str) -> List[str]:
+        self._validateSingle(startNode)
+
+        tracker = VisitedTracker()
+        visitedNodes: List[str] = []
+
+        def traverse(node: str):
+            if len(self.data[node]) == 0:
+                return
+            
+            visitedNodes.append(node)
+            tracker.markVisited(node)
+            
+            for child in self.data[node]:
+                if not tracker.wasVisited(child):
+                    traverse(child)
+
+        traverse(startNode)
+        return visitedNodes
+
+class VisitedTracker:
+    def __init__(self):
+        self.data: Dict[str, bool] = {}
+    def markVisited(self, vertex: str):
+        self.data[vertex] = True
+    def wasVisited(self, vertex: str):
+        return (vertex in self.data) and (self.data[vertex] == True)
+
                 
