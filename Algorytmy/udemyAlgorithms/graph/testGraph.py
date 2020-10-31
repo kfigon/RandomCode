@@ -90,6 +90,9 @@ class TestTraversal(unittest.TestCase):
     def testDfs(self):
         expectedNodes = ['A','B','D','E','C','F']
         self.assertEqual(self.g.dfs('A'), expectedNodes)
-
+    
+    def testDfsInter(self):
+        expectedNodes = ['A','C','E','F','D','B']
+        self.assertEqual(self.g.dfsIter('A'), expectedNodes)
 if __name__ == "__main__":
     unittest.main()

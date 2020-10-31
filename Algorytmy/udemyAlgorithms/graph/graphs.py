@@ -52,20 +52,40 @@ class Graph:
         self._validateSingle(startNode)
 
         tracker = VisitedTracker()
+        # this list can also be part of tracker object
         visitedNodes: List[str] = []
 
         def traverse(node: str):
             if len(self.data[node]) == 0:
                 return
             
-            visitedNodes.append(node)
             tracker.markVisited(node)
+            visitedNodes.append(node)
             
             for child in self.data[node]:
                 if not tracker.wasVisited(child):
                     traverse(child)
 
         traverse(startNode)
+        return visitedNodes
+
+    def dfsIter(self, startNode: str) -> List[str]:
+        self._validateSingle(startNode)
+        stack: List[str] = []
+        visitedNodes: List[str] = []
+        tracker = VisitedTracker()
+
+        stack.append(startNode)
+        while len(stack) != 0:
+            node = stack.pop()
+            if tracker.wasVisited(node):
+                continue
+
+            tracker.markVisited(node)
+            visitedNodes.append(node)
+            for child in self.data[node]:
+                stack.append(child)
+
         return visitedNodes
 
 class VisitedTracker:
