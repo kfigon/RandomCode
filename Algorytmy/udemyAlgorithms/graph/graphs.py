@@ -122,4 +122,3 @@ class VisitedTracker:
     def wasVisited(self, vertex: str):
         return (vertex in self.data) and (self.data[vertex] == True)
 
-                

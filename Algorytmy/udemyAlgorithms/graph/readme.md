@@ -75,3 +75,19 @@ There's no root -we need to specify start node.
 Like trees (because trees are more special case of graph), we got 2 algorithms:
 * `BFS ` - `breath first search` - expore neighbours first, then deep down
 * `DFS` - `depth first search` - explore as far as possible down one branch before backtracking. Children before siblings
+
+# Dijkstra's algorithm
+Shortest path between 2 nodes of weighted graph
+* gps
+* network routing
+* biology - model spread of viruses
+* airline tickets - cheapets route
+
+## algorithm
+![](dijkstraGraph.png)
+
+* visit new node, pick one with smallest known distance to visit first
+* once moved - look at each neighbour
+* for each neighbour - calculate distance by summing total edges that lead to the node we're checking `from the starting node`
+* if new total distance to a node is less than previous total - store new shorter distance for that node
+
