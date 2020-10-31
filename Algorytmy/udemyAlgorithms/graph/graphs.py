@@ -84,7 +84,8 @@ class Graph:
             tracker.markVisited(node)
             visitedNodes.append(node)
             for child in self.data[node]:
-                stack.append(child)
+                if not tracker.wasVisited(child):
+                    stack.append(child)
 
         return visitedNodes
 
