@@ -66,14 +66,14 @@ class Test(unittest.TestCase):
 class TestTraversal(unittest.TestCase):
     def setUp(self):
         self.g = Graph()
+        
         #     A
         #   /    \
         # B        C
         # |         |
         # D  -----  E
         #   \     /
-        #      F           
-
+        #      F     
         nodes = ['A', 'B','C','D','E','F']
         connections=[
             ('A','B'), ('A','C'),
@@ -82,10 +82,13 @@ class TestTraversal(unittest.TestCase):
             ('D','E'),
             ('D','F'),
             ('E','F')]
+        self.buildGraph(self.g, nodes, connections)
+
+    def buildGraph(self, g, nodes, connections):
         for n in nodes:
-            self.g.addNode(n)
+            g.addNode(n)
         for c in connections:
-            self.g.connect(c[0], c[1])
+            g.connect(c[0], c[1])
 
     def testDfs(self):
         expectedNodes = ['A','B','D','E','C','F']
@@ -94,5 +97,31 @@ class TestTraversal(unittest.TestCase):
     def testDfsInter(self):
         expectedNodes = ['A','C','E','F','D','B']
         self.assertEqual(self.g.dfsIter('A'), expectedNodes)
+
+    def testBfsIter(self):
+        expectedNodes = ['A','B','C','D','E','F']
+        self.assertEqual(self.g.bfs('A'), expectedNodes)
+
+    def testBfsIter2(self):
+        g = Graph()
+        
+        #      A
+        #   /    \
+        # B        E
+        # | \     /|
+        # C  \   /  F
+        #   \ \ / /
+        #      D     
+        nodes = ['A', 'B','C','D','E','F']
+        connections=[
+            ('A','B'), ('A','E'),
+            ('B','C'),('B','D'),
+            ('E','F'), ('E','D'), 
+            ('D','C'), ('D','F')]
+
+        self.buildGraph(g, nodes, connections)
+        expectedNodes = ['A','B','C','D','E','F']
+        self.assertEqual(self.g.bfs('A'), expectedNodes)
+
 if __name__ == "__main__":
     unittest.main()

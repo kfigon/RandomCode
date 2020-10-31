@@ -1,4 +1,4 @@
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Callable
 
 # adjacencyList
 # undirected graph
@@ -88,6 +88,31 @@ class Graph:
                     stack.append(child)
 
         return visitedNodes
+
+    # same as DFS, but use queue instead of stack
+    def bfs(self, startNode: str) -> List[str]:
+        self._validateSingle(startNode)
+
+        queue: List[str] = []
+        enqueue: Callable[[str], None] = lambda node: queue.insert(0, node)
+        dequeue: Callable[[], str]= lambda: queue.pop()
+
+        result: List[str] = []
+        tracker = VisitedTracker()
+
+        enqueue(startNode)
+        while len(queue) != 0:
+            node = dequeue()
+            if tracker.wasVisited(node):
+                continue
+            
+            tracker.markVisited(node)
+            result.append(node)
+            for child in self.data[node]:
+                if not tracker.wasVisited(child):
+                    enqueue(child)
+
+        return result
 
 class VisitedTracker:
     def __init__(self):
