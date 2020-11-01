@@ -97,3 +97,19 @@ def createGraph(nodes: List[str], connections:List[Tuple[str,str,int]]):
     for c in connections:
         g.connect(c[0],c[1],c[2])
     return g
+
+if __name__ == "__main__":
+    nodes = ['A','B','C','D','E','F']
+    connections =[
+            ('A','B',4),
+            ('A','C',2), 
+            ('B','E',3), 
+            ('C','D',2), 
+            ('C','F',4), 
+            ('D','E',3), 
+            ('D','F',1),
+            ('F','E',1)
+    ]
+    g = createGraph(nodes, connections)
+    d = Dijkstra(g)
+    print(d.findPath('C','B'))
