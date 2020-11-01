@@ -89,14 +89,6 @@ class Dijkstra:
         accumulatedLen = pathDiary.getCumulatedPath(nodeTo)
         return list(reversed(connectionsEndToStart)), accumulatedLen
 
-        
-def createGraph(nodes: List[str], connections:List[Tuple[str,str,int]]):
-    g = Graph()
-    for n in nodes:
-        g.addNode(n)
-    for c in connections:
-        g.connect(c[0],c[1],c[2])
-    return g
 
 if __name__ == "__main__":
     nodes = ['A','B','C','D','E','F']
@@ -110,6 +102,6 @@ if __name__ == "__main__":
             ('D','F',1),
             ('F','E',1)
     ]
-    g = createGraph(nodes, connections)
+    g =  Graph.createGraph(nodes, connections)
     d = Dijkstra(g)
-    print(d.findPath('C','B'))
+    print(d.findPath('E','A'))

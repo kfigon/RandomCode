@@ -1,6 +1,6 @@
 import unittest
 from weightedGraph import Graph
-from dijkstra import Dijkstra, createGraph
+from dijkstra import Dijkstra
 
 class Test(unittest.TestCase):
     def setUp(self):
@@ -15,7 +15,7 @@ class Test(unittest.TestCase):
             ('D','F',1),
             ('F','E',1)
         ]
-        g = createGraph(nodes, connections)
+        g = Graph.createGraph(nodes, connections)
         self.d = Dijkstra(g)
 
     def test1(self):
