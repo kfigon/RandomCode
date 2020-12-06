@@ -65,3 +65,5 @@ assert sortedFreq([1,1,2,2,2,2,3], 3) == 1
 assert sortedFreq([1,1,2,2,2,2,3], 1) == 2
 assert sortedFreq([1,1,2,2,2,2,3], 4) == -1
 assert sortedFreq([], 4) == -1
+
+print('ok')
