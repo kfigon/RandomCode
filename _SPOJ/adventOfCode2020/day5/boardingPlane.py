@@ -1,4 +1,4 @@
-from typing import List, Tuple, Callable
+from typing import List, Tuple, Callable, Optional
 
 # input - boarding spaces in a plane
 # this airline uses binary space partitioning to seat people. 
@@ -92,6 +92,18 @@ def getCoordinates(content: str) -> Tuple[int, int]:
 def countSeatId(seatCoordinates: Tuple[int, int]) -> int:
     return seatCoordinates[0]*8 + seatCoordinates[1]
 
+def findPlaceWithSkip(listOfSeats: List[int]) -> Optional[int]:
+    listOfSeats.sort()
+
+    for i in range(len(listOfSeats)-1):
+        currentSeat = listOfSeats[i]
+        nextSeat = listOfSeats[i+1]
+
+        if (currentSeat+1) != nextSeat:
+            print(f'my seat {currentSeat+1}')
+            return currentSeat+1
+    return None
+
 assert getCoordinates('BFFFBBFRRR') == (70,7)
 assert getCoordinates('FFFBBBFRRR') == (14,7)
 assert getCoordinates('BBFFBBFRLL') == (102,4)
@@ -104,12 +116,13 @@ assert countSeatId((102,4)) == 820
 with open('inputData.txt') as f:
     lines = f.readlines()
     maxSeatId = None
+    listOfSeats: List[int] = []
     for line in lines:
         currentSeatId = countSeatId(getCoordinates(line.strip()))
         if maxSeatId is None or currentSeatId > maxSeatId:
             maxSeatId = currentSeatId
-    
-    assert maxSeatId == 850
-    print(maxSeatId)
+        
+        listOfSeats.append(currentSeatId)
 
-    # print(getCoordinates('BBFBFBFLRL'))
+    assert maxSeatId == 850
+    assert findPlaceWithSkip(listOfSeats) == 599
