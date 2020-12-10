@@ -75,34 +75,65 @@ b'''
 
 def parseData(content: str) -> List[str]:
     groups: List[str] = content.split('\n\n')
-    answers: List[str] = []
+    allAnswers: List[str] = []
 
     for group in groups:
-        lines = group.splitlines()
+        peopleAnswers = group.splitlines()
         groupAsnwer = ''
-        for line in lines:
-            for c in line:
-                groupAsnwer += c
-        answers.append(groupAsnwer)
-    return answers
+        for personAns in peopleAnswers:
+            for a in personAns:
+                groupAsnwer += a
+        allAnswers.append(groupAsnwer)
+    return allAnswers
 
 def countAnswers(answersInGroup: str) -> int:
-    d: Dict[str, int] = {}
-    for answer in answersInGroup:
-        if answer in d:
-            d[answer] += 1
-        else:
-            d[answer] = 1
-
-    return len(d)
+    return len(set(answersInGroup))
 
 def sumAnswers(answersInGroups: List[str]) -> int:
     return sum(map(countAnswers, answersInGroups))
 
+def parseDataPerPerson(content: str) -> List[List[str]]:
+    groups: List[str] = content.split('\n\n')
+    allAnswers: List[List[str]] = []
+
+    for group in groups:
+        peopleAnswers: List[str] = group.splitlines()
+        allAnswers.append(peopleAnswers)
+    return allAnswers
+
+def countAnswersPerPerson(answersPerPerson: List[str]) -> int:
+    d : Dict[str, int] = {}
+    for person in answersPerPerson:
+        for a in person:
+            if a in d:
+                d[a]+=1
+            else:
+                d[a]=1
+    allSame = 0
+    numberOfPeople = len(answersPerPerson)
+    for key in d:
+        if d[key] == numberOfPeople:
+            allSame += 1
+    return allSame
+
+def sumAnswersPerPerson(answersPerGroupPerPerson: List[List[str]]) -> int:
+    return sum(map(countAnswersPerPerson, answersPerGroupPerPerson))
+
 assert parseData(inputData) == ['abc','abc','abac','aaaa','b']
 assert sumAnswers(parseData(inputData)) == 11
 
+assert parseDataPerPerson(inputData) == [['abc'],['a','b','c'],['ab','ac'],['a','a','a','a'],['b']]
+assert countAnswersPerPerson(['abc']) == 3
+assert countAnswersPerPerson(['a','b','c']) == 0
+assert countAnswersPerPerson(['ab','ac']) == 1
+assert countAnswersPerPerson(['a','a','a','a','a']) == 1
+assert countAnswersPerPerson(['b']) == 1
+
 with open('inputData.txt') as f:
-    parsedAnswers = parseData(f.read())
+    content = f.read()
+    parsedAnswers = parseData(content)
     answerNum = sumAnswers(parsedAnswers)
     assert answerNum == 6335
+
+    answersPerPerson = parseDataPerPerson(content)
+    assert sumAnswersPerPerson(answersPerPerson) == 3392
