@@ -112,4 +112,4 @@ with open('inputData.txt') as f:
     assert maxSeatId == 850
     print(maxSeatId)
 
-    print(getCoordinates('BBFBFBFLRL'))
+    # print(getCoordinates('BBFBFBFLRL'))
