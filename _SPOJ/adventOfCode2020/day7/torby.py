@@ -71,6 +71,7 @@ def findWhereBagIsLocated(rules: Dict[str, Dict[str, int]], bagColorToFind: str)
     def traverse(rule: str):
         visited.append(rule)
         bags: Dict[str, int] = rules[rule]
+        nonlocal cnt
         if bagColorToFind in bags:
             cnt += 1
         for b in bags:
@@ -79,7 +80,7 @@ def findWhereBagIsLocated(rules: Dict[str, Dict[str, int]], bagColorToFind: str)
     
     for r in rules:
         traverse(r)
-
+    print(cnt)
     return cnt
         
 
@@ -99,7 +100,9 @@ parsedRules = list(map(parseLine, rules))
 assert parsedRules[0] == ('light red', {'bright white': 1, 'muted yellow':2})
 assert parsedRules[2] == ('bright white', {'shiny gold': 1})
 assert parsedRules[7] == ('faded blue', {})
+assert parseLine('shiny green bags contain 2 bright lavender bags, 3 shiny olive bags, 4 mirrored violet bags, 5 posh white bags.') == ('shiny green', {'bright lavender': 2, 'shiny olive': 3, 'mirrored violet':4, 'posh white':5})
 
-dic = parseData(inputData)
-res = findWhereBagIsLocated(dic, 'shiny gold')
-print(res)
+assert findWhereBagIsLocated(parseData(inputData), 'shiny gold') == 4
+
+with open('inputData.txt') as f:
+    assert findWhereBagIsLocated(parseData(f.read()), 'shiny gold') != 8 # 8 is not correct!
