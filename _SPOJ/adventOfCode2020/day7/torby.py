@@ -66,14 +66,16 @@ def parseData(content: str) -> Dict[str, Dict[str, int]]:
 
 def findWhereBagIsLocated(rules: Dict[str, Dict[str, int]], bagColorToFind: str) -> int:
     cnt: int = 0
-    visited: List[str] = []
+    visited: Dict[str, bool] = {}
 
     def traverse(rule: str):
-        visited.append(rule)
+        visited[rule] = True
         bags: Dict[str, int] = rules[rule]
         nonlocal cnt
+        
         if bagColorToFind in bags:
             cnt += 1
+
         for b in bags:
             if b not in visited:
                 traverse(b)
