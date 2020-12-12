@@ -1,4 +1,4 @@
-from typing import List, Tuple, Set
+from typing import List, Tuple, Set, Callable
 
 # Kids handheld game console won't turn on! They ask if you can take a look.
 
@@ -110,25 +110,33 @@ acc +1
 jmp -4
 acc +6'''
 
-def parseLine(line: str) -> Tuple[str, int]:
-    results = line.split(' ')
-    return results[0], int(results[1])
+class Instruction:
+    def __init__(self, instr: str, val: int):
+        self.instruction = instr
+        self.val = val
+    def __str__(self) -> str:
+        return f'{self.instruction} {self.val}'
+    def __repr__(self) -> str:
+        return str(self)
 
-def parseInstructions(content: str) -> List[Tuple[str, int]]:
+def parseLine(line: str) -> Instruction:
+    results = line.split(' ')
+    return Instruction(results[0], int(results[1]))
+
+def parseInstructions(content: str) -> List[Instruction]:
     lines = content.splitlines()
     return list(map(parseLine, lines))
 
-def processSingleInstruction(instruction: Tuple[str, int]) -> Tuple[int, int]:
-    if instruction[0] == 'nop':
+def processSingleInstruction(instruction: Instruction) -> Tuple[int, int]:
+    if instruction.instruction == 'nop':
         return 1, 0
-    elif instruction[0] == 'acc':
-        return 1, instruction[1]
-    elif instruction[0] =='jmp':
-        return instruction[1], 0
+    elif instruction.instruction == 'acc':
+        return 1, instruction.val
+    elif instruction.instruction =='jmp':
+        return instruction.val, 0
     raise Exception(f'UNKNOWN INSTRUCTION {instruction}')
     
-
-def processInstructions(instructions: List[Tuple[str, int]]) -> Tuple[int, bool]:
+def processInstructions(instructions: List[Instruction]) -> Tuple[int, bool]:
     accumulator = 0
     alreadyExecutedCommand: Set[int] = set()
     i = 0
@@ -146,8 +154,52 @@ def processInstructions(instructions: List[Tuple[str, int]]) -> Tuple[int, bool]
     print(f'accumulator: {accumulator}')
     return accumulator, True
 
+class StateToRollback:
+    def __init__(self, currentIdx: int, accumulatorState: int, alreadyExecuted: Set[int]):
+        self.idx = currentIdx
+        self.acc = accumulatorState
+        self.executed = alreadyExecuted.copy()
+
+    def rollback(self) -> Tuple[int, int, Set[int]]:
+        return self.idx, self.acc, self.executed.copy()
+
+def runWithFixAttempt(instructions: List[Instruction]) -> int:
+    flip: Callable[[str], str] = lambda instr: 'nop' if instr == 'jmp' else 'jmp'
+    alreadyTriedChanges: Set[int] = set()
+
+    accumulator = 0
+    alreadyExecutedCommand: Set[int] = set()
+    i = 0
+    stateForRollback = None
+
+    while (i < len(instructions)):
+        if (i in alreadyExecutedCommand):
+            print(f'found infinite loop, rollback from {i}, state before: acc: {accumulator}, i: {i}', end='')
+            assert stateForRollback, 'state should be saved!'
+            i, accumulator, alreadyExecutedCommand = stateForRollback.rollback()
+            print(f'state after: acc: {accumulator}, i: {i}')
+            instructions[i].instruction = flip(instructions[i].instruction)
+            stateForRollback = None
+            continue
+
+        if stateForRollback is None and (instructions[i].instruction == 'nop' or instructions[i].instruction == 'jmp') and (i not in alreadyTriedChanges):
+            print(f'found fix candidate {i}, saving state')
+            instructions[i].instruction = flip(instructions[i].instruction)
+            alreadyTriedChanges.add(i)
+            stateForRollback = StateToRollback(i, accumulator, alreadyExecutedCommand)
+
+        alreadyExecutedCommand.add(i)
+        result = processSingleInstruction(instructions[i])
+        i += result[0]
+        accumulator += result[1]
+
+    print(f'read accumulator: {accumulator}')
+    return accumulator
+
 assert processInstructions(parseInstructions(inputData)) == (5, False)
+assert runWithFixAttempt(parseInstructions(inputData)) == 8
 
 with open('inputData.txt') as f:
-    assert processInstructions(parseInstructions(f.read())) == (1709, False)
-    
+    instructions = parseInstructions(f.read())
+    assert processInstructions(instructions) == (1709, False)
+    assert runWithFixAttempt(instructions) == 1976
