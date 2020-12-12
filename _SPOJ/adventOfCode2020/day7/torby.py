@@ -1,4 +1,4 @@
-from typing import List, Tuple, Dict, Optional
+from typing import List, Tuple, Dict, Set
 import re
 
 
@@ -66,22 +66,24 @@ def parseData(content: str) -> Dict[str, Dict[str, int]]:
 
 def findWhereBagIsLocated(rules: Dict[str, Dict[str, int]], bagColorToFind: str) -> int:
     cnt: int = 0
-    visited: Dict[str, bool] = {}
 
-    def traverse(rule: str):
-        visited[rule] = True
-        bags: Dict[str, int] = rules[rule]
-        nonlocal cnt
+    visited: Set[str] = set()
+
+    def traverse(node: str, toFind: str):
+        bags = rules[node]
+        if toFind not in bags or node in visited or len(bags) == 0:
+            return
         
-        if bagColorToFind in bags:
-            cnt += 1
+        visited.add(node)
+        nonlocal cnt
+        cnt += 1
 
-        for b in bags:
-            if b not in visited:
-                traverse(b)
-    
+        for r in rules:
+            traverse(r, node)
+
     for r in rules:
-        traverse(r)
+        traverse(r, bagColorToFind)
+
     print(cnt)
     return cnt
         
@@ -105,6 +107,7 @@ assert parsedRules[7] == ('faded blue', {})
 assert parseLine('shiny green bags contain 2 bright lavender bags, 3 shiny olive bags, 4 mirrored violet bags, 5 posh white bags.') == ('shiny green', {'bright lavender': 2, 'shiny olive': 3, 'mirrored violet':4, 'posh white':5})
 
 assert findWhereBagIsLocated(parseData(inputData), 'shiny gold') == 4
+assert findWhereBagIsLocated(parseData(inputData), 'light red') == 0
 
 with open('inputData.txt') as f:
-    assert findWhereBagIsLocated(parseData(f.read()), 'shiny gold') != 8 # 8 is not correct!
+    assert findWhereBagIsLocated(parseData(f.read()), 'shiny gold') == 124
