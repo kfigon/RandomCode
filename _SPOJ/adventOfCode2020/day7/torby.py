@@ -38,6 +38,36 @@ import re
 # How many bag colors can eventually contain at least one shiny gold bag? 
 # (The list of rules is quite long; make sure you get all of it.)
 
+# =============================--- Part Two ---====================================
+# It's getting pretty expensive to fly these days - not because of ticket prices, but because of the ridiculous number of bags you need to buy!
+
+# Consider again your shiny gold bag and the rules from the above example:
+
+# faded blue bags contain 0 other bags.
+# dotted black bags contain 0 other bags.
+# vibrant plum bags contain 11 other bags: 5 faded blue bags and 6 dotted black bags.
+# dark olive bags contain 7 other bags: 3 faded blue bags and 4 dotted black bags.
+
+# So, a single shiny gold bag must contain 1 dark olive bag (and the 7 bags within it) 
+# plus 2 vibrant plum bags (and the 11 bags within each of those): 1 + 1*7 + 2 + 2*11 = 32 bags!
+
+# Of course, the actual rules have a small chance of going several levels deeper than this example; 
+# be sure to count all of the bags, even if the nesting becomes topologically impractical!
+
+# Here's another example:
+
+# shiny gold bags contain 2 dark red bags.
+# dark red bags contain 2 dark orange bags.
+# dark orange bags contain 2 dark yellow bags.
+# dark yellow bags contain 2 dark green bags.
+# dark green bags contain 2 dark blue bags.
+# dark blue bags contain 2 dark violet bags.
+# dark violet bags contain no other bags.
+
+# In this example, a single shiny gold bag must contain 126 other bags.
+
+# How many individual bags are required inside your single shiny gold bag?
+
 def parseLine(line: str) -> Tuple[str, Dict[str, int]]:
     rules = line.split('contain')
     bagRule = rules[0].replace('bags','').strip()
@@ -66,7 +96,6 @@ def parseData(content: str) -> Dict[str, Dict[str, int]]:
 
 def findWhereBagIsLocated(rules: Dict[str, Dict[str, int]], bagColorToFind: str) -> int:
     cnt: int = 0
-
     visited: Set[str] = set()
 
     def traverse(node: str, toFind: str):
@@ -77,7 +106,6 @@ def findWhereBagIsLocated(rules: Dict[str, Dict[str, int]], bagColorToFind: str)
         visited.add(node)
         nonlocal cnt
         cnt += 1
-
         for r in rules:
             traverse(r, node)
 
@@ -86,7 +114,26 @@ def findWhereBagIsLocated(rules: Dict[str, Dict[str, int]], bagColorToFind: str)
 
     print(cnt)
     return cnt
+
+
+def findHowManyBagsInside(rules: Dict[str, Dict[str, int]], bagToAnalyze: str) -> int:
+    visited: Set[str] = set()
+    def traverse(node: str) -> int:
+        childrenNodes = rules[node]
+        if len(childrenNodes) == 0:
+            return
         
+        visited.add(node)
+        c = 0
+        for r in childrenNodes:
+            if r not in visited:
+                c += childrenNodes[r]*traverse(r)
+        return c
+
+    cnt = traverse(bagToAnalyze)
+
+    print(cnt)
+    return cnt
 
 inputData = '''light red bags contain 1 bright white bag, 2 muted yellow bags.
 dark orange bags contain 3 bright white bags, 4 muted yellow bags.
@@ -98,6 +145,14 @@ vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.
 faded blue bags contain no other bags.
 dotted black bags contain no other bags.'''
 
+inputData2='''shiny gold bags contain 2 dark red bags.
+dark red bags contain 2 dark orange bags.
+dark orange bags contain 2 dark yellow bags.
+dark yellow bags contain 2 dark green bags.
+dark green bags contain 2 dark blue bags.
+dark blue bags contain 2 dark violet bags.
+dark violet bags contain no other bags.'''
+
 rules = inputData.splitlines()
 parsedRules = list(map(parseLine, rules))
 
@@ -106,8 +161,15 @@ assert parsedRules[2] == ('bright white', {'shiny gold': 1})
 assert parsedRules[7] == ('faded blue', {})
 assert parseLine('shiny green bags contain 2 bright lavender bags, 3 shiny olive bags, 4 mirrored violet bags, 5 posh white bags.') == ('shiny green', {'bright lavender': 2, 'shiny olive': 3, 'mirrored violet':4, 'posh white':5})
 
+d = parseData(inputData)
+for k in d:
+    print(f'{k} -> {d[k]}')
+
 assert findWhereBagIsLocated(parseData(inputData), 'shiny gold') == 4
 assert findWhereBagIsLocated(parseData(inputData), 'light red') == 0
+
+# assert findHowManyBagsInside(parseData(inputData), 'shiny gold') == 32
+# assert findHowManyBagsInside(parseData(inputData2), 'shiny gold') == 126
 
 with open('inputData.txt') as f:
     assert findWhereBagIsLocated(parseData(f.read()), 'shiny gold') == 124
