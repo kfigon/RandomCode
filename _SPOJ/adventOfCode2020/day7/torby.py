@@ -80,9 +80,9 @@ def parseLine(line: str) -> Tuple[str, Dict[str, int]]:
         cleanedString = bag.replace('bags', '').replace('bag','').replace('.','').strip()
         result = re.findall(r'(\d+) (\w+ \w+)', cleanedString)
 
-        if result:
-            assert len(result) == 1
-            d[result[0][1]] = int(result[0][0])
+        assert result is not None
+        assert len(result) == 1
+        d[result[0][1]] = int(result[0][0])
     
     return bagRule, d
 
@@ -91,6 +91,8 @@ def parseData(content: str) -> Dict[str, Dict[str, int]]:
     rules = content.splitlines()
     for rule in rules:
         parsed = parseLine(rule)
+        assert parsed[0] not in d
+
         d[parsed[0]] = parsed[1]
     return d
 
@@ -117,17 +119,14 @@ def findWhereBagIsLocated(rules: Dict[str, Dict[str, int]], bagColorToFind: str)
 
 
 def findHowManyBagsInside(rules: Dict[str, Dict[str, int]], bagToAnalyze: str) -> int:
-    visited: Set[str] = set()
     def traverse(node: str) -> int:
         childrenNodes = rules[node]
         if len(childrenNodes) == 0:
             return 0
         
-        visited.add(node)
         c = 0
         for r in childrenNodes:
-            if r not in visited:
-                c += childrenNodes[r] + childrenNodes[r]*traverse(r)
+            c += childrenNodes[r] + childrenNodes[r]*traverse(r)
         return c
 
     cnt = traverse(bagToAnalyze)
@@ -173,5 +172,6 @@ assert findHowManyBagsInside(parseData(inputData2), 'shiny gold') == 126
 
 with open('inputData.txt') as f:
     fileRules = parseData(f.read())
+    assert len(fileRules) == 594
     assert findWhereBagIsLocated(fileRules, 'shiny gold') == 124
-    assert findHowManyBagsInside(fileRules, 'shiny gold') != 13128
+    assert findHowManyBagsInside(fileRules, 'shiny gold') == 34862
