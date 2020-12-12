@@ -53,6 +53,53 @@ from typing import List, Tuple, Set
 
 # Run your copy of the boot code. Immediately before any instruction is executed a second time, what value is in the accumulator?
 
+# ========================================================================================
+# p2
+# --- Part Two ---
+# After some careful analysis, you believe that exactly one instruction is corrupted.
+
+# Somewhere in the program, either a jmp is supposed to be a nop, or a nop is supposed to be a jmp. 
+# (No acc instructions were harmed in the corruption of this boot code.)
+
+# The program is supposed to terminate by attempting to execute an instruction immediately after
+# the last instruction in the file. By changing exactly one jmp or nop, you can repair the boot code and make it terminate correctly.
+
+# For example, consider the same program from above:
+
+# nop +0
+# acc +1
+# jmp +4
+# acc +3
+# jmp -3
+# acc -99
+# acc +1
+# jmp -4
+# acc +6
+# If you change the first instruction from nop +0 to jmp +0, it would create a 
+# single-instruction infinite loop, never leaving that instruction. If you change almost any of the jmp instructions, 
+# the program will still eventually find another jmp instruction and loop forever.
+
+# However, if you change the second-to-last instruction (from jmp -4 to nop -4), 
+# the program terminates! The instructions are visited in this order:
+
+# nop +0  | 1
+# acc +1  | 2
+# jmp +4  | 3
+# acc +3  |
+# jmp -3  |
+# acc -99 |
+# acc +1  | 4
+# nop -4  | 5
+# acc +6  | 6
+
+# After the last instruction (acc +6), the program terminates by attempting to run the instruction 
+# below the last instruction in the file. With this change, after the program
+# terminates, the accumulator contains the value 8 (acc +1, acc +1, acc +6).
+
+# Fix the program so that it terminates normally by changing exactly one jmp (to nop) 
+# or nop (to jmp). What is the value of the accumulator after the program terminates?
+
+
 inputData = '''nop +0
 acc +1
 jmp +4
@@ -71,28 +118,36 @@ def parseInstructions(content: str) -> List[Tuple[str, int]]:
     lines = content.splitlines()
     return list(map(parseLine, lines))
 
-def processInstructions(instructions: List[Tuple[str, int]]) -> int:
+def processSingleInstruction(instruction: Tuple[str, int]) -> Tuple[int, int]:
+    if instruction[0] == 'nop':
+        return 1, 0
+    elif instruction[0] == 'acc':
+        return 1, instruction[1]
+    elif instruction[0] =='jmp':
+        return instruction[1], 0
+    raise Exception(f'UNKNOWN INSTRUCTION {instruction}')
+    
+
+def processInstructions(instructions: List[Tuple[str, int]]) -> Tuple[int, bool]:
     accumulator = 0
     alreadyExecutedCommand: Set[int] = set()
     i = 0
-    while (i < len(instructions)) and (i not in alreadyExecutedCommand):
+    while (i < len(instructions)):
+        if (i  in alreadyExecutedCommand):
+            print(f'found infinite loop, acc: {accumulator}')
+            return accumulator, False
+
         alreadyExecutedCommand.add(i)
         instruction = instructions[i]
-        if instruction[0] == 'nop':
-            i += 1
-        elif instruction[0] == 'acc':
-            accumulator += instruction[1]
-            i += 1
-        elif instruction[0] =='jmp':
-            i += instruction[1]
-        else:
-            print(f'UNKNOWN INSTRUCTION {instruction}')
+        result = processSingleInstruction(instruction)
+        i += result[0]
+        accumulator += result[1]
 
     print(f'accumulator: {accumulator}')
-    return accumulator
+    return accumulator, True
 
-assert processInstructions(parseInstructions(inputData)) == 5
+assert processInstructions(parseInstructions(inputData)) == (5, False)
 
 with open('inputData.txt') as f:
-    assert processInstructions(parseInstructions(f.read())) == 1709
+    assert processInstructions(parseInstructions(f.read())) == (1709, False)
     
