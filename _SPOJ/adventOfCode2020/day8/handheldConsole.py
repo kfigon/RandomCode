@@ -135,24 +135,25 @@ def processSingleInstruction(instruction: Instruction) -> Tuple[int, int]:
     elif instruction.instruction =='jmp':
         return instruction.val, 0
     raise Exception(f'UNKNOWN INSTRUCTION {instruction}')
-    
-def processInstructions(instructions: List[Instruction]) -> Tuple[int, bool]:
-    accumulator = 0
-    alreadyExecutedCommand: Set[int] = set()
-    i = 0
-    while (i < len(instructions)):
-        if (i  in alreadyExecutedCommand):
-            print(f'found infinite loop, acc: {accumulator}')
-            return accumulator, False
 
-        alreadyExecutedCommand.add(i)
-        instruction = instructions[i]
-        result = processSingleInstruction(instruction)
-        i += result[0]
-        accumulator += result[1]
+# old solution, agregated now in one fun 
+# def processInstructions(instructions: List[Instruction]) -> Tuple[int, bool]:
+#     accumulator = 0
+#     alreadyExecutedCommand: Set[int] = set()
+#     i = 0
+#     while (i < len(instructions)):
+#         if (i  in alreadyExecutedCommand):
+#             print(f'found infinite loop, acc: {accumulator}')
+#             return accumulator, False
 
-    print(f'accumulator: {accumulator}')
-    return accumulator, True
+#         alreadyExecutedCommand.add(i)
+#         instruction = instructions[i]
+#         result = processSingleInstruction(instruction)
+#         i += result[0]
+#         accumulator += result[1]
+
+#     print(f'accumulator: {accumulator}')
+#     return accumulator, True
 
 class StateToRollback:
     def __init__(self, currentIdx: int, accumulatorState: int, alreadyExecuted: Set[int]):
@@ -163,30 +164,37 @@ class StateToRollback:
     def rollback(self) -> Tuple[int, int, Set[int]]:
         return self.idx, self.acc, self.executed.copy()
 
-def runWithFixAttempt(instructions: List[Instruction]) -> int:
-    flip: Callable[[str], str] = lambda instr: 'nop' if instr == 'jmp' else 'jmp'
+    def flip(self, instr: str) -> str:
+        return 'nop' if instr == 'jmp' else 'jmp'
+
+def runWithFixAttempt(instructions: List[Instruction], tryToRecover: bool = False) -> int:
     alreadyTriedChanges: Set[int] = set()
 
     accumulator = 0
     alreadyExecutedCommand: Set[int] = set()
     i = 0
     stateForRollback = None
+    
+    isValidForRecoveryAttempt = lambda instructions, rollback, i, alreadyTried: tryToRecover and rollback is None and (instructions[i].instruction == 'nop' or instructions[i].instruction == 'jmp') and (i not in alreadyTried)
+    
+    while i < len(instructions):
+        if i in alreadyExecutedCommand:
+            if not tryToRecover:
+                return accumulator
 
-    while (i < len(instructions)):
-        if (i in alreadyExecutedCommand):
             print(f'found infinite loop, rollback from {i}, state before: acc: {accumulator}, i: {i}', end='')
             assert stateForRollback, 'state should be saved!'
             i, accumulator, alreadyExecutedCommand = stateForRollback.rollback()
             print(f'state after: acc: {accumulator}, i: {i}')
-            instructions[i].instruction = flip(instructions[i].instruction)
+            instructions[i].instruction = stateForRollback.flip(instructions[i].instruction)
             stateForRollback = None
             continue
 
-        if stateForRollback is None and (instructions[i].instruction == 'nop' or instructions[i].instruction == 'jmp') and (i not in alreadyTriedChanges):
+        if isValidForRecoveryAttempt(instructions, stateForRollback, i, alreadyTriedChanges):
             print(f'found fix candidate {i}, saving state')
-            instructions[i].instruction = flip(instructions[i].instruction)
             alreadyTriedChanges.add(i)
             stateForRollback = StateToRollback(i, accumulator, alreadyExecutedCommand)
+            instructions[i].instruction = stateForRollback.flip(instructions[i].instruction)
 
         alreadyExecutedCommand.add(i)
         result = processSingleInstruction(instructions[i])
@@ -196,10 +204,10 @@ def runWithFixAttempt(instructions: List[Instruction]) -> int:
     print(f'read accumulator: {accumulator}')
     return accumulator
 
-assert processInstructions(parseInstructions(inputData)) == (5, False)
-assert runWithFixAttempt(parseInstructions(inputData)) == 8
+assert runWithFixAttempt(parseInstructions(inputData)) == 5
+assert runWithFixAttempt(parseInstructions(inputData), True) == 8
 
 with open('inputData.txt') as f:
     instructions = parseInstructions(f.read())
-    assert processInstructions(instructions) == (1709, False)
-    assert runWithFixAttempt(instructions) == 1976
+    assert runWithFixAttempt(instructions, False) == 1709
+    assert runWithFixAttempt(instructions, True) == 1976
