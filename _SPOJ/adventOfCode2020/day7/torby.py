@@ -112,7 +112,7 @@ def findWhereBagIsLocated(rules: Dict[str, Dict[str, int]], bagColorToFind: str)
     for r in rules:
         traverse(r, bagColorToFind)
 
-    print(cnt)
+    print(f'{bagColorToFind} can be reached through {cnt} bags')
     return cnt
 
 
@@ -121,18 +121,18 @@ def findHowManyBagsInside(rules: Dict[str, Dict[str, int]], bagToAnalyze: str) -
     def traverse(node: str) -> int:
         childrenNodes = rules[node]
         if len(childrenNodes) == 0:
-            return
+            return 0
         
         visited.add(node)
         c = 0
         for r in childrenNodes:
             if r not in visited:
-                c += childrenNodes[r]*traverse(r)
+                c += childrenNodes[r] + childrenNodes[r]*traverse(r)
         return c
 
     cnt = traverse(bagToAnalyze)
 
-    print(cnt)
+    print(f'you need {cnt} bags in single {bagToAnalyze}')
     return cnt
 
 inputData = '''light red bags contain 1 bright white bag, 2 muted yellow bags.
@@ -161,15 +161,17 @@ assert parsedRules[2] == ('bright white', {'shiny gold': 1})
 assert parsedRules[7] == ('faded blue', {})
 assert parseLine('shiny green bags contain 2 bright lavender bags, 3 shiny olive bags, 4 mirrored violet bags, 5 posh white bags.') == ('shiny green', {'bright lavender': 2, 'shiny olive': 3, 'mirrored violet':4, 'posh white':5})
 
-d = parseData(inputData)
-for k in d:
-    print(f'{k} -> {d[k]}')
+# d = parseData(inputData)
+# for k in d:
+#     print(f'{k} -> {d[k]}')
 
 assert findWhereBagIsLocated(parseData(inputData), 'shiny gold') == 4
 assert findWhereBagIsLocated(parseData(inputData), 'light red') == 0
 
-# assert findHowManyBagsInside(parseData(inputData), 'shiny gold') == 32
-# assert findHowManyBagsInside(parseData(inputData2), 'shiny gold') == 126
+assert findHowManyBagsInside(parseData(inputData), 'shiny gold') == 32
+assert findHowManyBagsInside(parseData(inputData2), 'shiny gold') == 126
 
 with open('inputData.txt') as f:
-    assert findWhereBagIsLocated(parseData(f.read()), 'shiny gold') == 124
+    fileRules = parseData(f.read())
+    assert findWhereBagIsLocated(fileRules, 'shiny gold') == 124
+    assert findHowManyBagsInside(fileRules, 'shiny gold') != 13128
