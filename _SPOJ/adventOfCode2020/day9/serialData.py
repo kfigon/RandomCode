@@ -120,7 +120,8 @@ def parseData(content: str) -> List[int]:
 
 def isInvalid(movingSet: Set[int], elToCheck: int) -> bool:
     for i in movingSet:
-        if (elToCheck-i) in movingSet:
+        numberToFind = elToCheck-i
+        if numberToFind != i and numberToFind in movingSet:
             return False
     return True
 
