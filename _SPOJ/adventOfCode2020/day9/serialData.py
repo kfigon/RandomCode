@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List, Optional, Set
 
 # you got data in serial
 # The data appears to be encrypted with the eXchange-Masking Addition System 
@@ -54,6 +54,46 @@ from typing import List, Optional
 # 
 # What is the first number that does not have this property?
 
+# =========================================================================================
+# p2
+
+# The final step in breaking the XMAS encryption relies on the invalid number 
+# you just found: you must find a contiguous set of at least two 
+# numbers in your list which sum to the invalid number from step 1.
+
+# Again consider the above example:
+
+# 35
+# 20
+# 15
+# 25
+# 47
+# 40
+# 62
+# 55
+# 65
+# 95
+# 102
+# 117
+# 150
+# 182
+# 127
+# 219
+# 299
+# 277
+# 309
+# 576
+
+# In this list, adding up all of the numbers from 15 through 40 
+# produces the invalid number from step 1, 127. (Of course, the 
+# contiguous set of numbers in your actual list might be much longer.)
+
+# To find the encryption weakness, add together the smallest and 
+# largest number in this contiguous range; in this example, these are 15 and 47, producing 62.
+
+# What is the encryption weakness in your XMAS-encrypted list of numbers?
+
+
 inputData='''35
 20
 15
@@ -78,8 +118,37 @@ inputData='''35
 def parseData(content: str) -> List[int]:
     return list(map(lambda x: int(x), content.splitlines()))
 
-def isValid(data: List[int], preambleLen: int = 25) -> Optional[int]:
+def isInvalid(movingSet: Set[int], elToCheck: int) -> bool:
+    for i in movingSet:
+        if (elToCheck-i) in movingSet:
+            return False
+    return True
+
+def findInvalidNumber(data: List[int], preambleLen: int = 25) -> Optional[int]:
+    movingSet: Set[int] = set(data[:preambleLen])
+    
+    for i in range(preambleLen, len(data)):
+        assert len(movingSet) == preambleLen
+        
+        el = data[i]
+        if isInvalid(movingSet, el):
+            print(f'found invalid {el}')
+            return el
+
+        movingSet.add(el)
+        movingSet.remove(data[i-preambleLen])
+    print('not found')
     return None
 
+
 parsedInput = parseData(inputData)
-assert isValid(parsedInput,5) == 127
+assert len(parsedInput) == 20
+assert findInvalidNumber(parsedInput,5) == 127
+
+anotherInp = [i for i in range(1,26)]
+anotherInp.append(50)
+assert findInvalidNumber(anotherInp,25) == 50
+
+with open('inputData.txt') as f:
+    parsedFileData = parseData(f.read())
+    assert findInvalidNumber(parsedFileData) == 144381670
