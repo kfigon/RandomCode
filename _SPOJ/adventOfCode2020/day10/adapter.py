@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 
 # your battery is dead.
 # You'll need to plug it in. There's only one problem: the charging outlet near
@@ -93,3 +93,80 @@ from typing import List
 # the adapters, and your device. 
 # 
 # What is the number of 1-jolt differences multiplied by the number of 3-jolt differences?
+
+
+inputData1='''16
+10
+15
+5
+1
+11
+7
+19
+6
+12
+4'''
+
+inputData2='''28
+33
+18
+42
+31
+14
+46
+20
+48
+47
+24
+23
+49
+45
+19
+38
+39
+11
+1
+32
+25
+35
+8
+17
+7
+9
+4
+2
+34
+10
+3'''
+
+def parseData(content: str) -> List[int]:
+    return list(map(lambda x: int(x), content.splitlines()))
+
+def findDifferences(adapters: List[int]) -> Tuple[int, int]:
+    adapters.sort()
+    
+    oneDiff = 0
+    threeDiff = 0
+    el = 0
+    nextEl = None
+    for i in adapters:
+        nextEl = i
+        dif = nextEl - el
+        print(f'connect {el}-{nextEl}, diff{dif}')
+        if dif == 1:
+            oneDiff+=1
+        elif dif == 3:
+            threeDiff += 1
+        el = i
+
+    # ending adapter always has 3 higher than last
+    threeDiff += 1
+
+    print(f'{oneDiff}, {threeDiff} -> {oneDiff*threeDiff}')
+    return (oneDiff, threeDiff)
+
+assert findDifferences(parseData(inputData1)) == (7,5)
+assert findDifferences(parseData(inputData2)) == (22,10)
+
+with open('inputData.txt') as f:
+    assert findDifferences(parseData(f.read())) == (69, 24)
