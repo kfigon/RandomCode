@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import List, Tuple, Set
 
 # your battery is dead.
 # You'll need to plug it in. There's only one problem: the charging outlet near
@@ -94,6 +94,49 @@ from typing import List, Tuple
 # 
 # What is the number of 1-jolt differences multiplied by the number of 3-jolt differences?
 
+# =============================================================
+# p2
+# To completely determine whether you have enough adapters, you'll need to figure 
+# out how many different ways they can be arranged. Every arrangement needs to connect 
+# the charging outlet to your device. The previous rules about when adapters can successfully connect still apply.
+
+# The first example above (the one that starts with 16, 10, 15) supports the following arrangements:
+
+# (0), 1, 4, 5, 6, 7, 10, 11, 12, 15, 16, 19, (22)
+# (0), 1, 4, 5, 6, 7, 10, 12, 15, 16, 19, (22)
+# (0), 1, 4, 5, 7, 10, 11, 12, 15, 16, 19, (22)
+# (0), 1, 4, 5, 7, 10, 12, 15, 16, 19, (22)
+# (0), 1, 4, 6, 7, 10, 11, 12, 15, 16, 19, (22)
+# (0), 1, 4, 6, 7, 10, 12, 15, 16, 19, (22)
+# (0), 1, 4, 7, 10, 11, 12, 15, 16, 19, (22)
+# (0), 1, 4, 7, 10, 12, 15, 16, 19, (22)
+
+# (The charging outlet and your device's built-in adapter are shown in parentheses.) 
+# Given the adapters from the first example, the total number of arrangements that 
+# connect the charging outlet to your device is 8.
+
+# The second example above (the one that starts with 28, 33, 18) has many arrangements. Here are a few:
+
+# (0), 1, 2, 3, 4, 7, 8, 9, 10, 11, 14, 17, 18, 19, 20, 23, 24, 25, 28, 31,32, 33, 34, 35, 38, 39, 42, 45, 46, 47, 48, 49, (52)
+# (0), 1, 2, 3, 4, 7, 8, 9, 10, 11, 14, 17, 18, 19, 20, 23, 24, 25, 28, 31,32, 33, 34, 35, 38, 39, 42, 45, 46, 47, 49, (52)
+# (0), 1, 2, 3, 4, 7, 8, 9, 10, 11, 14, 17, 18, 19, 20, 23, 24, 25, 28, 31,32, 33, 34, 35, 38, 39, 42, 45, 46, 48, 49, (52)
+# (0), 1, 2, 3, 4, 7, 8, 9, 10, 11, 14, 17, 18, 19, 20, 23, 24, 25, 28, 31,32, 33, 34, 35, 38, 39, 42, 45, 46, 49, (52)
+# (0), 1, 2, 3, 4, 7, 8, 9, 10, 11, 14, 17, 18, 19, 20, 23, 24, 25, 28, 31,32, 33, 34, 35, 38, 39, 42, 45, 47, 48, 49, (52)
+# (0), 3, 4, 7, 10, 11, 14, 17, 20, 23, 25, 28, 31, 34, 35, 38, 39, 42, 45,46, 48, 49, (52)
+# (0), 3, 4, 7, 10, 11, 14, 17, 20, 23, 25, 28, 31, 34, 35, 38, 39, 42, 45,46, 49, (52)
+# (0), 3, 4, 7, 10, 11, 14, 17, 20, 23, 25, 28, 31, 34, 35, 38, 39, 42, 45,47, 48, 49, (52)
+# (0), 3, 4, 7, 10, 11, 14, 17, 20, 23, 25, 28, 31, 34, 35, 38, 39, 42, 45,47, 49, (52)
+# (0), 3, 4, 7, 10, 11, 14, 17, 20, 23, 25, 28, 31, 34, 35, 38, 39, 42, 45,48, 49, (52)
+
+# In total, this set of adapters can connect the charging outlet 
+# to your device in 19208 distinct arrangements.
+
+# You glance back down at your bag and try to remember why you brought so many adapters; 
+# there must be more than a trillion valid ways to arrange them! 
+# Surely, there must be an efficient way to count the arrangements.
+
+# What is the total number of distinct ways you can arrange 
+# the adapters to connect the charging outlet to your device?
 
 inputData1='''16
 10
@@ -152,7 +195,7 @@ def findDifferences(adapters: List[int]) -> Tuple[int, int]:
     for i in adapters:
         nextEl = i
         dif = nextEl - el
-        print(f'connect {el}-{nextEl}, diff{dif}')
+        # print(f'connect {el}-{nextEl}, diff{dif}')
         if dif == 1:
             oneDiff+=1
         elif dif == 3:
@@ -162,11 +205,36 @@ def findDifferences(adapters: List[int]) -> Tuple[int, int]:
     # ending adapter always has 3 higher than last
     threeDiff += 1
 
-    print(f'{oneDiff}, {threeDiff} -> {oneDiff*threeDiff}')
+    # print(f'{oneDiff}, {threeDiff} -> {oneDiff*threeDiff}')
     return (oneDiff, threeDiff)
+
+def isNextSkippable(adapters: List[int], i: int) -> bool:
+    if (i+2) >=len(adapters):
+        return False
+    dif = adapters[i+1] - adapters[i]
+    dif2 = adapters[i+2] - adapters[i]
+    return dif == 1 and dif2 < 3
+
+def findNumberOfAllowedArrangements(adapters: List[int]) -> int:
+    adapters.sort()
+    numberOfSolutions = 1
+    possibleSkips = 0
+    for i in range(len(adapters)):
+        if isNextSkippable(adapters, i):
+            # print(f'skippable {adapters[i+1]}')
+            numberOfSolutions *= 2
+            possibleSkips += 1
+    print(f'number of solutions {numberOfSolutions}, skips: {possibleSkips}')
+    return numberOfSolutions
 
 assert findDifferences(parseData(inputData1)) == (7,5)
 assert findDifferences(parseData(inputData2)) == (22,10)
 
+assert findNumberOfAllowedArrangements(parseData(inputData1)) == 8
+assert findNumberOfAllowedArrangements(parseData(inputData2)) == 19208
+
+
 with open('inputData.txt') as f:
-    assert findDifferences(parseData(f.read())) == (69, 24)
+    adapters = parseData(f.read())
+    assert findDifferences(adapters) == (69, 24)
+    assert findNumberOfAllowedArrangements(adapters) != 140737488355328
