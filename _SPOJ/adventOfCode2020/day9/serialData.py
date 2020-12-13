@@ -170,7 +170,6 @@ anotherInp = [i for i in range(1,26)]
 anotherInp.append(50)
 assert findInvalidNumber(anotherInp,25) == 50
 
-
 with open('inputData.txt') as f:
     parsedFileData = parseData(f.read())
     assert findInvalidNumber(parsedFileData) == 144381670
