@@ -141,15 +141,37 @@ def findInvalidNumber(data: List[int], preambleLen: int = 25) -> Optional[int]:
     print('not found')
     return None
 
+def findEncryptionWeakness(data: List[int], invalidNumber: int) -> Optional[int]:
+    lower = 0
+    upper = 1
+    pendingSum = data[lower] + data[upper]
+    while lower < upper and upper < len(data):
+        if pendingSum == invalidNumber:
+            window = data[lower:upper+1]
+            result = min(window) + max(window)
+            print(f'encryption weakness {result}')
+            return result
 
+        elif pendingSum < invalidNumber:
+            upper += 1
+            pendingSum += data[upper]
+        else:
+            pendingSum -= data[lower]
+            lower += 1
+    print(f'encryption weakness not found!')
+    return None
+            
 parsedInput = parseData(inputData)
 assert len(parsedInput) == 20
 assert findInvalidNumber(parsedInput,5) == 127
+assert findEncryptionWeakness(parsedInput, 127) == 62
 
 anotherInp = [i for i in range(1,26)]
 anotherInp.append(50)
 assert findInvalidNumber(anotherInp,25) == 50
 
+
 with open('inputData.txt') as f:
     parsedFileData = parseData(f.read())
     assert findInvalidNumber(parsedFileData) == 144381670
+    assert findEncryptionWeakness(parsedFileData, 144381670) == 20532569
