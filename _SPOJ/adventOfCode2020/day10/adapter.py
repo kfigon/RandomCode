@@ -191,7 +191,7 @@ def findDifferences(adapters: List[int]) -> Tuple[int, int]:
     oneDiff = 0
     threeDiff = 0
     el = 0
-    nextEl = None
+    nextEl = -1
     for i in adapters:
         nextEl = i
         dif = nextEl - el
@@ -211,9 +211,9 @@ def findDifferences(adapters: List[int]) -> Tuple[int, int]:
 def isNextSkippable(adapters: List[int], i: int) -> bool:
     if (i+2) >=len(adapters):
         return False
-    dif = adapters[i+1] - adapters[i]
+    # dif = adapters[i+1] - adapters[i]
     dif2 = adapters[i+2] - adapters[i]
-    return dif == 1 and dif2 < 3
+    return dif2 < 3
 
 def findNumberOfAllowedArrangements(adapters: List[int]) -> int:
     adapters.sort()
@@ -231,10 +231,15 @@ assert findDifferences(parseData(inputData1)) == (7,5)
 assert findDifferences(parseData(inputData2)) == (22,10)
 
 assert findNumberOfAllowedArrangements(parseData(inputData1)) == 8
+assert findNumberOfAllowedArrangements([1,2,3,4]) == 7
+assert findNumberOfAllowedArrangements([1,2,4]) == 3
+assert findNumberOfAllowedArrangements([1,3,4]) == 3
+assert findNumberOfAllowedArrangements([1,4]) == 1
+assert findNumberOfAllowedArrangements([1,2,5]) == 2
 assert findNumberOfAllowedArrangements(parseData(inputData2)) == 19208
 
 
 with open('inputData.txt') as f:
     adapters = parseData(f.read())
     assert findDifferences(adapters) == (69, 24)
-    assert findNumberOfAllowedArrangements(adapters) != 140737488355328
+    assert findNumberOfAllowedArrangements(adapters) == 56693912375296
