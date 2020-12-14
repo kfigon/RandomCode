@@ -236,6 +236,7 @@ assert findNumberOfAllowedArrangements([1,2,4]) == 3
 assert findNumberOfAllowedArrangements([1,3,4]) == 3
 assert findNumberOfAllowedArrangements([1,4]) == 1
 assert findNumberOfAllowedArrangements([1,2,5]) == 2
+assert findNumberOfAllowedArrangements([3,4,5,6]) == 4
 assert findNumberOfAllowedArrangements(parseData(inputData2)) == 19208
 
 
