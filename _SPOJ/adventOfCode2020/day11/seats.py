@@ -224,6 +224,9 @@ def simulate(seats: SeatMatrix) -> SeatMatrix:
     return seats
 
 def simulateAndCount(content: str) -> int:
+    if not validateInput(content):
+        raise Exception('received content is not valid')
+    
     seats = SeatMatrix(content)
     h = hash(seats)
     steps = 0
@@ -250,8 +253,10 @@ assert simulate(seats) == SeatMatrix(third)
 assert simulate(seats) == SeatMatrix(fourth)
 assert simulate(seats) == SeatMatrix(fifth)
 assert simulate(seats) == SeatMatrix(sixth)
+
 assert simulate(seats) == SeatMatrix(sixth)
 assert simulate(seats) == SeatMatrix(sixth)
+assert simulate(SeatMatrix(sixth)) == SeatMatrix(sixth)
 
 assert hash(SeatMatrix(first)) == hash(SeatMatrix(first))
 assert hash(SeatMatrix(second)) == hash(SeatMatrix(second))
@@ -270,3 +275,7 @@ assert SeatMatrix(first) != SeatMatrix(second)
 assert SeatMatrix(first) != SeatMatrix(third)
 
 assert simulateAndCount(first) == 37
+
+with open('inputData.txt') as f:
+    res1 = simulateAndCount(f.read())
+    print(f'first -> {res1}')
