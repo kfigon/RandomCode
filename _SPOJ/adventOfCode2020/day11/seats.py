@@ -140,8 +140,8 @@ class SeatMatrix:
 
     def numberOfOccupiedSeats(self) -> int:
         out = 0
-        for r in self.rows():
-            for c in self.cols():
+        for r in range(self.rows()):
+            for c in range(self.cols()):
                 if self.isOccupied(r,c):
                     out += 1
         return out
@@ -200,8 +200,13 @@ assert adjecentIdxs(0,1,3,3) == [(0,0),(0,2),(1,0),(1,1),(1,2)]
 assert adjecentIdxs(2,2,3,3) == [(1,1),(1,2),(2,1)]
 assert adjecentIdxs(1,1,3,3) == [(0,0),(0,1),(0,2),(1,0),(1,2),(2,0),(2,1),(2,2)]
 
+def doCopy(content: str) -> str:
+    out = ''
+    for i in content:
+        out += i
+    return out
 
-def simulate(seats: SeatMatrix) -> SeatMatrix:
+def simulate(seats: SeatMatrix) -> Tuple[SeatMatrix, bool]:
     toOccupy: List[Tuple[int,int]] = []
     toFree: List[Tuple[int,int]] = []
 
@@ -216,27 +221,30 @@ def simulate(seats: SeatMatrix) -> SeatMatrix:
             elif seats.isOccupied(row, col) and numOfNei >= 4:
                 toFree.append((row, col))
     
+    doesChange = False
     for r,c in toOccupy:
         seats.takeSeat(r,c)
     for r,c in toFree:
         seats.freeSeat(r,c)
-
-    return seats
+    
+    doesChange = len(toOccupy) != 0 or len(toFree) != 0
+    return seats, doesChange
 
 def simulateAndCount(content: str) -> int:
     if not validateInput(content):
         raise Exception('received content is not valid')
-    
+
     seats = SeatMatrix(content)
-    h = hash(seats)
     steps = 0
     MAX_STEPS = 500
     while steps < MAX_STEPS:
         # print(f'running step {steps}')
-        seats = simulate(seats)
-        newHash = hash(seats)
-        if h == newHash:
+        seats, doesChange = simulate(seats)
+        
+        if not doesChange:
+            print(f'running stepps {steps}')
             return seats.numberOfOccupiedSeats()
+
         steps += 1
 
     raise Exception(f'invalid state!')
@@ -246,17 +254,17 @@ inputData = [first, second, third, fourth, fifth, sixth]
 for i in inputData:
     assert validateInput(i)
 
-seats = SeatMatrix(first)
-assert seats == SeatMatrix(first)
-assert simulate(seats) == SeatMatrix(second)
-assert simulate(seats) == SeatMatrix(third)
-assert simulate(seats) == SeatMatrix(fourth)
-assert simulate(seats) == SeatMatrix(fifth)
-assert simulate(seats) == SeatMatrix(sixth)
+seats = SeatMatrix(doCopy(first))
+assert seats == SeatMatrix(doCopy(first))
+assert simulate(seats) == (SeatMatrix(doCopy(second)), True)
+assert simulate(seats) == (SeatMatrix(doCopy(third)), True)
+assert simulate(seats) == (SeatMatrix(doCopy(fourth)), True)
+assert simulate(seats) == (SeatMatrix(doCopy(fifth)), True)
+assert simulate(seats) == (SeatMatrix(doCopy(sixth)), True)
 
-assert simulate(seats) == SeatMatrix(sixth)
-assert simulate(seats) == SeatMatrix(sixth)
-assert simulate(SeatMatrix(sixth)) == SeatMatrix(sixth)
+assert simulate(seats) == (SeatMatrix(doCopy(sixth)), False)
+assert simulate(seats) == (SeatMatrix(doCopy(sixth)), False)
+assert simulate(SeatMatrix(doCopy(sixth))) == (SeatMatrix(doCopy(sixth)), False)
 
 assert hash(SeatMatrix(first)) == hash(SeatMatrix(first))
 assert hash(SeatMatrix(second)) == hash(SeatMatrix(second))
@@ -274,8 +282,9 @@ assert SeatMatrix(first) != SeatMatrix(fourth)
 assert SeatMatrix(first) != SeatMatrix(second)
 assert SeatMatrix(first) != SeatMatrix(third)
 
-assert simulateAndCount(first) == 37
+assert simulateAndCount(doCopy(first)) == 37
 
 with open('inputData.txt') as f:
     res1 = simulateAndCount(f.read())
-    print(f'first -> {res1}')
+    assert res1 == 2270
+    print(f'first result -> {res1}')
