@@ -238,13 +238,11 @@ def simulateAndCount(content: str) -> int:
     steps = 0
     MAX_STEPS = 500
     while steps < MAX_STEPS:
-        # print(f'running step {steps}')
         seats, doesChange = simulate(seats)
         
         if not doesChange:
             print(f'running stepps {steps}')
             return seats.numberOfOccupiedSeats()
-
         steps += 1
 
     raise Exception(f'invalid state!')
