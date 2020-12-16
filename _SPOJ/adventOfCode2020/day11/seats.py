@@ -152,10 +152,16 @@ class SeatMatrix:
     def __eq__(self, other) -> bool:
         if other is None or type(other) != SeatMatrix:
             return False
-        return self.state == other.state
+        if len(self.state) != len(other.state):
+            return False
+
+        for i in range(len(self.state)):
+            if self.state[i] != other.state[i]:
+                return False
+        return True
     
     def __hash__(self) -> int:
-        h = 31
+        h = 0
         for i in self.state:
             h += hash(i)
         return h
@@ -224,7 +230,7 @@ def simulateAndCount(content: str) -> int:
     MAX_STEPS = 500
     while steps < MAX_STEPS:
         # print(f'running step {steps}')
-        simulate(seats)
+        seats = simulate(seats)
         newHash = hash(seats)
         if h == newHash:
             return seats.numberOfOccupiedSeats()
@@ -243,6 +249,8 @@ assert simulate(seats) == SeatMatrix(second)
 assert simulate(seats) == SeatMatrix(third)
 assert simulate(seats) == SeatMatrix(fourth)
 assert simulate(seats) == SeatMatrix(fifth)
+assert simulate(seats) == SeatMatrix(sixth)
+assert simulate(seats) == SeatMatrix(sixth)
 assert simulate(seats) == SeatMatrix(sixth)
 
 assert hash(SeatMatrix(first)) == hash(SeatMatrix(first))
