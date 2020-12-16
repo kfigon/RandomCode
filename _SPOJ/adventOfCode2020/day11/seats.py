@@ -223,13 +223,13 @@ def simulateAndCount(content: str) -> int:
     steps = 0
     MAX_STEPS = 500
     while steps < MAX_STEPS:
-        print(f'running step {steps}')
+        # print(f'running step {steps}')
         simulate(seats)
         newHash = hash(seats)
         if h == newHash:
             return seats.numberOfOccupiedSeats()
         steps += 1
-        
+
     raise Exception(f'invalid state!')
 
 
@@ -244,5 +244,21 @@ assert simulate(seats) == SeatMatrix(third)
 assert simulate(seats) == SeatMatrix(fourth)
 assert simulate(seats) == SeatMatrix(fifth)
 assert simulate(seats) == SeatMatrix(sixth)
+
+assert hash(SeatMatrix(first)) == hash(SeatMatrix(first))
+assert hash(SeatMatrix(second)) == hash(SeatMatrix(second))
+assert hash(SeatMatrix(third)) == hash(SeatMatrix(third))
+
+assert SeatMatrix(first) == SeatMatrix(first)
+assert SeatMatrix(second) == SeatMatrix(second)
+assert SeatMatrix(third) == SeatMatrix(third)
+
+assert hash(SeatMatrix(first)) != hash(SeatMatrix(fourth))
+assert hash(SeatMatrix(first)) != hash(SeatMatrix(second))
+assert hash(SeatMatrix(first)) != hash(SeatMatrix(third))
+
+assert SeatMatrix(first) != SeatMatrix(fourth)
+assert SeatMatrix(first) != SeatMatrix(second)
+assert SeatMatrix(first) != SeatMatrix(third)
 
 assert simulateAndCount(first) == 37
