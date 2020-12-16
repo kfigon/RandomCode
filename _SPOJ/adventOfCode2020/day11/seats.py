@@ -1,3 +1,4 @@
+from typing import List
 
 # Your plane lands with plenty of time to spare. The final leg of your journey is a ferry
 #  that goes directly to the tropical island where you can finally start your vacation.
@@ -94,3 +95,57 @@ L.#.L..#..
 # no seats to change state! Once people stop moving around, you count 37 occupied seats.
 
 # Simulate your seating area by applying the seating rules repeatedly until no seats change state. How many seats end up occupied?
+
+class SeatMatrix:
+    def __init__(self, lines: List[str]):
+        self.state: List[str] = lines
+
+    def isEmpty(self, row: int, col: int) -> bool:
+        return self.state[row][col] == 'L'
+    def isFloor(self, row: int, col: int) -> bool:
+        return self.state[row][col] == '.'
+    def isOccupied(self, row: int, col: int) -> bool:
+        return self.state[row][col] == '#'
+
+    def rows(self) -> int:
+        return len(self.state)
+        
+    def cols(self) -> int:
+        return len(self.state[0])
+
+    def validate(self, row: int, col: int) -> bool:
+        return (row >= 0 and row < len(self.state)) and (col >= 0 and col < len(self.state[0]))
+
+    def takeSeat(self, row: int, col: int):
+        if not self.isFloor(row, col):
+            s = self.state[row]
+            self.state[row] = mutateString(s, col, '#')
+    
+    def freeSeat(self, row: int, col: int):
+        if not self.isFloor(row, col):
+            s = self.state[row]
+            self.state[row] = mutateString(s, col, 'L')
+
+def validateInput(data: str) -> bool:
+    rows: List[str] = data.splitlines()
+    numberOfCols = set(map(lambda x: len(x), rows))
+    return len(numberOfCols) == 1
+
+def mutateString(s: str, idx: int, newChar: str) -> str:
+    assert len(newChar) == 1
+    assert idx >=0 and idx < len(s)
+
+    return s[0:idx] + newChar + s[idx+1:]
+
+inputData = [first, second, third, fourth, fifth, sixth]
+for i in inputData:
+    assert validateInput(i)
+
+def simulate(seats: SeatMatrix) -> SeatMatrix:
+    pass
+
+# # If a seat is empty (L) and there are no occupied seats adjacent to it, the seat becomes occupied.
+# If a seat is occupied (#) and four or more seats adjacent to it are also occupied, the seat becomes empty.
+# Otherwise, the seat's state does not change.
+# Floor (.) never changes; seats don't move, and nobody sits on the floor.
+
