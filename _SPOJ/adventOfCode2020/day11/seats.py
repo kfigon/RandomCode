@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 
 # Your plane lands with plenty of time to spare. The final leg of your journey is a ferry
 #  that goes directly to the tropical island where you can finally start your vacation.
@@ -97,8 +97,8 @@ L.#.L..#..
 # Simulate your seating area by applying the seating rules repeatedly until no seats change state. How many seats end up occupied?
 
 class SeatMatrix:
-    def __init__(self, lines: List[str]):
-        self.state: List[str] = lines
+    def __init__(self, lines: str):
+        self.state: List[str] = lines.splitlines()
 
     def isEmpty(self, row: int, col: int) -> bool:
         return self.state[row][col] == 'L'
@@ -109,7 +109,7 @@ class SeatMatrix:
 
     def rows(self) -> int:
         return len(self.state)
-        
+
     def cols(self) -> int:
         return len(self.state[0])
 
@@ -126,6 +126,26 @@ class SeatMatrix:
             s = self.state[row]
             self.state[row] = mutateString(s, col, 'L')
 
+    def numberOfOccupiedNei(self, row: int, col: int) -> int:
+        if not self.validate(row, col):
+            raise Exception(f'invalid idx {row}; {col}')
+
+        idx = self.adjecentIdxs(row, col)
+        out = 0
+
+        for i in idx:
+            if self.isOccupied(i[0],i[1]):
+                out += 1
+        return out
+
+    def adjecentIdxs(self, row: int, col: int) -> List[Tuple[int,int]]:
+        return adjecentIdxs(row, col, self.rows(), self.cols())
+        
+    def __eq__(self, other) -> bool:
+        if other is None or type(other) != SeatMatrix:
+            return False
+        return self.state == other.state
+
 def validateInput(data: str) -> bool:
     rows: List[str] = data.splitlines()
     numberOfCols = set(map(lambda x: len(x), rows))
@@ -134,18 +154,64 @@ def validateInput(data: str) -> bool:
 def mutateString(s: str, idx: int, newChar: str) -> str:
     assert len(newChar) == 1
     assert idx >=0 and idx < len(s)
-
     return s[0:idx] + newChar + s[idx+1:]
 
-inputData = [first, second, third, fourth, fifth, sixth]
-for i in inputData:
-    assert validateInput(i)
+def adjecentIdxs(row: int, col: int, rowLen: int, colLen: int) -> List[Tuple[int,int]]:
+    candidates = []
+    for r in [-1,0,1]:
+        for c in [-1,0,1]:
+            rNei = row + r
+            cNei = col + c
+            if (r != 0 or c != 0) and (rNei >=0 and rNei < rowLen) and (cNei >= 0 and cNei < colLen):
+                candidates.append((rNei, cNei))
+    return candidates
+
+
+assert mutateString('abcd', 0, 'x') == 'xbcd'
+assert mutateString('abcd', 1, 'x') == 'axcd'
+assert mutateString('abcd', 2, 'x') == 'abxd'
+assert mutateString('abcd', 3, 'x') == 'abcx'
+
+# 012
+# 345
+# 678
+assert adjecentIdxs(0,0,3,3) == [(0,1),(1,0),(1,1)]
+assert adjecentIdxs(0,1,3,3) == [(0,0),(0,2),(1,0),(1,1),(1,2)]
+assert adjecentIdxs(2,2,3,3) == [(1,1),(1,2),(2,1)]
+assert adjecentIdxs(1,1,3,3) == [(0,0),(0,1),(0,2),(1,0),(1,2),(2,0),(2,1),(2,2)]
+
 
 def simulate(seats: SeatMatrix) -> SeatMatrix:
-    pass
+    for row in range(seats.rows()):
+        for col in range(seats.cols()):
+            if seats.isFloor(row, col):
+                continue
+
+            numOfNei = seats.numberOfOccupiedNei(row, col)
+            # print(f'{row};{col} -> {numOfNei}')
+            if seats.isEmpty(row,col) and numOfNei == 0:
+                seats.takeSeat(row, col)
+            elif seats.isOccupied(row, col) and numOfNei >= 4:
+                seats.freeSeat(row, col)
+    return seats
 
 # # If a seat is empty (L) and there are no occupied seats adjacent to it, the seat becomes occupied.
 # If a seat is occupied (#) and four or more seats adjacent to it are also occupied, the seat becomes empty.
 # Otherwise, the seat's state does not change.
 # Floor (.) never changes; seats don't move, and nobody sits on the floor.
 
+inputData = [first, second, third, fourth, fifth, sixth]
+for i in inputData:
+    assert validateInput(i)
+
+seats = SeatMatrix(first)
+assert seats == SeatMatrix(first)
+
+print(f'{simulate(seats).state}')
+print(f'{second.splitlines()}')
+# assert simulate(seats) == SeatMatrix(second)
+# assert simulate(seats) == SeatMatrix(third)
+# assert simulate(seats) == SeatMatrix(fourth)
+# assert simulate(seats) == SeatMatrix(fifth)
+# assert simulate(seats) == SeatMatrix(sixth)
+            
