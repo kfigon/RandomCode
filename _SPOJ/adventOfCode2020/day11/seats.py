@@ -138,6 +138,14 @@ class SeatMatrix:
                 out += 1
         return out
 
+    def numberOfOccupiedSeats(self) -> int:
+        out = 0
+        for r in self.rows():
+            for c in self.cols():
+                if self.isOccupied(r,c):
+                    out += 1
+        return out
+
     def adjecentIdxs(self, row: int, col: int) -> List[Tuple[int,int]]:
         return adjecentIdxs(row, col, self.rows(), self.cols())
         
@@ -145,6 +153,12 @@ class SeatMatrix:
         if other is None or type(other) != SeatMatrix:
             return False
         return self.state == other.state
+    
+    def __hash__(self) -> int:
+        h = 31
+        for i in self.state:
+            h += hash(i)
+        return h
 
 def validateInput(data: str) -> bool:
     rows: List[str] = data.splitlines()
@@ -182,23 +196,42 @@ assert adjecentIdxs(1,1,3,3) == [(0,0),(0,1),(0,2),(1,0),(1,2),(2,0),(2,1),(2,2)
 
 
 def simulate(seats: SeatMatrix) -> SeatMatrix:
+    toOccupy: List[Tuple[int,int]] = []
+    toFree: List[Tuple[int,int]] = []
+
     for row in range(seats.rows()):
         for col in range(seats.cols()):
             if seats.isFloor(row, col):
                 continue
 
             numOfNei = seats.numberOfOccupiedNei(row, col)
-            # print(f'{row};{col} -> {numOfNei}')
             if seats.isEmpty(row,col) and numOfNei == 0:
-                seats.takeSeat(row, col)
+                toOccupy.append((row, col))
             elif seats.isOccupied(row, col) and numOfNei >= 4:
-                seats.freeSeat(row, col)
+                toFree.append((row, col))
+    
+    for r,c in toOccupy:
+        seats.takeSeat(r,c)
+    for r,c in toFree:
+        seats.freeSeat(r,c)
+
     return seats
 
-# # If a seat is empty (L) and there are no occupied seats adjacent to it, the seat becomes occupied.
-# If a seat is occupied (#) and four or more seats adjacent to it are also occupied, the seat becomes empty.
-# Otherwise, the seat's state does not change.
-# Floor (.) never changes; seats don't move, and nobody sits on the floor.
+def simulateAndCount(content: str) -> int:
+    seats = SeatMatrix(content)
+    h = hash(seats)
+    steps = 0
+    MAX_STEPS = 500
+    while steps < MAX_STEPS:
+        print(f'running step {steps}')
+        simulate(seats)
+        newHash = hash(seats)
+        if h == newHash:
+            return seats.numberOfOccupiedSeats()
+        steps += 1
+        
+    raise Exception(f'invalid state!')
+
 
 inputData = [first, second, third, fourth, fifth, sixth]
 for i in inputData:
@@ -206,12 +239,10 @@ for i in inputData:
 
 seats = SeatMatrix(first)
 assert seats == SeatMatrix(first)
+assert simulate(seats) == SeatMatrix(second)
+assert simulate(seats) == SeatMatrix(third)
+assert simulate(seats) == SeatMatrix(fourth)
+assert simulate(seats) == SeatMatrix(fifth)
+assert simulate(seats) == SeatMatrix(sixth)
 
-print(f'{simulate(seats).state}')
-print(f'{second.splitlines()}')
-# assert simulate(seats) == SeatMatrix(second)
-# assert simulate(seats) == SeatMatrix(third)
-# assert simulate(seats) == SeatMatrix(fourth)
-# assert simulate(seats) == SeatMatrix(fifth)
-# assert simulate(seats) == SeatMatrix(sixth)
-            
+assert simulateAndCount(first) == 37
