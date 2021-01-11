@@ -25,25 +25,35 @@ def isNiceString(line: str) -> bool:
     # print(f'{line} -> {numberOfVowels}, {hasDoubledCharacter}')
     return numberOfVowels >= 3 and hasDoubledCharacter
 
+def isNiceString2(line: str) -> bool:
+    assert line is not None
+    assert len(line) != 0
 
-niceWords = [
-    'ugknbfddgicrmopn', 'aaa'
-]
-naughtyWords = [
-    'ab', 'cd', 'pq', 'xy',
-    'jchzalrnumimnmhp', 'haegwjzuvuyypxyu', 'dvszwmarrgswjxmb'
-]
+    return False
+# todo: https://adventofcode.com/2015/day/5#part2
 
-for i in niceWords:
+# nice words
+for i in ['ugknbfddgicrmopn', 'aaa']:
     assert isNiceString(i), f'{i} should be true'
 
-for i in naughtyWords:
+# naughty words
+for i in ['ab', 'cd', 'pq', 'xy', 'jchzalrnumimnmhp', 'haegwjzuvuyypxyu', 'dvszwmarrgswjxmb']:
     assert not isNiceString(i), f'{i} should be false'
+
+for i in ['qjhvhtzxzqqjkmpb', 'xxyxx']:
+    assert isNiceString2(i), f'{i} should be true'
+
+for i in ['uurcxstgmygtbstg', 'ieodomkazucvgmuy']:
+    assert not isNiceString2(i), f'{i} should be false'
 
 with open('input.txt') as f:
     lines: List[str] = f.readlines()
-    numberOfNice = 0
+    numberOfNiceOld = 0
+    numberOfNiceNew = 0
     for l in lines:
         if isNiceString(l):
-            numberOfNice+=1
-    print(f'nice {numberOfNice}')
+            numberOfNiceOld+=1
+        if isNiceString2(l):
+            numberOfNiceNew += 1
+
+    print(f'nice {numberOfNiceOld}, niceNew: {numberOfNiceNew}')
