@@ -62,21 +62,18 @@ class Grid:
                 for col in range(colStart, colEnd+1):
                     currentLight = table[row][col]
 
-                    if operation == Operation.TURN_ON:
-                        if currentLight == False:
-                            table[row][col] = True
-                            numOfLit += 1
-                    elif operation == Operation.TURN_DOWN:
-                        if currentLight == True:
-                            table[row][col] = False
-                            numOfLit -= 1
-                    elif operation == Operation.TOGGLE:
-                        if currentLight == False:
-                            table[row][col] = True
-                            numOfLit += 1
-                        else:
-                            table[row][col] = False
-                            numOfLit -= 1
+                    if operation == Operation.TURN_ON and currentLight == False:
+                        table[row][col] = True
+                        numOfLit += 1
+                    elif operation == Operation.TURN_DOWN and currentLight == True:
+                        table[row][col] = False
+                        numOfLit -= 1
+                    elif operation == Operation.TOGGLE and currentLight == False:
+                        table[row][col] = True
+                        numOfLit += 1
+                    elif operation == Operation.TOGGLE and currentLight == True:
+                        table[row][col] = False
+                        numOfLit -= 1
                     
         dif = datetime.datetime.now() - start
         print(f'took {dif}')
