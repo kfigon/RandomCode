@@ -35,13 +35,58 @@ class Rectangle:
     def __eq__(self, other) -> bool:
         return self.coordA == other.coordA and self.coordB == other.coordB
 
-def intersectionLit(a: Rectangle, b: Rectangle) -> int:
-    pass
-
 class Operation:
     TURN_ON = 0
     TURN_DOWN = 1
     TOGGLE = 2
+
+class AbstractGridStrategy:
+    def getNumLit(self) -> int:
+        raise Exception('to implement')
+    def handleOperation(self, operation, row, col):
+        raise Exception('to implement')
+
+class BrightnessStrategy(AbstractGridStrategy):
+    def __init__(self):
+        self.table = [[0 for j in range(1000)] for i in range(1000)]
+        self.numOfLit = 0
+    def handleOperation(self, operation, row, col):
+        currentLight = self.table[row][col]
+        operationIncrease = 0
+        if operation == Operation.TURN_ON:
+            operationIncrease = 1
+        elif operation == Operation.TURN_DOWN:
+            operationIncrease = -1
+        elif operation == Operation.TOGGLE:
+            operationIncrease = 2
+            
+        finalValue = max(0, currentLight + operationIncrease)
+        self.numOfLit = self.numOfLit - currentLight + finalValue
+        self.table[row][col] = finalValue
+
+    def getNumLit(self) -> int:
+        return self.numOfLit
+
+class StateStrategy(AbstractGridStrategy):
+    def __init__(self):
+        self.table = [[False for j in range(1000)] for i in range(1000)]
+        self.numOfLit = 0
+    def handleOperation(self, operation, row, col):
+        currentLight = self.table[row][col]
+        if operation == Operation.TURN_ON and currentLight == False:
+            self.table[row][col] = True
+            self.numOfLit += 1
+        elif operation == Operation.TURN_DOWN and currentLight == True:
+            self.table[row][col] = False
+            self.numOfLit -= 1
+        elif operation == Operation.TOGGLE and currentLight == False:
+            self.table[row][col] = True
+            self.numOfLit += 1
+        elif operation == Operation.TOGGLE and currentLight == True:
+            self.table[row][col] = False
+            self.numOfLit -= 1
+    def getNumLit(self) -> int:
+        return self.numOfLit
 
 class Grid:
     def __init__(self):
@@ -49,10 +94,7 @@ class Grid:
     def add(self, op: Operation, rect: Rectangle):
         self.changeLog.append((op, rect))
 
-    def applyChangeLog(self) -> int:
-        table = [[False for j in range(1000)] for i in range(1000)]
-        numOfLit = 0
-        
+    def run(self, st: AbstractGridStrategy) -> int:
         start = datetime.datetime.now()
         for operation, rectangle in self.changeLog:
             rowStart, rowEnd = rectangle.rows()
@@ -60,97 +102,17 @@ class Grid:
 
             for row in range(rowStart, rowEnd+1):
                 for col in range(colStart, colEnd+1):
-                    currentLight = table[row][col]
-
-                    if operation == Operation.TURN_ON and currentLight == False:
-                        table[row][col] = True
-                        numOfLit += 1
-                    elif operation == Operation.TURN_DOWN and currentLight == True:
-                        table[row][col] = False
-                        numOfLit -= 1
-                    elif operation == Operation.TOGGLE and currentLight == False:
-                        table[row][col] = True
-                        numOfLit += 1
-                    elif operation == Operation.TOGGLE and currentLight == True:
-                        table[row][col] = False
-                        numOfLit -= 1
+                    st.handleOperation(operation, row, col)
                     
         dif = datetime.datetime.now() - start
         print(f'took {dif}')
-        return numOfLit
+        return st.getNumLit()
+
+    def applyChangeLog(self) -> int:
+        return self.run(StateStrategy())
 
     def applyChangeLog2(self) -> int:
-        table = [[0 for j in range(1000)] for i in range(1000)]
-        numOfLit = 0
-        
-        start = datetime.datetime.now()
-        for operation, rectangle in self.changeLog:
-            rowStart, rowEnd = rectangle.rows()
-            colStart, colEnd = rectangle.cols()
-
-            for row in range(rowStart, rowEnd+1):
-                for col in range(colStart, colEnd+1):
-                    currentLight = table[row][col]
-                    operationIncrease = 0
-                    if operation == Operation.TURN_ON:
-                        operationIncrease = 1
-                    elif operation == Operation.TURN_DOWN:
-                        operationIncrease = -1
-                    elif operation == Operation.TOGGLE:
-                        operationIncrease = 2
-                        
-                    finalValue = max(0, currentLight + operationIncrease)
-                    numOfLit = numOfLit - currentLight + finalValue
-                    table[row][col] = finalValue
-
-                    
-        dif = datetime.datetime.now() - start
-        print(f'took {dif}')
-        return numOfLit
-
-
-# todo: no idea why with this abstraction it's 2x slower!
-    # def applyChangeLog2(self) -> int:
-    #     class LightHelper:
-    #         def __init__(self):
-    #             self.table = [[False for j in range(1000)] for i in range(1000)]
-    #             self.numOfLit = 0
-
-    #         def up(self, row:int, col: int):
-    #             self.table[row][col] = True
-    #             self.numOfLit += 1
-
-    #         def down(self, row: int, col: int):
-    #             self.table[row][col] = False
-    #             self.numOfLit -= 1
-    #         def isUp(self, row: int, col: int) -> bool:
-    #             return self.table[row][col]
-
-    #         def doOp(self, operation: Operation, row: int, col: int):
-    #             currentLight = self.isUp(row, col)
-    #             if operation == Operation.TURN_ON and currentLight == False:
-    #                 self.up(row, col)
-    #             elif operation == Operation.TURN_DOWN and currentLight == True:
-    #                 self.down(row, col)
-    #             elif operation == Operation.TOGGLE and currentLight == False:
-    #                 self.up(row, col)
-    #             elif operation == Operation.TOGGLE and currentLight == True:
-    #                 self.down(row, col)
-
-    #     table = LightHelper()
-    #     start = datetime.datetime.now()
-    #     for operation, rectangle in self.changeLog:
-    #         rowStart, rowEnd = rectangle.coordA.y, rectangle.coordB.y
-    #         colStart, colEnd = rectangle.coordA.x, rectangle.coordB.x
-
-    #         for row in range(rowStart, rowEnd+1):
-    #             for col in range(colStart, colEnd+1):
-    #                 table.doOp(operation, row, col)
-                    
-    #     dif = datetime.datetime.now() - start
-    #     print(f'took {dif}')
-    #     return table.numOfLit
-
+        return self.run(BrightnessStrategy())
 
 def parseCommand(inputStr: str) -> Tuple[int, Rectangle]:
     if inputStr is None or len(inputStr) == 0:
@@ -193,11 +155,14 @@ if __name__ == "__main__":
             operation, rectangle = parseCommand(i)
             g.add(operation, rectangle)
         
+        # todo: after abstracting strategy - much slower! 7s vs 14 and 12 vs 19
+
         # took 0:00:07.045773
         result1 = g.applyChangeLog()
         assert result1 == 569999
         print(f'p1 {result1}')
         
+        # took 0:00:12.519982
         result2 = g.applyChangeLog2()
         print(f'p2: {result2}')
         assert result2 == 17836115
