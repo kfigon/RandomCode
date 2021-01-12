@@ -44,5 +44,15 @@ class TestGrid(unittest.TestCase):
         g.add(*parseCommand('turn off 499,499 through 500,500'))
         self.assertEqual(998_996, g.applyChangeLog())
 
+    def test2(self):
+        g = Grid()
+        g.add(*parseCommand('turn on 0,0 through 0,0'))
+        self.assertEqual(1, g.applyChangeLog2())
+        
+    def test3(self):
+        g = Grid()
+        g.add(*parseCommand('toggle 0,0 through 999,999'))
+        self.assertEqual(2000000, g.applyChangeLog2())
+
 if __name__ == "__main__":
     unittest.main()

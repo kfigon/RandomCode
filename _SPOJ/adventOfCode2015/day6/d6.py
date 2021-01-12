@@ -1,4 +1,4 @@
-from typing import Tuple, List, Optional
+from typing import Tuple, List, Optional, Callable
 import re
 import datetime
 
@@ -75,6 +75,34 @@ class Grid:
                         else:
                             table[row][col] = False
                             numOfLit -= 1
+                    
+        dif = datetime.datetime.now() - start
+        print(f'took {dif}')
+        return numOfLit
+
+    def applyChangeLog2(self) -> int:
+        table = [[0 for j in range(1000)] for i in range(1000)]
+        numOfLit = 0
+        
+        start = datetime.datetime.now()
+        for operation, rectangle in self.changeLog:
+            rowStart, rowEnd = rectangle.coordA.y, rectangle.coordB.y
+            colStart, colEnd = rectangle.coordA.x, rectangle.coordB.x
+
+            for row in range(rowStart, rowEnd+1):
+                for col in range(colStart, colEnd+1):
+                    currentLight = table[row][col]
+                    operationResult = 0
+                    if operation == Operation.TURN_ON:
+                        operationResult = 1
+                    elif operation == Operation.TURN_DOWN:
+                        operationResult = -1
+                    elif operation == Operation.TOGGLE:
+                        operationResult = 2
+                        
+                    operationResult = max(0,currentLight+operationResult)
+                    table[row][col] = operationResult
+                    numOfLit += operationResult
                     
         dif = datetime.datetime.now() - start
         print(f'took {dif}')
@@ -164,8 +192,12 @@ if __name__ == "__main__":
         for i in lines:
             operation, rectangle = parseCommand(i)
             g.add(operation, rectangle)
-        result = g.applyChangeLog()
-
+        
         # took 0:00:07.045773
-        assert result == 569999
-        print(f'lit {result}')
+        # result1 = g.applyChangeLog()
+        # assert result1 == 569999
+        # print(f'p1 {result1}')
+        
+        result2 = g.applyChangeLog2()
+        print(f'p2: {result2}')
+        assert result2 != 301058486
