@@ -29,8 +29,28 @@ def isNiceString2(line: str) -> bool:
     assert line is not None
     assert len(line) != 0
 
-    return False
-# todo: https://adventofcode.com/2015/day/5#part2
+    # todo: first part - KMP algorithm would be better
+    nonOverlappingRepetitionFound = False
+    repeatedLetterWithOneBetweenFound = False
+
+    for i in range(len(line)):
+        if nonOverlappingRepetitionFound and repeatedLetterWithOneBetweenFound:
+            break
+        
+        if not nonOverlappingRepetitionFound:
+            for j in range(i+2, len(line)):
+                if i+1 >= len(line) or j+1 >= len(line):
+                    break
+                if line[i] == line[j] and line[i+1] ==line[j+1]:
+                    nonOverlappingRepetitionFound = True
+                    break
+
+        if not repeatedLetterWithOneBetweenFound:
+            boundaryOk = i + 2 < len(line)
+            if boundaryOk and line[i] == line[i+2]:
+                repeatedLetterWithOneBetweenFound = True
+
+    return repeatedLetterWithOneBetweenFound and nonOverlappingRepetitionFound
 
 # nice words
 for i in ['ugknbfddgicrmopn', 'aaa']:
@@ -55,5 +75,8 @@ with open('input.txt') as f:
             numberOfNiceOld+=1
         if isNiceString2(l):
             numberOfNiceNew += 1
+    
+    assert numberOfNiceOld == 258
+    assert numberOfNiceNew == 53
 
     print(f'nice {numberOfNiceOld}, niceNew: {numberOfNiceNew}')
