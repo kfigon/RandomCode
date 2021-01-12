@@ -24,12 +24,14 @@ class Rectangle:
         difX = self.coordB.x - self.coordA.x +1
         difY = self.coordB.y - self.coordA.y +1
         return difX * difY
-    
+    def rows(self) -> Tuple[int,int]:
+        return self.coordA.y, self.coordB.y
+    def cols(self) -> Tuple[int,int]:
+        return self.coordA.x, self.coordB.x
     def __str__(self) -> str:
         return f'{self.coordA} : {self.coordB}'
     def __repr__(self) -> str:
         return str(self)
-
     def __eq__(self, other) -> bool:
         return self.coordA == other.coordA and self.coordB == other.coordB
 
@@ -53,8 +55,8 @@ class Grid:
         
         start = datetime.datetime.now()
         for operation, rectangle in self.changeLog:
-            rowStart, rowEnd = rectangle.coordA.y, rectangle.coordB.y
-            colStart, colEnd = rectangle.coordA.x, rectangle.coordB.x
+            rowStart, rowEnd = rectangle.rows()
+            colStart, colEnd = rectangle.cols()
 
             for row in range(rowStart, rowEnd+1):
                 for col in range(colStart, colEnd+1):
@@ -86,23 +88,24 @@ class Grid:
         
         start = datetime.datetime.now()
         for operation, rectangle in self.changeLog:
-            rowStart, rowEnd = rectangle.coordA.y, rectangle.coordB.y
-            colStart, colEnd = rectangle.coordA.x, rectangle.coordB.x
+            rowStart, rowEnd = rectangle.rows()
+            colStart, colEnd = rectangle.cols()
 
             for row in range(rowStart, rowEnd+1):
                 for col in range(colStart, colEnd+1):
                     currentLight = table[row][col]
-                    operationResult = 0
+                    operationIncrease = 0
                     if operation == Operation.TURN_ON:
-                        operationResult = 1
+                        operationIncrease = 1
                     elif operation == Operation.TURN_DOWN:
-                        operationResult = -1
+                        operationIncrease = -1
                     elif operation == Operation.TOGGLE:
-                        operationResult = 2
+                        operationIncrease = 2
                         
-                    operationResult = max(0,currentLight+operationResult)
-                    table[row][col] = operationResult
-                    numOfLit += operationResult
+                    finalValue = max(0, currentLight + operationIncrease)
+                    numOfLit = numOfLit - currentLight + finalValue
+                    table[row][col] = finalValue
+
                     
         dif = datetime.datetime.now() - start
         print(f'took {dif}')
@@ -194,10 +197,10 @@ if __name__ == "__main__":
             g.add(operation, rectangle)
         
         # took 0:00:07.045773
-        # result1 = g.applyChangeLog()
-        # assert result1 == 569999
-        # print(f'p1 {result1}')
+        result1 = g.applyChangeLog()
+        assert result1 == 569999
+        print(f'p1 {result1}')
         
         result2 = g.applyChangeLog2()
         print(f'p2: {result2}')
-        assert result2 != 301058486
+        assert result2 == 17836115
