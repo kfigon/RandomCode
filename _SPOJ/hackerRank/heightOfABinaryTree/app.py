@@ -1,3 +1,5 @@
+from typing import List
+
 
 class Node:
     def __init__(self, val: int):
@@ -30,3 +32,17 @@ class Tree:
 
     def getHeight(self) -> int:
         pass
+
+
+def testTree(vals: List[int]) -> int:
+    tree = Tree()
+    for v in vals:
+        tree.insert(v)
+    return tree.getHeight()
+
+
+assert testTree([]) == 0
+assert testTree([431]) == 0
+assert testTree([4,2]) == 1
+assert testTree([4,2,6]) == 1
+assert testTree([4,2,6, 5]) == 2
