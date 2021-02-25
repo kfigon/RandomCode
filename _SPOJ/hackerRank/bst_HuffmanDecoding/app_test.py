@@ -1,9 +1,10 @@
-from typing import List, Optional, Dict
+# https://www.hackerrank.com/challenges/tree-huffman-decoding/problem
+
+from typing import Optional, Dict
 import unittest
 
 class Node:
-    def __init__(self, val: str, freq: int):
-        self.val: str = val
+    def __init__(self, freq: int):
         self.freq: int = freq
         self.left: Optional[Node] = None
         self.right: Optional[Node] = None
@@ -17,13 +18,16 @@ class Tree:
 
     def build(self, inputStr: str):
         frequencies = calcFreq(inputStr)
+        remainingLen = len(inputStr)
+
         for key in frequencies:
             keysFrequency = frequencies[key]
-        pass
+            remainingLen -= keysFrequency
 
 
-
-    def huffman(self, inputStr: str) -> str:
+    def encode(self, inputStr: str) -> str:
+        return ''
+    def decode(self, inputStr: str) -> str:
         return ''
 
 def calcFreq(inputStr: str) -> Dict[str,int]:
@@ -39,7 +43,7 @@ def calcFreq(inputStr: str) -> Dict[str,int]:
 def encode(inputStr: str, encodeChar: str) -> str:
     tree = Tree()
     tree.build(inputStr)
-    return tree.huffman(encodeChar)
+    return tree.encode(encodeChar)
 
 def decode(inputStr: str, sequenceToDecode: str) -> str:
     tree = Tree()
