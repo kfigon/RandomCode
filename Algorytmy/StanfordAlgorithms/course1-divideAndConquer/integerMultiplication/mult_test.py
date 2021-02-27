@@ -33,16 +33,18 @@ def multiply(a: str, b: str) -> str:
     partialResults: List[str] = []
     aIdx = 0
     while aIdx < len(a):
-        charA = str([aIdx])
+        charA = str(a[aIdx])
         out = calculateSingleRow(b, charA)
         partialResults.append(out)
         aIdx+=1
 
     print(f'{a}*{b} -> {partialResults}')
+    return sumPartialResults(partialResults)
+
+def sumPartialResults(partialResults: List[str]) -> str:
     return partialResults[0]
 
-
-def calculateSingleRow(b, charA) -> str:
+def calculateSingleRow(b: str, charA: str) -> str:
     out = ''
     carry = 0
     for charB in b:
