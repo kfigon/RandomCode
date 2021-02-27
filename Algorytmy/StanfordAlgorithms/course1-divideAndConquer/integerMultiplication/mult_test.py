@@ -1,4 +1,6 @@
 import unittest
+from typing import List
+
 
 class Test(unittest.TestCase):
     def test(self):
@@ -7,8 +9,8 @@ class Test(unittest.TestCase):
             {'a' :"1",'b': "", 'exp': ""},
             {'a' :"", 'b': "1",'exp': ""},
             {'a' :"2",'b': "3",'exp': "6"},
-            {'a' :"12",'b': "3",'exp': "26"},
-            {'a' :"3",'b': "12",'exp': "26"},
+            {'a' :"12",'b': "3",'exp': "36"},
+            {'a' :"3",'b': "12",'exp': "36"},
             {'a' :"9",'b': "12",'exp': "108"},
             {'a' :"12",'b': "9",'exp': "108"},
             {'a' :"1234",'b': "5678",'exp': "7006652"},
@@ -25,7 +27,34 @@ class Test(unittest.TestCase):
                 self.assertEqual(tc['exp'], res)
 
 def multiply(a: str, b: str) -> str:
-    return ''
+    if len(a) == 0 or len(b) == 0:
+        return ''
+
+    partialResults: List[str] = []
+    aIdx = 0
+    while aIdx < len(a):
+        charA = str([aIdx])
+        out = calculateSingleRow(b, charA)
+        partialResults.append(out)
+        aIdx+=1
+
+    print(f'{a}*{b} -> {partialResults}')
+    return partialResults[0]
+
+
+def calculateSingleRow(b, charA) -> str:
+    out = ''
+    carry = 0
+    for charB in b:
+        res = int(charA) * int(charB) + carry
+        if res >= 10:
+            carry = res // 10
+        out += str(res % 10)
+
+    if carry != 0:
+        out += str(carry)
+    return out
+
 
 if __name__ == '__main__':
     unittest.main()
