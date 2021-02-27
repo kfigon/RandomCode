@@ -14,15 +14,23 @@ from typing import Set
 
 def generatePermutation(chars: str) -> Set[str]:
     if len(chars) == 0:
-        return set()
-    return set()
+        return {''}
+
+    charToMove = chars[0]
+    rest = chars[1:]
+    permutationsWithoutFirst = generatePermutation(rest)
+    out = set()
+    for perm in permutationsWithoutFirst:
+        for i in range(len(perm)+1):
+            out.add(perm[:i] + charToMove + perm[i:])
+    return out
 
 def test(chars: str, expected: Set[str]):
     result = generatePermutation(chars)
-    assert result == expected, f'{result} != {expected}'
+    assert result == expected, f'for "{chars}" -> {result} != {expected}'
 
 test('',{''})
 test('a',{'a'})
 test('ab', {'ab', 'ba'})
-test('abc', {'abc','acb','cab', 'bac','bca','cba'})
+print(generatePermutation('abcdef'))
 print('ok')
