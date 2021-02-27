@@ -3,7 +3,7 @@ from typing import List
 
 
 class Test(unittest.TestCase):
-    def test(self):
+    def testMultiplication(self):
         cases = [
             {'a' :"", 'b': "", 'exp': ""},
             {'a' :"1",'b': "", 'exp': ""},
@@ -26,6 +26,29 @@ class Test(unittest.TestCase):
                 res = multiply(tc['a'], tc['b'])
                 self.assertEqual(tc['exp'], res)
 
+    def testAddition(self):
+        cases = [
+            {'a' :"", 'b': "", 'exp': ""},
+            {'a' :"1",'b': "", 'exp': "1"},
+            {'a' :"", 'b': "1",'exp': "1"},
+            {'a' :"2",'b': "3",'exp': "5"},
+            {'a' :"12",'b': "3",'exp': "15"},
+            {'a' :"3",'b': "12",'exp': "15"},
+            {'a' :"9",'b': "12",'exp': "21"},
+            {'a' :"12",'b': "9",'exp': "21"},
+            {'a' :"1234",'b': "5678",'exp': "6912"},
+            {'a' :"5678",'b': "1234",'exp': "6912"},
+            {'a' :"798654",'b': "231456",'exp': "1030110"},
+            {'a' :"123432798654",'b': "231456",'exp': "123433030110"},
+            {'a' :"231456",'b': "123432798654",'exp': "123433030110"},
+            {'a' :"123654465789541326546231564",'b': "65432123101548589746541325456789564",'exp': "65432123225203055536082652003021128"},
+        ]
+        for tc in cases:
+            testName = tc['a'] + '*' +tc['b']
+            with self.subTest(testName):
+                res = addNumbers(tc['a'], tc['b'])
+                self.assertEqual(tc['exp'], res)
+
 def multiply(a: str, b: str) -> str:
     if len(a) == 0 or len(b) == 0:
         return ''
@@ -42,7 +65,31 @@ def multiply(a: str, b: str) -> str:
     return sumPartialResults(partialResults)
 
 def sumPartialResults(partialResults: List[str]) -> str:
-    return partialResults[0]
+    out = ''
+    for p in partialResults:
+        out = addNumbers(out, p)
+    return out
+
+def addNumbers(a: str, b:str) -> str:
+    carry = 0
+    aIdx = 0
+    bIdx = 0
+    out =''
+    while aIdx < len(a) and bIdx < len(b):
+        res = int(a[aIdx]) + int(b[bIdx]) + carry
+        if res >= 10:
+            carry = 1
+        else:
+            carry = 0
+        out += str(res%10)
+        aIdx+=1
+        bIdx+=1
+
+    while aIdx < len(a):
+        out += int(a[aIdx]) + carry
+        aIdx+=1
+
+    return out
 
 def calculateSingleRow(b: str, charA: str) -> str:
     out = ''
