@@ -15,25 +15,26 @@ from typing import List
 # space: O(n^2)
 def generateCombination(chars: str) -> List[str]:
     if len(chars) == 0:
-        return []
+        return ['']
 
     firstEl = chars[0]
     rest = chars[1:]
 
-    combinationForFirst: List[str] = []
     combinationsForRest =  generateCombination(rest)
 
+    combinationForFirst: List[str] = []
     for i in combinationsForRest:
-        combinationForFirst += [i + firstEl]
+        combinationForFirst.append(firstEl + i)
 
-    return combinationsForRest + combinationForFirst
+    return combinationForFirst + combinationsForRest
 
 def test(chars: str, expected: List[str]):
     result = generateCombination(chars)
     assert len(result) == len(expected), f'for {chars} got {len(result)}, exp {len(expected)}'
     for i in expected:
-        assert i in result, f'{chars} error, {i}'
+        assert i in result, f'error in {chars}, {i} not found in {result}'
 
 test('',[''])
 test('a',['','a'])
 test('abc',['','a','b','c','ab','ac','bc','abc'])
+print('ok')
