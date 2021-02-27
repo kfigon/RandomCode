@@ -11,11 +11,29 @@
 
 from typing import List
 
+# O(2^n)
+# space: O(n^2)
 def generateCombination(chars: str) -> List[str]:
-    return []
+    if len(chars) == 0:
+        return []
 
-result = generateCombination('abc')
-assert len(result) == 8
-expectedCombinations = ['','a','b','c','ab','ac','bc','abc']
-for i in expectedCombinations:
-    assert i in result, i
+    firstEl = chars[0]
+    rest = chars[1:]
+
+    combinationForFirst: List[str] = []
+    combinationsForRest =  generateCombination(rest)
+
+    for i in combinationsForRest:
+        combinationForFirst += [i + firstEl]
+
+    return combinationsForRest + combinationForFirst
+
+def test(chars: str, expected: List[str]):
+    result = generateCombination(chars)
+    assert len(result) == len(expected), f'for {chars} got {len(result)}, exp {len(expected)}'
+    for i in expected:
+        assert i in result, f'{chars} error, {i}'
+
+test('',[''])
+test('a',['','a'])
+test('abc',['','a','b','c','ab','ac','bc','abc'])
