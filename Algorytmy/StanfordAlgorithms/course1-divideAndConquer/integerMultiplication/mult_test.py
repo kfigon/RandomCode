@@ -52,12 +52,21 @@ class Test(unittest.TestCase):
             {'a' :"123432798654",'b': "231456",'exp': "123433030110"},
             {'a' :"231456",'b': "123432798654",'exp': "123433030110"},
             {'a' :"123654465789541326546231564",'b': "65432123101548589746541325456789564",'exp': "65432123225203055536082652003021128"},
+            {'a' :"94368",'b': "1258240",'exp': "1352608"},
+            {'a' :"1352608",'b': "9436800",'exp': "10789408"},
+            {'a' :"10789408",'b': "62912000",'exp': "73701408"},
+            {'a' :"73701408",'b': "314560000",'exp': "388261408"},
         ]
         for tc in cases:
             testName = tc['a'] + '+' +tc['b']
             with self.subTest(testName):
                 res = addNumbers(tc['a'], tc['b'])
                 self.assertEqual(tc['exp'], res)
+
+    def testPartialResults(self):
+        partials = [94368, 1258240, 9436800, 62912000, 314560000]
+        partialsStr = list(map(lambda x: str(x), partials))
+        self.assertEqual(str(sum(partials)), sumPartialResults(partialsStr))
 
 def multiply(a: str, b: str) -> str:
     if len(a) == 0 or len(b) == 0:
