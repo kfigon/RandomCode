@@ -29,8 +29,8 @@ class Test(unittest.TestCase):
     def testAddition(self):
         cases = [
             {'a' :"", 'b': "", 'exp': ""},
-            {'a' :"1",'b': "", 'exp': ""},
-            {'a' :"", 'b': "1",'exp': ""},
+            {'a' :"1",'b': "", 'exp': "1"},
+            {'a' :"", 'b': "1",'exp': "1"},
             {'a' :"2",'b': "3",'exp': "5"},
             {'a' :"12",'b': "3",'exp': "15"},
             {'a' :"3",'b': "12",'exp': "15"},
@@ -55,12 +55,14 @@ def multiply(a: str, b: str) -> str:
         return ''
 
     partialResults: List[str] = []
-    aIdx = 0
-    while aIdx < len(a):
+    aIdx = len(a)-1
+    iterationNum = 0
+    while aIdx >= 0:
         charA = str(a[aIdx])
-        out = calculateSingleRow(b, charA) + ('0'*aIdx)
+        out = calculateSingleRow(b, charA) + ('0'*iterationNum)
         partialResults.append(out)
-        aIdx+=1
+        aIdx-=1
+        iterationNum+=1
 
     print(f'{a}*{b} -> {partialResults}')
     return sumPartialResults(partialResults)
@@ -72,19 +74,17 @@ def sumPartialResults(partialResults: List[str]) -> str:
     return out
 
 def addNumbers(a: str, b:str) -> str:
-    if len(a) == 0 or len(b) == 0:
-        return ''
+    if len(a) == 0:
+        return b
+    elif len(b) == 0:
+        return a
 
     carry = 0
-    aIdx = len(a)-1
-    bIdx = len(b)-1
+    aIdx, bIdx = len(a)-1, len(b)-1
     out =''
     while aIdx >= 0 and bIdx >= 0:
         res = int(a[aIdx]) + int(b[bIdx]) + carry
-        if res >= 10:
-            carry = 1
-        else:
-            carry = 0
+        carry = 1 if res >= 10 else 0
         out += str(res%10)
         aIdx-=1
         bIdx-=1
