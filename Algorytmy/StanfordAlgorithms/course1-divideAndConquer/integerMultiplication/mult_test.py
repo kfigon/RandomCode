@@ -89,21 +89,21 @@ def addNumbers(a: str, b:str) -> str:
         aIdx-=1
         bIdx-=1
 
-    while aIdx >= 0:
-        out += str(int(a[aIdx]) + carry)
-        if carry != 0:
-            carry = 0
-        aIdx-=1
+    def appendRest(idx, tab, out, carry):
+        while idx >= 0:
+            out += str(int(tab[idx]) + carry)
+            if carry != 0:
+                carry = 0
+            idx-=1
+        return out, carry
 
-    while bIdx >= 0:
-        out += str(int(b[bIdx]) + carry)
-        if carry != 0:
-            carry = 0
-        bIdx-=1
+    out, carry = appendRest(aIdx, a, out, carry)
+    out, carry = appendRest(bIdx, b, out, carry)
 
-    returnStr = ''
-    for i in reversed(out):
-        returnStr += i
+    if carry != 0:
+        out += str(carry)
+
+    returnStr = out[::-1]
     return returnStr
 
 def calculateSingleRow(b: str, charA: str) -> str:
