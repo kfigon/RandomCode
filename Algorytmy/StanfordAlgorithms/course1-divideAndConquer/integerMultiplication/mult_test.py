@@ -94,7 +94,7 @@ def calculateSingleRow(b: str, charA: str) -> str:
     bIdx = len(b)-1
     while bIdx >= 0:
         res = int(charA) * int(b[bIdx]) + carry
-        carry = res // 10 if res >= 10 else 0
+        carry = res // 10
         out += str(res % 10)
         bIdx-=1
 
