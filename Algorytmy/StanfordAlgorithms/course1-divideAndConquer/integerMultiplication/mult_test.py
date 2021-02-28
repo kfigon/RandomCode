@@ -25,7 +25,7 @@ class Test(unittest.TestCase):
             {'a' :"123432798654",'b': "456",'exp': "56285356186224"},
             {'a' :"123432798654",'b': "1456",'exp': "179718154840224"},
             {'a' :"123432798654",'b': "31456",'exp': "3882702114460224"},
-            {'a' :"12343",'b': "31456",'exp': "3882702114460224"},
+            {'a' :"12343",'b': "31456",'exp': "388261408"},
             {'a' :"231456",'b': "123432798654",'exp': "28569261845260224"},
             {'a' :"123654465789541326546231564",'b': "65432123101548589746541325456789564",'exp': "8090974227597496808946050339263853168202079858417041962598096"},
         ]
@@ -66,7 +66,16 @@ class Test(unittest.TestCase):
     def testPartialResults(self):
         partials = [94368, 1258240, 9436800, 62912000, 314560000]
         partialsStr = list(map(lambda x: str(x), partials))
-        self.assertEqual(str(sum(partials)), sumPartialResults(partialsStr))
+        self.assertEqual(388261408, sum(partials))
+        self.assertEqual('388261408', sumPartialResults(partialsStr))
+
+    def testPartialResults2(self):
+        partialsStr = ['125824', '1572800', '18873600', '251648000', '2831040000', '22019200000',
+                                 '62912000000', '943680000000', '12582400000000', '94368000000000', '629120000000000',
+                                 '3145600000000000']
+        partials = list(map(lambda x: int(x), partialsStr))
+        self.assertEqual(3882702114460224, sum(partials))
+        self.assertEqual('3882702114460224', sumPartialResults(partialsStr))
 
 def multiply(a: str, b: str) -> str:
     if len(a) == 0 or len(b) == 0:
