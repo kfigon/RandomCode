@@ -4,5 +4,5 @@ class TestFoo(unittest.TestCase):
     def testBar(self):
         self.assertTrue(True)
 
-if __name__ == 'main':
+if __name__ == '__main__':
     unittest.main()
