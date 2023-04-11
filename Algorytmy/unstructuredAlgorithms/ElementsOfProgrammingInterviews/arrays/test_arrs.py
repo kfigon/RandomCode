@@ -5,19 +5,17 @@ def dutchFlag(arr: List[int], pivotIdx: int) -> List[int]:
     return arr
 
 def evenOdd(arr: List[int]) -> List[int]:
-    even_idx = 0
+    i = 0 # these will be even
     odd_idx = len(arr)-1
-    i = 0
-    while i < len(arr):
+    # naturally forming unsorted area in the middle
+    while i < odd_idx:
         el = arr[i]
         even = el % 2 == 0
         if even:
-            arr[even_idx],arr[i] = arr[i],arr[even_idx]
-            even_idx+=1
+            i += 1
         else:
-            arr[odd_idx],arr[i] = arr[i],arr[odd_idx]
+            arr[i],arr[odd_idx] = arr[odd_idx],arr[i]
             odd_idx-=1
-        i+=1
     return arr
 
 class TestArrays(unittest.TestCase):
@@ -28,10 +26,10 @@ class TestArrays(unittest.TestCase):
         data = [
             ([1,1,1,1], [1,1,1,1]),
             ([1,1,2,1], [2,1,1,1]),
-            ([1,1,2,4], [2,4,1,1]),
+            ([1,1,2,4], [4,2,1,1]),
             ([1,1,4], [4,1,1]),
-            ([1,2,3,4,5,6], [2,4,6,1,3,5]),
-            ([1,2,3,4,5,6,7], [2,4,6,1,3,5,7]),
+            ([1,2,3,4,5,6], [6,2,4,5,3,1]),
+            ([1,2,3,4,5,6,7], [6,2,4,5,3,7,1]),
         ]
         for d in data:
             with self.subTest(str(d[0])):
