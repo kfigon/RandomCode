@@ -30,13 +30,10 @@ def intersects(r1: Rectangle, r2: Rectangle) -> Optional[Rectangle]:
 # if yes, return their intersection rectangle
 class TestRectangles(unittest.TestCase):
     def test(self):
-        data = [
-            # (Rectangle(x=1,y=2,width=5,height=5), Rectangle(x=6,y=7,width=15,height=10), None),
-        ]
-        for d in data:
-            with self.subTest(f'{d}'):
-                self.assertEqual(intersects(d[0],d[1]), d[2])
-                self.assertEqual(intersects(d[1],d[0]), d[2])
+        pass
+        # (Rectangle(x=1,y=2,width=5,height=5), Rectangle(x=6,y=7,width=15,height=10), None),
+        # self.assertEqual(intersects(d[0],d[1]), d[2])
+        # self.assertEqual(intersects(d[1],d[0]), d[2])
 
 if __name__ == '__main__':
     unittest.main()
