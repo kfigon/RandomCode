@@ -4,6 +4,8 @@ from typing import List
 def dutchFlag(arr: List[int], pivotIdx: int) -> List[int]:
     # like sorting quicksort product
     # less then pivot to the left, then equal, then higher to the right
+
+    # partition to less, eq, unsolved, high
     pivotVal = arr[pivotIdx]
     loId, eqId, hiId = 0, 0, len(arr)
     while eqId < hiId:
