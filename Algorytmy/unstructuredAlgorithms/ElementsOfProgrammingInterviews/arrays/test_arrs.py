@@ -7,16 +7,16 @@ def dutchFlag(arr: List[int], pivotIdx: int) -> List[int]:
 
     # partition to less, eq, unsolved, high
     pivotVal = arr[pivotIdx]
-    loId, eqId, hiId = 0, 0, len(arr)
-    while eqId < hiId:
+    loId, eqId, hiId = 0, 0, len(arr)-1
+    while eqId <= hiId:
         el = arr[eqId]
         if el < pivotVal:
             arr[loId],arr[eqId] = arr[eqId],arr[loId]
             eqId += 1
             loId += 1
         elif el > pivotVal:
-            hiId -= 1
             arr[eqId],arr[hiId] = arr[hiId],arr[eqId]
+            hiId -= 1
         else:
             eqId += 1
             
