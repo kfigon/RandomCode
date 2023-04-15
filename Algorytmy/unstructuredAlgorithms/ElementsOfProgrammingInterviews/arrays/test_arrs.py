@@ -66,5 +66,25 @@ class TestArrays(unittest.TestCase):
             with self.subTest(f'{d[0]} {d[1]}'):
                 self.assertEqual(d[2], dutchFlag(d[0], d[1]), f'id {d[1]}, el {d[0][d[1]]}')
 
+    def testStocks(self):
+        data = [
+            ([310,315,275,295,260,270,290,230,255,250], 30),
+        ]
+        for d in data:
+            with self.subTest():
+                self.assertEqual(d[1], stocks(d[0]))
+
+# find max profit possible
+# find minimum so far and return max diff from that min and already seen
+def stocks(stockPrices: List[int]) -> int:
+    currentMinIdx = 0
+    maxDiff = 0
+    for i in range(1,len(stockPrices)):
+        if stockPrices[currentMinIdx] > stockPrices[i]:
+            currentMinIdx = i
+        
+        maxDiff = max(maxDiff, stockPrices[i] - stockPrices[currentMinIdx])
+
+    return maxDiff
 if __name__ == '__main__':
     unittest.main()

@@ -19,6 +19,7 @@ class TestMoves(unittest.TestCase):
     def testMove3(self):
         self.assertFalse(move([3,2,0,0,2,0,1]))
 
+# keep track of the farthest distance we know how to reach
 def move(arr: List[int]) -> bool:
     farthest = 0
     for i in range(len(arr)):
