@@ -67,12 +67,13 @@ class TestArrays(unittest.TestCase):
                 self.assertEqual(d[2], dutchFlag(d[0], d[1]), f'id {d[1]}, el {d[0][d[1]]}')
 
     def testStocks(self):
-        data = [
-            ([310,315,275,295,260,270,290,230,255,250], 30),
-        ]
-        for d in data:
-            with self.subTest():
-                self.assertEqual(d[1], stocks(d[0]))
+        d = [310,315,275,295,260,270,290,230,255,250]
+        self.assertEqual(30, stocks(d))
+
+    def testRearrangeArray(self):
+        d=[310,315,275,295,260,270,290,230,255,250]
+        self.assertEqual([230, 255, 250, 270, 260, 290, 275, 310, 295, 315], rearrange(d))
+
 
 # find max profit possible
 # find minimum so far and return max diff from that min and already seen
@@ -86,5 +87,15 @@ def stocks(stockPrices: List[int]) -> int:
         maxDiff = max(maxDiff, stockPrices[i] - stockPrices[currentMinIdx])
 
     return maxDiff
+
+# rearrange array so it has a property 
+# A[0] <= A[1] >= A[2] <= A[3] >= A[4] <= ...
+def rearrange(arr: List[int]) -> List[int]:
+    arr.sort()
+    for i in range(1,len(arr)-1,2):
+        arr[i],arr[i+1] = arr[i+1], arr[i]
+        
+    return arr
+
 if __name__ == '__main__':
     unittest.main()
