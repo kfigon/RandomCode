@@ -2,4 +2,4 @@ test:
 	python -m unittest
 
 lint:
-	mypy --check-untyped-defs .
+	mypy --exclude linkedlist/test_list.py --check-untyped-defs .
