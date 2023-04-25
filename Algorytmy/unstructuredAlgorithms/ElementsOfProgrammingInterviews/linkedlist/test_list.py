@@ -57,6 +57,15 @@ def merge(a: ListNode, b: ListNode) -> ListNode:
 
     return start.next
 
+def reverse(a: ListNode) -> ListNode:
+    prev = None
+    while a:
+        newNext = a.next
+        a.next = prev
+        prev = a
+        a = newNext
+    return prev
+
 class TestList(unittest.TestCase):
     def testAdd(self):
         v = build([1,2,3,4])
@@ -66,6 +75,10 @@ class TestList(unittest.TestCase):
         a = build([2,5,7])
         b = build([3,11])
         self.assertEqual([2,3,5,7,11], collect(merge(a,b)))
+
+    def testReverse(self):
+        a = build([2,3,5,7,11])
+        self.assertEqual([11,7,5,3,2], collect(reverse(a)))
 
 if __name__ == '__main__':
     unittest.main()
