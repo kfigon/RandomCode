@@ -68,6 +68,8 @@ def reverse(a: ListNode) -> ListNode:
 
 # detect a node that references one of the previous nodes
 # 2 iterators, regular and fast (jumps by 2). if they meet - we have a cycle
+
+# more human friendly - store visited in a hashmap
 def cycle(n: Optional[ListNode]) -> Optional[int]:
     if not n or not n.next:
         return None
