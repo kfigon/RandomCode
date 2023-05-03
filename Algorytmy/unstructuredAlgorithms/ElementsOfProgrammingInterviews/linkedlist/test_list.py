@@ -1,10 +1,10 @@
 import unittest
-from typing import List
+from typing import List, Optional
 
 class ListNode:
     def __init__(self, v):
         self.v = v
-        self.next = None
+        self.next: Optional[ListNode] = None
 
 def build(vals: List[int]) -> ListNode:
     start = None
@@ -66,6 +66,20 @@ def reverse(a: ListNode) -> ListNode:
         a = newNext
     return prev
 
+# detect a node that references one of the previous nodes
+# 2 iterators, regular and fast (jumps by 2). if they meet - we have a cycle
+def cycle(n: Optional[ListNode]) -> Optional[int]:
+    if not n or not n.next:
+        return None
+    slow = n.next
+    fast = n.next.next
+    while slow and fast and fast.next:
+        if slow == fast:
+            return slow.v
+        slow = slow.next
+        fast = fast.next.next
+    return None
+
 class TestList(unittest.TestCase):
     def testAdd(self):
         v = build([1,2,3,4])
@@ -79,6 +93,15 @@ class TestList(unittest.TestCase):
     def testReverse(self):
         a = build([2,3,5,7,11])
         self.assertEqual([11,7,5,3,2], collect(reverse(a)))
+
+    def testCycleNoCycle(self):
+        a = build([2,3,5,7,11])
+        self.assertIsNone(cycle(a))
+
+    def testCycle(self):
+        a = build([2,3,5,7,11])
+        a.next.next.next.next.next = a.next
+        self.assertEqual(11, cycle(a))
 
 if __name__ == '__main__':
     unittest.main()
