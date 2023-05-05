@@ -96,6 +96,11 @@ def removeKthLast(n: ListNode, k: int):
 
     it2.next = it2.next.next
 
+# is palindromic?
+# have 2 iterators, regular and fast = fast.next.next
+# then regular will be in the middle
+# reverse that regular and compare el by el
+
 class TestList(unittest.TestCase):
     def testAdd(self):
         v = build([1,2,3,4])
