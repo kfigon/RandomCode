@@ -27,11 +27,17 @@ def normalisePath(inpt: str) -> str:
     
     return '/'.join(stak)
 
+# list of building's heights facing west. Any buildings on easat with equal or greater height cant view the sunset
+# return buildings that can see the sunset
+def buildingsWithSunsetView(buildings: List[int]) -> List[int]:
+    raise NotImplemented('todo')
+
 class TestStack(unittest.TestCase):
     def testMatchingParenthesis(self):
         data = [
             ('[][]()(){}', True),
             ('[([])]', True),
+            ('[({[]})]', True),
             ('[()[()]([])]', True),
             ('{[(())}', False),
             ('{', False),
@@ -54,6 +60,18 @@ class TestStack(unittest.TestCase):
         for d in data:
             with self.subTest(d[0]):
                 self.assertEqual(d[1], normalisePath(d[0]))
+
+    def testBuildingHeights(self):
+        data = [
+            ([1,2,3], [1,2,3]),
+            ([1,3,2], [1,3]),
+            ([1,2,3,4,1], [1,2,3,4]),
+            ([1,2,3,4,1,6], [1,2,3,4,6]),
+            ([2,2,3,4,1,6], [2,3,4,6]),
+        ]
+        for d in data:
+            with self.subTest(d[0]):
+                self.assertEqual(d[1], buildingsWithSunsetView(d[0]))
 
 if __name__ == "__main__":
     unittest.main()
