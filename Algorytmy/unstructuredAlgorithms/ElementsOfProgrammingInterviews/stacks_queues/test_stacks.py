@@ -29,8 +29,18 @@ def normalisePath(inpt: str) -> str:
 
 # list of building's heights facing west. Any buildings on easat with equal or greater height cant view the sunset
 # return buildings that can see the sunset
+
+# processing from right to left will require a stack of candidates, Stack is to acomodate the ordering
 def buildingsWithSunsetView(buildings: List[int]) -> List[int]:
-    raise NotImplemented('todo')
+    maks = buildings[0]
+    out = []
+    out.append(buildings[0])
+
+    for v in buildings[1:]:
+        if v > maks:
+            out.append(v)
+        maks = max(maks, v)
+    return out
 
 class TestStack(unittest.TestCase):
     def testMatchingParenthesis(self):
@@ -68,6 +78,7 @@ class TestStack(unittest.TestCase):
             ([1,2,3,4,1], [1,2,3,4]),
             ([1,2,3,4,1,6], [1,2,3,4,6]),
             ([2,2,3,4,1,6], [2,3,4,6]),
+            ([3,3,1,3,3], [3]),
         ]
         for d in data:
             with self.subTest(d[0]):
