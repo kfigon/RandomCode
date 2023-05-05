@@ -82,6 +82,20 @@ def cycle(n: Optional[ListNode]) -> Optional[int]:
         fast = fast.next.next
     return None
 
+# 2 pointers - first iterates to k, then advance both the same
+# this way it2 will be at kth position from end
+def removeKthLast(n: ListNode, k: int):
+    it1 = n
+    it2 = n
+    for _ in range(k+1):
+        it1 = it1.next
+    
+    while it1:
+        it1 = it1.next
+        it2 = it2.next
+
+    it2.next = it2.next.next
+
 class TestList(unittest.TestCase):
     def testAdd(self):
         v = build([1,2,3,4])
@@ -104,6 +118,12 @@ class TestList(unittest.TestCase):
         a = build([2,3,5,7,11])
         a.next.next.next.next.next = a.next
         self.assertEqual(11, cycle(a))
+
+    def testRemoveKth(self):
+        v = build([1,2,3,4,5,6,7,8,9,10])
+        removeKthLast(v, 2)
+        self.assertEqual([1,2,3,4,5,6,7,8,10], collect(v))
+
 
 if __name__ == '__main__':
     unittest.main()
