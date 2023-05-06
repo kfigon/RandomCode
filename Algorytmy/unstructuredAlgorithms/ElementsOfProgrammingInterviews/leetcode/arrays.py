@@ -43,3 +43,22 @@ def twoSum(nums: List[int], target: int) -> List[int]:
             return [idx, foo[toFind]]
         foo[v] = idx
     return []
+
+# https://leetcode.com/problems/group-anagrams/
+def groupAnagrams(strs: List[str]) -> List[List[str]]:
+    def occurences(s):
+        oc = {}
+        for i in s:
+            oc[i] = oc.get(i, 0) + 1
+        return oc
+    
+    anagramHashes = {}
+    for s in strs:
+        # i should use array of occurences and then have it as a key, but this is the idea
+        occs = occurences(s)
+        h = hash(frozenset(occs.items()))
+        v = anagramHashes.get(h, [])
+        v.append(s)
+        anagramHashes[h] = v
+    
+    return anagramHashes.values()
