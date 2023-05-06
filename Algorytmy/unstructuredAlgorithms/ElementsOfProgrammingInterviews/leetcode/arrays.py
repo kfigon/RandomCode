@@ -62,3 +62,43 @@ def groupAnagrams(strs: List[str]) -> List[List[str]]:
         anagramHashes[h] = v
     
     return anagramHashes.values()
+
+# https://leetcode.com/problems/top-k-frequent-elements
+def topKFrequent(nums: List[int], k: int) -> List[int]:
+    # this is o(nlogn)
+    # occs = {}
+    # for i in nums:
+    #     occs[i] = occs.get(i,0)+1
+    # vals = list(occs.items())
+    # vals.sort(reverse = True, key = lambda x: x[1])
+    # return list(map(lambda x: x[0], vals))[:k]
+    
+    # alternative 
+    # - store dict occ -> num o(n)
+    # - build heap of occureces o(n)
+    # - max heap - k*logn
+
+    # o(n)
+    # bucketsort with array
+    # store dict occ -> num o(n)
+    # go through dict with descending order (like an array) and collect top k values
+    occs = {}
+    for v in nums:
+        occs[v] = occs.get(v, 0) + 1
+    occsReversed = {}
+
+    for i in occs:
+        v = occsReversed.get(occs[i], set())
+        v.add(i)
+        occsReversed[occs[i]] = v
+
+    out = []
+    i = len(nums)
+    while i >= 0:
+        if i in occsReversed:
+            for el in occsReversed[i]:
+                out.append(el)
+                if len(out) >= k:
+                    return out
+        i-=1
+    return []
