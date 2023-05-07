@@ -15,7 +15,7 @@ def containsDuplicate2(nums: List[int]) -> bool:
     return False
 
 # https://leetcode.com/problems/valid-anagram/
-def isAnagram(self, s: str, t: str) -> bool:
+def isAnagram(s: str, t: str) -> bool:
     if len(s) != len(t):
         return False    
     # forget about clean code, this is leetcode. Put everything in a single loop
