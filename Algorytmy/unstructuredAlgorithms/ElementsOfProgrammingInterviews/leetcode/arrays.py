@@ -123,3 +123,29 @@ def productExceptSelf(nums: List[int]) -> List[int]:
         po = 1 if i == len(nums)-1 else post[i+1]
         out[i] = pr*po
     return out
+
+# https://www.lintcode.com/problem/659/
+def encodeDecode(strs: List[str]) -> List[str]:
+    def encode(strs: List[str]) -> str:
+        out = ''
+        for s in strs:
+            out += f'{len(s)}#{s}'
+        return out
+
+    def decode(inputStr: str) -> List[str]:
+        out = []
+        i = 0
+        while i < len(inputStr):
+            num = ''
+            if inputStr[i].isdigit():
+                while inputStr[i].isdigit():
+                    num += inputStr[i]
+                    i += 1
+                if inputStr[i] == '#':
+                    i+=1 # '#'
+                    out.append(inputStr[i:i+int(num)])
+            else:
+                i+=1
+
+        return out
+    return decode(encode(strs))
