@@ -149,3 +149,28 @@ def encodeDecode(strs: List[str]) -> List[str]:
 
         return out
     return decode(encode(strs))
+
+# https://leetcode.com/problems/longest-consecutive-sequence/
+def longestConsecutive(nums: List[int]) -> int:
+    # cant sort
+    occurences = set(nums)
+    
+    # grouping these guys. if there's something on the left - it can't be start of a sequence
+    # [100,4,200,1,3,2]
+    # 1 2 3 4                100     200
+    # ---------------------------------->
+    # now analyse only 1,100,200
+    candidates = set()
+    for i in nums:
+        if i-1 not in occurences:
+            candidates.add(i)
+
+    maxOcc = 0
+    for i in nums:
+        j = i
+        currentMax = 1
+        while j+1 in occurences:
+            currentMax += 1
+            j+=1
+        maxOcc = max(maxOcc, currentMax)
+    return maxOcc
