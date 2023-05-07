@@ -102,3 +102,24 @@ def topKFrequent(nums: List[int], k: int) -> List[int]:
                     return out
         i-=1
     return []
+
+# https://leetcode.com/problems/product-of-array-except-self/
+def productExceptSelf(nums: List[int]) -> List[int]:
+    # we can also store these pre/post in out itself, little less memory used
+    pre = [1 for _ in nums]
+    post = [1 for _ in nums]
+
+    pre[0] = nums[0]
+    for i in range(1,len(nums)-1):
+        pre[i] = pre[i-1]*nums[i]
+
+    post[-1] = nums[-1]
+    for i in range(len(nums)-2,0,-1):
+        post[i] = post[i+1]*nums[i]
+
+    out = [0 for _ in nums]
+    for i in range(len(nums)):
+        pr = 1 if i == 0 else pre[i-1]
+        po = 1 if i == len(nums)-1 else post[i+1]
+        out[i] = pr*po
+    return out
