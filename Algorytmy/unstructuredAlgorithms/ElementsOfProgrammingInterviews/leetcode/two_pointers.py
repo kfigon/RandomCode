@@ -32,3 +32,26 @@ def twoSum(numbers: List[int], target: int) -> List[int]:
         else:
             left+=1
     return []
+
+# https://leetcode.com/problems/3sum
+def threeSum(nums: List[int]) -> List[List[int]]:
+    nums.sort()
+    out = []
+    for i in range(len(nums)):
+        if i != 0 and nums[i-1] == nums[i]:
+            continue
+
+        l,r = i+1,len(nums)-1
+        while l<r:
+            aSum = nums[i] + nums[l]+ nums[r]
+            if aSum > 0:
+                r-=1
+            elif aSum < 0:
+                l+=1
+            else:
+                out.append([nums[i],nums[r],nums[l]])
+                l+=1
+                while nums[l] == nums[l-1] and l < r:
+                    l+=1
+            
+    return out
