@@ -55,3 +55,36 @@ def threeSum(nums: List[int]) -> List[List[int]]:
                     l+=1
             
     return out
+
+# https://leetcode.com/problems/container-with-most-water/
+def maxArea(height: List[int]) -> int:
+    maxArea = 0
+    left,right = 0, len(height)-1
+    while left < right:
+        h = min(height[left], height[right])
+        width = right - left
+        maxArea = max(maxArea,h*width)
+        if height[left] > height[right]:
+            right-=1
+        else:
+            left+=1
+    return maxArea
+
+# https://leetcode.com/problems/trapping-rain-water/
+def trap(height: List[int]) -> int:
+    water = 0
+    left = 0
+    right = len(height)-1
+
+    maxL = height[left]
+    maxR = height[right]
+    while left < right:
+        if height[left] <= height[right]:
+            left +=1
+            maxL = max(maxL, height[left])
+            water += maxL - height[left]
+        else:
+            right -=1
+            maxR = max(maxR, height[right])
+            water += maxR - height[right]
+    return water
