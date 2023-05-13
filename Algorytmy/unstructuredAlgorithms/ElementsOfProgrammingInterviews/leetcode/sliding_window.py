@@ -26,3 +26,19 @@ def lengthOfLongestSubstring(s: str) -> int:
         runningSet.add(c)
         maxLen = max(maxLen, len(runningSet))
     return maxLen
+
+# https://leetcode.com/problems/longest-repeating-character-replacement/submissions/949849942/
+def characterReplacement(s: str, k: int) -> int:
+    startIdx = 0
+    maxLen = 0
+    freq = {}
+    currentLen = lambda i: i - startIdx +1
+
+    for i,c in enumerate(s):
+        freq[c] = freq.get(c,0)+1
+        while (currentLen(i) - max(freq.values())) > k: # still o(n) -> o(26*n)
+            freq[s[startIdx]] -= 1
+            startIdx += 1      
+        maxLen = max(maxLen, currentLen(i))
+            
+    return maxLen
