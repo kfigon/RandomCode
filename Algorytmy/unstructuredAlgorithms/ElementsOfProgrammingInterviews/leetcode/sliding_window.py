@@ -42,3 +42,27 @@ def characterReplacement(s: str, k: int) -> int:
         maxLen = max(maxLen, currentLen(i))
             
     return maxLen
+
+# https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters
+def countGoodSubstrings(s: str) -> int:
+    startIdx = 0
+    occ = {}
+    goodString = 0
+    goodStringLimit = 3
+    for i in range(len(s)):
+        c = s[i]
+        occ[c] = occ.get(c, 0) + 1
+        
+        if sum(occ.values()) != goodStringLimit:
+            continue
+
+        if len(occ) == goodStringLimit:
+            goodString += 1
+            
+        occ[s[startIdx]] -=1
+        if occ[s[startIdx]] == 0:
+            occ.pop(s[startIdx])
+        startIdx += 1
+    
+    return goodString
+            
