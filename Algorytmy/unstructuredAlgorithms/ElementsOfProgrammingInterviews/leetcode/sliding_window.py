@@ -65,4 +65,23 @@ def countGoodSubstrings(s: str) -> int:
         startIdx += 1
     
     return goodString
+
+# https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/
+def numOfSubarrays(arr: List[int], k: int, threshold: int) -> int:
+    start = 0
+    out = 0
+    pendingSum =0
+    for i,v in enumerate(arr):
+        pendingSum += v
+
+        if start+i+1 < k:
+            continue # collect more
+        
+        if (pendingSum/k) >= threshold:
+            out += 1
+
+        pendingSum -= arr[start]
+        start+=1
+            
+    return out
             
