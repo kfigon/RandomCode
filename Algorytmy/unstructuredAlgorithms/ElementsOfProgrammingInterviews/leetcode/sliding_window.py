@@ -121,3 +121,53 @@ def maxVowels(s: str, k: int) -> int:
         start += 1
         
     return count
+
+# https://leetcode.com/problems/permutation-in-string
+def checkInclusion(s1: str, s2: str) -> bool:
+    occS1 = {}
+    for c in s1:
+        occS1[c] = occS1.get(c,0)+1
+    
+    start = 0
+    occS2 = {}
+    for i,c in enumerate(s2):
+        occS2[c] = occS2.get(c,0) + 1
+        if i < len(s1)-1:
+            continue # collect more
+        
+        if occS1 == occS2: # we can add additional variable to track matches, so it's bit faster than this
+            return True
+        occS2[s2[start]] -= 1
+        if occS2[s2[start]] == 0:
+            occS2.pop(s2[start])
+        start += 1
+    return False
+
+# https://leetcode.com/problems/minimum-window-substring
+def minWindow(s: str, t: str) -> str:
+    occS = {}
+    occT = {}
+    for c in t:
+        occT[c] = occT.get(c,0)+1
+
+    def comp(s, t):
+        for k in t:
+            if not (k in s and s[k] >= t[k]):
+                return False
+        return True
+
+    start = 0
+    minz = None
+    for i,c in enumerate(s):
+        occS[c] = occS.get(c,0) + 1
+
+        while comp(occS,occT): # repeated work, worth to add a matched counter to not iterate over occT all the time
+            if not minz or len(minz) > i-start+1:
+                minz = s[start:i+1]
+
+            occS[s[start]] -= 1
+            if occS[s[start]] == 0:
+                occS.pop(s[start])
+            start += 1
+                        
+    return "" if not minz else minz
