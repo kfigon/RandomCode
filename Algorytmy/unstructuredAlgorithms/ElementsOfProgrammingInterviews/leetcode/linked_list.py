@@ -23,4 +23,5 @@ def reverseListRec(head: Optional[ListNode]) -> Optional[ListNode]:
         this.next = prev
         prev = this
         this = tmp
-    return foo(this, prev)
+        return foo(this, prev)
+    return foo(head, None)
