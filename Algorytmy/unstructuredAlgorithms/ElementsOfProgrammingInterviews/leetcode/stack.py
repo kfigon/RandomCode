@@ -68,7 +68,7 @@ def finalPrices(prices: List[int]) -> List[int]:
         return out
     
     def stack(prices: List[int]) -> List[int]:
-        stak = []
+        stak = [] # to keep track of current index, j to move into future
         for j in range(len(prices)):
             while len(stak) != 0 and prices[stak[-1]] >= prices[j]:
                 i = stak.pop()
@@ -78,3 +78,38 @@ def finalPrices(prices: List[int]) -> List[int]:
         return prices
 
     return stack(prices)
+
+# https://leetcode.com/problems/next-greater-element-i/
+def nextGreaterElement(nums1: List[int], nums2: List[int]) -> List[int]:
+    def brute(nums1,nums2):
+        idx = {}
+        for i,v in enumerate(nums2):
+            idx[v] = i
+        
+        def next_el(i):
+            nonlocal idx, nums2
+            starting_idx = idx.get(i, 0)
+            for j in range(starting_idx+1, len(nums2)):
+                if nums2[j] > i:
+                    return nums2[j]
+            return -1
+
+        out = []
+        for i in nums1:
+            out.append(next_el(i))
+        return out
+
+    def foo(nums1, nums2):
+        stak = []
+        mapping = {} # map val to next larger
+        for i in nums2:
+            while len(stak) != 0 and i > stak[-1]: # if next is greater than previously processed
+                mapping[stak.pop()] = i
+            stak.append(i)
+
+        out = []
+        for i in nums1:
+            out.append(mapping.get(i,-1))
+        return out
+    
+    return foo(nums1, nums2)
