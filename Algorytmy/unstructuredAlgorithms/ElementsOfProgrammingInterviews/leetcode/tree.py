@@ -38,3 +38,25 @@ def maxDepth(root: Optional[TreeNode]) -> int:
         return 1+ max(maks(node.left), maks(node.right))
         
     return maks(root)
+
+# https://leetcode.com/problems/increasing-order-search-tree/description/
+def increasingBST(root: TreeNode) -> TreeNode:
+    els = []
+    def dfs(n):
+        nonlocal els
+        if not n:
+            return
+        dfs(n.left)
+        els.append(n.val)
+        dfs(n.right)
+
+    dfs(root)
+    v = root
+    for i,val in enumerate(els):
+        v.left = None
+        v.val = val
+        if not v.right and i != len(els)-1:
+            v.right = TreeNode()
+        v = v.right
+    
+    return root
