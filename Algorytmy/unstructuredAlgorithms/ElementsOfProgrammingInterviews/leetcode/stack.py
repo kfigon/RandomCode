@@ -113,3 +113,18 @@ def nextGreaterElement(nums1: List[int], nums2: List[int]) -> List[int]:
         return out
     
     return foo(nums1, nums2)
+
+# https://leetcode.com/problems/baseball-game
+def calPoints(operations: List[str]) -> int:
+    stak = []
+    for op in operations:
+        if op == '+':
+            stak.append(stak[-1] + stak[-2])
+        elif op == 'D':
+            stak.append(stak[-1] * 2)
+        elif op == 'C':
+            stak.pop()
+        else:
+            stak.append(int(op))
+
+    return sum(stak)
