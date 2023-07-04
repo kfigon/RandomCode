@@ -89,3 +89,11 @@ def mergeNodes(head: Optional[ListNode]) -> Optional[ListNode]:
     pre_last.next = None
 
     return start_node
+
+# https://leetcode.com/problems/intersection-of-two-linked-lists
+def getIntersectionNode(headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+    a,b = headA,headB
+    while a != b:
+        a = a.next if a else headB # go to beginning of other pointer. They'll emerge at intersection or end eventually
+        b = b.next if b else headA
+    return a
