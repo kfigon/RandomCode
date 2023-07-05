@@ -149,3 +149,15 @@ def removeElements(head: Optional[ListNode], val: int) -> Optional[ListNode]:
     if head and head.val == val:
         head = head.next
     return head
+
+# https://leetcode.com/problems/linked-list-cycle
+def hasCycle(head: Optional[ListNode]) -> bool:
+    slow = head
+    fast = head
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
+        if fast == slow:
+            return True
+
+    return False
