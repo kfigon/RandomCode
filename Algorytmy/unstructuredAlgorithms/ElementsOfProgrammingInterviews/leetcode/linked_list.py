@@ -97,3 +97,55 @@ def getIntersectionNode(headA: ListNode, headB: ListNode) -> Optional[ListNode]:
         a = a.next if a else headB # go to beginning of other pointer. They'll emerge at intersection or end eventually
         b = b.next if b else headA
     return a
+
+# https://leetcode.com/problems/remove-duplicates-from-sorted-list
+def deleteDuplicates(head: Optional[ListNode]) -> Optional[ListNode]:
+    ptr = head
+    while ptr:
+        skip_ptr = ptr
+        while skip_ptr and skip_ptr.val == ptr.val:
+            skip_ptr = skip_ptr.next
+        ptr.next = skip_ptr
+        ptr = ptr.next
+
+    return head
+
+# https://leetcode.com/problems/palindrome-linked-list
+def isPalindrome(head: Optional[ListNode]) -> bool:
+    slow = head
+    fast = head
+    # get middle, reverse and compare
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
+
+    prev = None
+    while slow:
+        tmp = slow.next
+        slow.next = prev
+        prev = slow
+        slow = tmp
+    
+    forward = head
+    backward = prev
+    while forward and backward:
+        if forward.val != backward.val:
+            return False
+        forward = forward.next
+        backward = backward.next
+    return True
+
+# https://leetcode.com/problems/remove-linked-list-elements
+def removeElements(head: Optional[ListNode], val: int) -> Optional[ListNode]:       
+    ptr = head
+    while ptr:
+        skip_ptr = ptr.next
+        while skip_ptr and skip_ptr.val == val:
+            skip_ptr = skip_ptr.next
+        
+        ptr.next = skip_ptr
+        ptr = ptr.next
+        # can be done simpler, but this will do
+    if head and head.val == val:
+        head = head.next
+    return head
