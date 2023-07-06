@@ -60,3 +60,54 @@ def increasingBST(root: TreeNode) -> TreeNode:
         v = v.right
     
     return root
+
+# https://leetcode.com/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree
+def getTargetCopy(original: TreeNode, cloned: TreeNode, target: TreeNode) -> TreeNode:
+    ref = None
+    def dfs(n1, n2):
+        nonlocal ref
+        if not n1:
+            return
+        if n1 == target:
+            ref = n2
+            return
+        dfs(n1.left, n2.left)
+        dfs(n1.right, n2.right)
+    dfs(original, cloned)
+    return ref
+
+# https://leetcode.com/problems/range-sum-of-bst/
+def rangeSumBST(root: Optional[TreeNode], low: int, high: int) -> int:
+    sums = 0
+    def dfs(n):
+        nonlocal sums
+        if not n:
+            return
+        dfs(n.left)
+        if n.val >= low and n.val <= high:
+            sums += n.val
+        dfs(n.right)
+
+    dfs(root)
+    return sums
+
+# or recursive with optimisation - we can exclude some branches based on value
+# def rangeSumBST(root: Optional[TreeNode], low: int, high: int) -> int:
+#     if not root:
+#         return 0
+#     if root.val < low:
+#         return self.rangeSumBST(root.right, low, high)
+#     if root.val > high:
+#         return self.rangeSumBST(root.left, low, high)
+#     return root.val + self.rangeSumBST(root.right, low, high) + self.rangeSumBST(root.left, low, high)
+
+# https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree
+def bstToGst(root: TreeNode) -> TreeNode:
+    def dfs(n, sums):
+        if not n:
+            return sums
+        n.val += dfs(n.right, sums)
+        return dfs(n.left, n.val)
+
+    dfs(root, 0)
+    return root            
