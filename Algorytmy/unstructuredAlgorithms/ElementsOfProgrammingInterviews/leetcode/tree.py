@@ -110,4 +110,22 @@ def bstToGst(root: TreeNode) -> TreeNode:
         return dfs(n.left, n.val)
 
     dfs(root, 0)
-    return root            
+    return root
+
+# https://leetcode.com/problems/balanced-binary-tree
+def isBalanced(root: Optional[TreeNode]) -> bool:
+    def depth(n):
+        if not n:
+            return 0
+        l = depth(n.left)
+        r = depth(n.right)
+        return 1 + max(l,r)
+
+    def balanced(n):
+        if not n:
+            return True
+        l = depth(n.left)
+        r = depth(n.right)
+        return abs(l-r) <= 1 and balanced(n.left) and balanced(n.right)
+    
+    return balanced(root)
