@@ -174,3 +174,17 @@ def longestConsecutive(nums: List[int]) -> int:
             j+=1
         maxOcc = max(maxOcc, currentMax)
     return maxOcc
+
+# https://leetcode.com/problems/binary-search
+def search(nums: List[int], target: int) -> int:
+    start = 0
+    end = len(nums)-1
+    while start <= end:
+        mid = (end-start)//2 + start
+        if target > nums[mid]:
+            start = mid + 1
+        elif target < nums[mid]:
+            end = mid - 1
+        else:
+            return mid
+    return -1
