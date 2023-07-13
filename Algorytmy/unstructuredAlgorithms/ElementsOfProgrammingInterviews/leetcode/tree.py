@@ -129,3 +129,17 @@ def isBalanced(root: Optional[TreeNode]) -> bool:
         return abs(l-r) <= 1 and balanced(n.left) and balanced(n.right)
     
     return balanced(root)
+
+# https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree
+def lowestCommonAncestor(root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
+    # find splitting node
+    def dfs(n):
+        if not n:
+            return None
+        elif p.val < n.val and q.val < n.val:
+            return dfs(n.left)
+        elif p.val > n.val and q.val > n.val:
+            return dfs(n.right)
+        return n
+    
+    return dfs(root)

@@ -188,3 +188,17 @@ def search(nums: List[int], target: int) -> int:
         else:
             return mid
     return -1
+
+# https://leetcode.com/problems/ransom-note
+def canConstruct(ransomNote: str, magazine: str) -> bool:
+    def build_dic(v):
+        d = {}
+        for c in v:
+            d[c] = d.get(c,0)+1
+        return d
+    ransom_dict = build_dic(ransomNote)
+    mag_dict = build_dic(magazine)
+    for k in ransom_dict:
+        if k not in mag_dict or ransom_dict[k] > mag_dict[k]:
+            return False
+    return True

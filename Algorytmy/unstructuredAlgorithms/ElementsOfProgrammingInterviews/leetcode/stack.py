@@ -128,3 +128,30 @@ def calPoints(operations: List[str]) -> int:
             stak.append(int(op))
 
     return sum(stak)
+
+
+# https://leetcode.com/problems/implement-queue-using-stacks/
+class MyQueue:
+    def __init__(self):
+        self.push_stack = []
+        self.pop_stack = []
+
+    def push(self, x: int) -> None:
+        self.push_stack.append(x)
+
+    def pop(self) -> int:
+        if len(self.pop_stack) != 0:
+            return self.pop_stack.pop()
+        
+        while len(self.push_stack) != 0:
+            self.pop_stack.append(self.push_stack.pop())
+        
+        return self.pop_stack.pop()
+
+    def peek(self) -> int:
+        if len(self.pop_stack) != 0:
+            return self.pop_stack[-1]
+        return self.push_stack[0]
+
+    def empty(self) -> bool:
+        return len(self.pop_stack) == 0 and len(self.push_stack) == 0

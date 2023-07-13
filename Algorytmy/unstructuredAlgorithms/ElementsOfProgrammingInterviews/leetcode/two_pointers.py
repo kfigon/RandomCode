@@ -88,3 +88,21 @@ def trap(height: List[int]) -> int:
             maxR = max(maxR, height[right])
             water += maxR - height[right]
     return water
+
+# https://leetcode.com/problems/first-bad-version
+def firstBadVersion(n: int) -> int:
+# The isBadVersion API is already defined for you.
+# def isBadVersion(version: int) -> bool:
+    isBadVersion = lambda x: True
+    
+    left = 0
+    right = n
+    mid = None
+    while left <= right:
+        mid = (right-left)//2 + left
+        if isBadVersion(mid):
+            right = mid-1
+        else:
+            left = mid + 1
+
+    return left
