@@ -202,3 +202,24 @@ def canConstruct(ransomNote: str, magazine: str) -> bool:
         if k not in mag_dict or ransom_dict[k] > mag_dict[k]:
             return False
     return True
+
+# https://leetcode.com/problems/longest-palindrome
+def longestPalindrome(s: str) -> int:
+    freq = {}
+    for c in s:
+        freq[c] = freq.get(c,0)+1
+
+    length = 0
+    already_seen_uneven = False
+    for k in freq:
+        f = freq[k]
+        if f % 2 == 0:
+            length += f
+        else:
+            if already_seen_uneven:
+                length += f-1
+            else:
+                already_seen_uneven = True
+                length += f
+
+    return length

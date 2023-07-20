@@ -143,3 +143,34 @@ def lowestCommonAncestor(root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
         return n
     
     return dfs(root)
+
+# https://leetcode.com/problems/diameter-of-binary-tree
+def diameterOfBinaryTreeBrute(root: Optional[TreeNode]) -> int:
+    def depth(n):
+        if not n:
+            return 0
+        return 1 + max(depth(n.left),depth(n.right))
+
+    def dfs(n):
+        if not n:
+            return 0
+        d = depth(n.left) + depth(n.right)
+        l = dfs(n.left)            
+        r = dfs(n.right)
+        return max(d, max(l,r))
+
+    return dfs(root)
+
+def diameterOfBinaryTree(root: Optional[TreeNode]) -> int:
+    # go down and backtrack
+    maxD = 0
+    def dfs(n):
+        nonlocal maxD
+        if not n:
+            return -1
+        l = dfs(n.left)
+        r = dfs(n.right)
+        maxD = max(maxD, 2 + l+r) # 2 so the math works with -1
+        return 1 + max(l,r)
+    dfs(root)
+    return maxD
