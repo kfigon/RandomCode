@@ -106,3 +106,16 @@ def firstBadVersion(n: int) -> int:
             left = mid + 1
 
     return left
+
+# https://leetcode.com/problems/maximum-subarray
+def maxSubArray(nums: List[int]) -> int:
+    runningSum = nums[0]
+    maxS = runningSum
+    
+    for i in range(1, len(nums)):
+        v = nums[i]
+        if runningSum < 0:
+            runningSum = 0
+        runningSum += v
+        maxS = max(maxS, runningSum)
+    return maxS
